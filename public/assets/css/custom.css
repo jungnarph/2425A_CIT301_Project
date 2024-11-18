@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css?fammily=Poppings:200,300,400,500,700,800,900&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;             
+    background-size: cover;       
+    background-position: center;   
+    height: 450px;                 
+    width: 100%;                  
+}
+
+.header::before {
+    content: ""; /* Required for pseudo-elements */
+    position: absolute; /* Positioning for the overlay */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+    z-index: 1; /* Ensure it is above the background */
+}
+
+.header h1 {
+    color: white;
+    font-weight: 400;
+    font-family: "DM Serif Display", serif;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 25vw; /* Responsive font size */
+    position: relative; /* Positioning to bring text above the overlay */
+    z-index: 2; /* Ensure text is above the overlay */
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    background-color: #191d26;
+}
+
+.card{
+    width: 350px;
+    background-color: #1b222c;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 40px;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-content h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.card-content p{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    line-height: 1.3;
+
+}
+.card-content .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    color: #fff;
+}
+
+/* about cards */
+
+.about-card {
+    width: 520px;
+    background-color: #191d26;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 40px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-card img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+/*TEAM CARDS*/
+.team-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+.team-card{
+    width: 350px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 100px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 40px;
+}
+
+.team-card-content {
+    padding: 16px;
+}
+
+.team-card-content h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+.team-card-content p{
+    color: #707070;
+    font-size: 15px;
+    line-height: 1.3;
+
+}
+.team-card-content .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    color: #fff;
+}
+.team{
+    margin-top: 50px;   
+    font-size:50px;
+}
+
+.team-card img{
+    width: 100%;
+    object-fit: cover;
+    height: 50%;
+}
+
+/* content */
+.row{
+  height:100%;
+  margin:auto;
+}
+.left-heading{
+  font-weight:700;
+  color:#273342;
+  font-size: 3.75rem;
+  line-height: 1;
+}
+.left-paragraph{
+  color:gray;
+  padding-left:10px;
+  margin-top:20px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.left-column{
+  background-color:#fff;
+  float: left;
+  width: 50%;
+  padding: 25px;
+  align-items:center;
+  vertical-align:center;
+  height: 100%; 
+  padding-top: 15%;
+}
+/* Create two equal columns that floats next to each other */
+.right-column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 70vh;                /* Sets the height to full viewport height */
+}
+
+.right-column img {
+    max-width: 100%; /* Keeps the image responsive within the column */
+    height: auto; /* Maintains the original aspect ratio */
+    border-style: solid;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row .btn {
+  width:200px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 19px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  margin-top:20px;
+  margin-left:10px;
+  border-radius: 0.375rem;
+  border:none;
+}
+.success {
+  background-color: rgb(79 70 229);
+  color: white; 
+  box-shadow: 2px 4px 6px 8px rgb(79 70 229/0.10);
+  margin-right:20px;
+}
+
+.info {
+    background-color: #fff;
+    color: rgb(79 70 229);
+    box-shadow: 2px 4px 6px 8px #dddddd40;
+}
+/*Footer*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body .footer{
+    display: grid;
+    justify-content: center;
+    align-content: end;
+    min-height: 100vh;
+    background: #e8e8e8;
+    padding: 0px;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 100px;
+    background-color:#661b1c;
+    
+}
+
+footer .container3 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+footer .container3 .sec h2 {
+    position: relative;
+    color: #e8e8e8;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+footer .container3 .sec p {
+    color: #e8e8e8;
+}
+
+footer .container3 .sci {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+}
+
+footer .container3 .sci li {
+    list-style: none;
+}
+
+footer .container3 .sci li a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: #333;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+footer .container3 .sci li a i {
+    color: #e8e8e8;
+    font-size: 20px;
+}
+
+footer .container3 .quicklinks {
+    position: relative;
+}
+
+footer .container3 .quicklinks ul li {
+    list-style: none;
+}
+
+footer .container3 .quicklinks ul li a {
+    color: #e8e8e8;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+footer .container3 .contactus .info {
+    position: relative;
+}
+
+footer .container3 .contactus .info li {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    margin-bottom: 16px;
+}
+
+footer .container3 .contactus .info li span {
+    color: #e8e8e8;
+    font-size: 20px;
+}
+
+footer .container3 .contactus .info li a {
+    color: #e8e8e8;
+    text-decoration: none;
+}
+
+.copyrightText {
+    width: 100%;
+    background: #531516;
+    padding: 20px 100px 30px;
+    text-align: center;
+    color: #e8e8e8;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Registration */
+.gradient-custom-3 {
+    background: #84fab0;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+  }
+  
+  .gradient-custom-4 {
+    background: #84fab0;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  }
+
+/* All Media Queries */
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .left-column{
+    width: 100%;
+    height:auto;
+    padding-top: 5%;
+  }
+  .right-column {
+    height:400px;
+    width:100%;
+    
+  }
+  .success {
+  width:100%;
+  background-color: rgb(79 70 229);
+  color: white; 
+  box-shadow: 2px 4px 6px 8px rgb(79 70 229/0.10);
+  margin-right:2px;
+}
+  .row .btn {
+  width:100%;
+  padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+ .left-heading{
+    font-size: 28px;
+  }
+  .left-paragraph{
+    font-size: 14px;
+  }
+}
+
+
+/* Footer */
+@media (max-width: 991px) {
+    footer {
+        padding: 40px;
+    }
+
+    footer .container3 {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .copyrightText {
+        padding: 20px 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer .container3 {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+    }
+}
