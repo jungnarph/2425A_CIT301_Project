@@ -63,7 +63,7 @@
 
     <div class="welcome-container">
         <h3 style="color: white; font-size: 100px;">WELCOME</h3>
-        <!-- Replace the message with the username -->
+
         <h2 style="color: white; font-size: 40px;">
             {{ Auth::user()->username ?? 'Guest' }}
         </h2>
