@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/landing', function () {
         return view('landing');
     })->name('landing');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('welcome', [HomeController::class, 'index'])->name('welcome');
 });
 
 require __DIR__.'/auth.php';
