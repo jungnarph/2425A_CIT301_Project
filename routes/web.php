@@ -25,9 +25,36 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    
+});
+
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/arrangement', function () {
+        return view('arrangement');
+    })->name('arrangement');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/fleet', function () {
+        return view('fleet');
+    })->name('fleet');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/fleet/{id}', [FleetController::class, 'show'])->name('fleet.show');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/car/{id}', function($id) {
+        $car = Car::find($id); // Ensure you're fetching the car based on the correct ID
+        return view('fleet.show', compact('car'));
+    });
 });
 
 // Protect the admin dashboard route
