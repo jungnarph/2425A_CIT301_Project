@@ -22,5 +22,13 @@ class HomeController extends Controller
     public function registration() {
         return view('registration');
     }
+    
+    public function arrangement() {
+        return view('arrangement');
+    }
+    
+    public function fleet() {
+        return view('fleet');
+    }
         
 }
