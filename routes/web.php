@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FleetController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('/about', function () {
@@ -46,13 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/fleet/{id}', [FleetController::class, 'show'])->name('fleet.show');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/car/{id}', function($id) {
-        $car = Car::find($id); // Ensure you're fetching the car based on the correct ID
-        return view('fleet.show', compact('car'));
-    })->name('fleet.show');
-});
-
 // Protect the admin dashboard route
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', function () {
@@ -63,7 +57,6 @@ Route::middleware('auth')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
     Route::get('/arrangement', [HomeController::class, 'arrangement'])->name('arrangement');
     Route::post('/reserve', [ReservationController::class, 'store'])->name('reserve.store');
     Route::get('/fleet', [HomeController::class, 'fleet']);
