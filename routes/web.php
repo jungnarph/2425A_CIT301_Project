@@ -25,10 +25,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    
-});
-
-Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -54,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/car/{id}', function($id) {
         $car = Car::find($id); // Ensure you're fetching the car based on the correct ID
         return view('fleet.show', compact('car'));
-    });
+    })->name('fleet.show');
 });
 
 // Protect the admin dashboard route
@@ -68,6 +64,9 @@ Route::middleware('auth')->group(function () {
     })->name('admin.dashboard');
 
     Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
+    Route::get('/arrangement', [HomeController::class, 'arrangement'])->name('arrangement');
+    Route::post('/reserve', [ReservationController::class, 'store'])->name('reserve.store');
+    Route::get('/fleet', [HomeController::class, 'fleet']);
 });
 
 require __DIR__ . '/auth.php';
