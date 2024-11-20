@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EasyCars-HomePage</title>
     <!-- Bootstrap CSS -->
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+=======
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" >
+>>>>>>> Stashed changes
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="Landing.css" rel="stylesheet">
 
+<<<<<<< Updated upstream
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+=======
+    <!--Jared CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+>>>>>>> Stashed changes
 
     <style>
         .main-button {
@@ -31,12 +40,35 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+<<<<<<< Updated upstream
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/landing">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Fleet</a>
+=======
+                <ul class="navbar-nav ms-auto"> <!-- All items on the right -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/fleet">Fleet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signin">
+                            <i class="bi bi-person" style="margin-right:0.5rem;"></i>
+                        </a>
+>>>>>>> Stashed changes
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Services</a>
@@ -78,6 +110,7 @@
     </div>
 
     <!-- Cards -->
+<<<<<<< Updated upstream
     <div class="card-container">
         <div class="card">
             <img src="{{ asset('assets/images/home-images/jdm-jdm-cars.gif') }}">
@@ -85,22 +118,45 @@
                 <h3>Creator</h3>
                 <p>DAWDIWAD</p>
                 <a href="" class="btn">Read More</a>
+=======
+    <div class ="card-container">
+        <div class="card">
+            <img src="{{ asset('assets/images/home-images/jdm-jdm-cars.gif') }}">
+            <div class ="card-content">
+                <h3>Creator</h3>
+                <p>DAWDIWAD</P>
+                <a href="" class="btn"> Read More </a>
+>>>>>>> Stashed changes
             </div>
         </div>
         <div class="card">
             <img src="{{ asset('assets/images/home-images/NFS Toyota.gif') }}">
+<<<<<<< Updated upstream
             <div class="card-content">
                 <h3>What is Toyota</h3>
                 <p>DAWDIWAD</p>
                 <a href="" class="btn">Read More</a>
+=======
+            <div class ="card-content">
+                <h3>What is Toyota</h3>
+                <p>DAWDIWAD</P>
+                <a href="" class="btn"> Read More </a>
+>>>>>>> Stashed changes
             </div>
         </div>
         <div class="card">
             <img src="{{ asset('assets/images/home-images/drive-car.gif') }}">
+<<<<<<< Updated upstream
             <div class="card-content">
                 <h3>Toyota PH Branch</h3>
                 <p>DAWDIWAD</p>
                 <a href="" class="btn">Read More</a>
+=======
+            <div class ="card-content">
+                <h3>Toyota PH Branch</h3>
+                <p>DAWDIWAD</P>
+                <a href="" class="btn"> Read More </a>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
@@ -138,6 +194,10 @@
                     <li><a href="partnership.html">Partner Community</a></li>
                     <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfueoB3lU5a78hU7-z9SdTzfNuqr1JT1jJ_xTHO-Tpitb2EAA/viewform">Google Form</a></li>
                     <li><a href="http://localhost/CESO2/feedback.php">Feedback</a></li>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 </ul>
             </div>
             <div class="sec contactus">

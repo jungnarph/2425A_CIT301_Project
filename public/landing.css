@@ -3,6 +3,12 @@
 body{
     background-image: url('image.jpg');
     background-repeat: no-repeat;
+<<<<<<< Updated upstream:public/landing.css
+=======
+    background-size: auto;
+    margin: 0;
+    padding: 0;
+>>>>>>> Stashed changes:public/Landing.css
 }
 
 /* Welcome container */
