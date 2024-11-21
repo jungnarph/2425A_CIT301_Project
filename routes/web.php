@@ -37,8 +37,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
     Route::prefix('admin')->group(function() {
         Route::controller(AdminController::class)->group(function() {
             Route::get('/dashboard', 'index')->name('admin');
-            Route::get('/cars', 'manageCars')->name('admin.cars');
-            Route::get('/carmodels', 'manageCarModels')->name('admin.carmodels');
+            Route::get('/cars/manage', 'manageCars')->name('admin.cars.manage');
+            Route::get('/carmodels/manage', 'manageCarModels')->name('admin.carmodels.manage');
+            Route::get('/users/manage', 'manageUsers')->name('admin.users.manage');
         });
     });
 });

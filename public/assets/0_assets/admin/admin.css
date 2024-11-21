@@ -30,9 +30,19 @@ body {
     display: none;
     background-color: #0d0418;
   }
+
+  .nav-item {
+    margin: 0.25rem 0;
+  }
   
-  .navigation-sub {
-    background-color: yellow;
+  .nav-link.disabled {
+    color: #adb5bd;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .nav-submenu {
+    list-style: none;
   }
   
   .sidebar {
@@ -41,7 +51,7 @@ body {
     color: white;
   }
   .sidebar a {
-    color: #adb5bd;
+    color: #edeff2;
     padding: 10px;
     display: block;
     text-decoration: none;

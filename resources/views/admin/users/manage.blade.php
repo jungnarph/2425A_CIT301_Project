@@ -1,10 +1,13 @@
 @extends('admin.layouts.layout')
+@section('admin_title')
+User Management
+@endsection
 
 @section('main_panel')
 <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 main-content">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="btn-toolbar mb-2 mb-md-0">
-            <h1 class="h2">Car Model Management</h1>
+            <h1 class="h2">User Management</h1>
         </div>
     </div>
 
@@ -13,21 +16,19 @@
         <table class="">
             <thead>
                 <tr>
-                    <th>Car ID</th>
-                    <th>Plate Number</th>
-                    <th>Model Name</th>
-                    <th>Car Type</th>
-                    <th>Status</th>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Full Name</th>
+                    <th>User Type</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-cell="Car ID">10001</td>
-                    <td data-cell="Plate Number">CAR 0516</td>
-                    <td data-cell="Model Name">Honda Civic Type R</td>
-                    <td data-cell="Car Type">Sports Car</td>
-                    <td data-cell="Status">Active</td>
+                    <td data-cell="User ID">1</td>
+                    <td data-cell="Username">admin</td>
+                    <td data-cell="Full Name">Daniel John Bucad</td>
+                    <td data-cell="User Type">Admin</td>
                     <td>
                         <form style="display:inline;">
                             <!--
@@ -55,11 +56,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td data-cell="Car ID">10001</td>
-                    <td data-cell="Plate Number">CAR 0516</td>
-                    <td data-cell="Model Name">Honda Civic Type R</td>
-                    <td data-cell="Car Type">Sports Car</td>
-                    <td data-cell="Status">Active</td>
+                    <td data-cell="User ID">2</td>
+                    <td data-cell="Username">lmnslntn</td>
+                    <td data-cell="Full Name">Daniel Bucad</td>
+                    <td data-cell="User Type">User</td>
                     <td>
                         <form style="display:inline;">
                             <!--

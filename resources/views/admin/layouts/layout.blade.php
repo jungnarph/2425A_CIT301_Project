@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>@yield('admin_title')</title>
     <!--
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     -->
@@ -48,17 +48,29 @@
                         <a href="/admin/dashboard" class="nav-link {{ request()->routeIs('admin')?'active':'' }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Users Management</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#" class="nav-link">Transactions</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/cars" class="nav-link {{ request()->routeIs('admin.cars')?'active':'' }}">Car Management</a>
-                    </li>
+                        <a class="nav-link disabled">Car Management</a>
+                        <ul class="nav-submenu">
+                            <li><a href="/admin/cars/create" class="nav-link">Create</a></li>
+                            <li><a href="/admin/cars/manage" class="nav-link {{ request()->routeIs('admin.cars.manage')?'active':'' }}">Manage</a></li>
+                        </ul>
+                    </li>                    
                     <li class="nav-item">
-                        <a href="/admin/carmodels" class="nav-link {{ request()->routeIs('admin.carmodels')?'active':'' }}">Car Model Management</a>
-                    </li>
+                        <a class="nav-link disabled">Car Model Management</a>
+                        <ul class="nav-submenu">
+                            <li><a href="/admin/carmodels/create" class="nav-link">Create</a></li>
+                            <li><a href="/admin/carmodels/manage" class="nav-link {{ request()->routeIs('admin.carmodels.manage')?'active':'' }}">Manage</a></li>
+                        </ul>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link disabled">User Management</a>
+                        <ul class="nav-submenu">
+                            <li><a href="/admin/users/create" class="nav-link">Create</a></li>
+                            <li><a href="/admin/users/manage" class="nav-link {{ request()->routeIs('admin.users.manage')?'active':'' }}">Manage</a></li>
+                        </ul>
+                    </li> 
                     <li class="nav-item">
                         <a href="#" class="nav-link">Help & Support</a>
                     </li>
