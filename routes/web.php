@@ -37,9 +37,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
     Route::prefix('admin')->group(function() {
         Route::controller(AdminController::class)->group(function() {
             Route::get('/dashboard', 'index')->name('admin');
-            Route::get('/fleets', function () {
-                return view('admin.fleetmanagement');
-            })->name('admin.fleetmanagement');
+            Route::get('/cars', 'manageCars')->name('admin.cars');
+            Route::get('/carmodels', 'manageCarModels')->name('admin.carmodels');
         });
     });
 });

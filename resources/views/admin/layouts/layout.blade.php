@@ -45,7 +45,7 @@
                 <h4 class="text-center mt-4">Admin Panel</h4>
                 <ul class="nav flex-column mt-3">
                     <li class="nav-item">
-                        <a href="/admin/dashboard" class="nav-link">Dashboard</a>
+                        <a href="/admin/dashboard" class="nav-link {{ request()->routeIs('admin')?'active':'' }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Users Management</a>
@@ -54,10 +54,10 @@
                         <a href="#" class="nav-link">Transactions</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/fleets" class="nav-link">Fleet Management</a>
+                        <a href="/admin/cars" class="nav-link {{ request()->routeIs('admin.cars')?'active':'' }}">Car Management</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Settings</a>
+                        <a href="/admin/carmodels" class="nav-link {{ request()->routeIs('admin.carmodels')?'active':'' }}">Car Model Management</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Help & Support</a>
