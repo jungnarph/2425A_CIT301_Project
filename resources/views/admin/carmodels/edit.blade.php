@@ -66,6 +66,17 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="layoutType">Layout Type</label>
+                    <select class="form-control" id="layout_type" name="layout_type" required>
+                        <option value="" disabled selected>Select layout type</option>
+                        <option value="AWD" {{ $carmodel->layout_type === 'AWD' ? 'selected' : '' }}>All-Wheel Drive (AWD)</option>
+                        <option value="4WD" {{ $carmodel->layout_type === '4WD' ? 'selected' : '' }}>Four-Wheel Drive (4WD)</option>
+                        <option value="FWD" {{ $carmodel->layout_type === 'FWD' ? 'selected' : '' }}>Front-Wheel Drive (FWD)</option>
+                        <option value="RWD" {{ $carmodel->layout_type === 'RWD' ? 'selected' : '' }}>Rear-Wheel Drive (RWD)</option>
+                    </select>
+                </div>
+
                 <div class="form-group row create-form-buttons">
                     <div class="col">
                         <a href="/admin/carmodels/manage" class="btn btn-secondary">Cancel</a>

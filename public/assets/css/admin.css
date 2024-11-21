@@ -68,6 +68,10 @@ button:hover {
   margin: 1rem 0;
 }
 
+.form-group label{
+  margin-bottom: 0.25rem;
+}
+
 .hamburger-button {
   display: none;
 }
@@ -76,20 +80,20 @@ button:hover {
   display: none;
 }
 
-input.form-control, select.form-control {
+input.form-control, select.form-control, textarea.form-control {
     background-color: #851558;
     color: white; 
     border-color: #851558;
 }
 
-input.form-control:focus, select.form-control:focus {
+input.form-control:focus, select.form-control:focus, textarea.form-control:focus {
   background-color: #851558; 
   color: white;
   border-color: #851558; 
   outline: none; 
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder, select::placeholder{
   color: lightgray !important;
 }
 
@@ -98,6 +102,8 @@ input:-webkit-autofill, input:-internal-autofill-selected {
     color: white !important; /* Set text color for autofilled inputs */
     box-shadow: 0 0 0px 1000px #cf4397 inset !important; /* Ensure full override */
 }
+
+
 
 .logo-container {
   position: relative;
@@ -140,6 +146,7 @@ input:-webkit-autofill, input:-internal-autofill-selected {
   background-color: #0d0418;
   color: white;
 }
+
 .sidebar a {
   color: #edeff2;
   padding: 10px;

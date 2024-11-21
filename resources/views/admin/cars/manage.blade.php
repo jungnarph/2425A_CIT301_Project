@@ -10,25 +10,30 @@ Car Management
         </div>
     </div>
 
+    @if(session('success'))
+        <div class="alert custom-alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- Additional content goes here -->
     <div class="">
         <table class="">
             <thead>
                 <tr>
-                    <th>Car ID</th>
                     <th>Plate Number</th>
                     <th>Model Name</th>
-                    <th>Car Type</th>
+                    <th>Rent Price</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($cars as $car)
                 <tr>
-                    <td data-cell="Car ID">10001</td>
-                    <td data-cell="Plate Number">CAR 0516</td>
-                    <td data-cell="Model Name">Honda Civic Type R</td>
-                    <td data-cell="Car Type">Sports Car</td>
+                    <td data-cell="Plate Number">{{ $car->plate_number }}</td>
+                    <td data-cell="Model Name">{{ $car->carModel->model_name ?? 'N/A' }}</td>
+                    <td data-cell="Rent Price">Php {{ $car->base_price }}.00</td>
                     <td data-cell="Status">Active</td>
                     <td>
                         <form style="display:inline;">
@@ -47,47 +52,15 @@ Car Management
                             <button class="success" type="submit">Edit</button>
                         </form>
 
-                        <form style="display:inline;">
-                            <!--
+                        <form action="{{ route('delete.car', $car->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            -->
+                            
                             <button class="danger" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
-                <tr>
-                    <td data-cell="Car ID">10001</td>
-                    <td data-cell="Plate Number">CAR 0516</td>
-                    <td data-cell="Model Name">Honda Civic Type R</td>
-                    <td data-cell="Car Type">Sports Car</td>
-                    <td data-cell="Status">Active</td>
-                    <td>
-                        <form style="display:inline;">
-                            <!--
-                            @csrf
-                            @method('GET')
-                            -->
-                            <button type="success">View Details</button>
-                        </form>
-
-                        <form style="display:inline;">
-                            <!--
-                            @csrf
-                            @method('GET')
-                            -->
-                            <button class="success" type="submit">Edit</button>
-                        </form>
-
-                        <form style="display:inline;">
-                            <!--
-                            @csrf
-                            @method('DELETE')
-                            -->
-                            <button class="danger" type="submit">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

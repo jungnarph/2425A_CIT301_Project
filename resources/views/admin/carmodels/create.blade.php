@@ -65,6 +65,17 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="layoutType">Layout Type</label>
+                    <select class="form-control" id="layout_type" name="layout_type" required>
+                        <option value="" disabled selected>Select layout type</option>
+                        <option value="AWD">All-Wheel Drive (AWD)</option>
+                        <option value="4WD">Four-Wheel Drive (4WD)</option>
+                        <option value="FWD">Front-Wheel Drive (FWD)</option>
+                        <option value="RWD">Rear-Wheel Drive (RWD)</option>
+                    </select>
+                </div>
+
                 <div class="form-group row create-form-buttons">
                     <div class="col">
                         <button type="button" class="btn btn-secondary">Cancel</button>
