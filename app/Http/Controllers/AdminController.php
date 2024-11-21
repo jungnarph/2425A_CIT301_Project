@@ -14,6 +14,10 @@ class AdminController extends Controller
         return view ('admin.cars.manage');
     }
 
+    public function createCarModels() {
+        return view ('admin.carmodels.create');
+    }
+
     public function manageCarModels() {
         return view ('admin.carmodels.manage');
     }
