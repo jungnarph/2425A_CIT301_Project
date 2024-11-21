@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('model_id');
             $table->string('plate_number')->unique();
             $table->text('description');
-            $table->mediumInteger('base_price');
+            $table->unsignedMediumInteger('base_price');
+            $table->boolean('is_available')->default(true);
             $table->string('engine');
             $table->string('power');
             $table->string('torque');

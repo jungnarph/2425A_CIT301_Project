@@ -17,4 +17,8 @@ class CarModel extends Model
         'layout_type',
     ];
 
+    public function cars() {
+        return $this->hasMany(Car::class, 'model_id');
+    }
+
 }

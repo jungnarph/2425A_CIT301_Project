@@ -21,11 +21,11 @@ Car Model Management
             <table class="">
                 <thead>
                     <tr>
-                        <th>Model ID</th>
                         <th>Model Name</th>
                         <th>Type</th>
                         <th>Seating Capacity</th>
-                        <th>Transmission Type</th>
+                        <th>Transmission</th>
+                        <th>Layout</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -33,7 +33,6 @@ Car Model Management
                     @foreach ($carmodels as $carmodel)
                     
                     <tr>
-                        <td data-cell="Model ID">{{ $carmodel->id }}</td>
                         <td data-cell="Model Name">{{ $carmodel->model_name }}</td>
                         <td data-cell="Type">{{ $carmodel->car_type }}</td>
                         <td data-cell="Seating Capacity">{{ $carmodel->seat_capacity }}</td>

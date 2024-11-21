@@ -71,8 +71,8 @@
                         <option value="" disabled selected>Select layout type</option>
                         <option value="AWD">All-Wheel Drive (AWD)</option>
                         <option value="4WD">Four-Wheel Drive (4WD)</option>
-                        <option value="FWD">Front-Wheel Drive (AWD)</option>
-                        <option value="RWD">Rear-Wheel Drive (AWD)</option>
+                        <option value="FWD">Front-Wheel Drive (FWD)</option>
+                        <option value="RWD">Rear-Wheel Drive (RWD)</option>
                     </select>
                 </div>
 

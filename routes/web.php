@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FleetController;
+use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 
 Route::get('/', function () {
@@ -34,7 +35,7 @@ Route::get('/arrangement', function () {
 
 // ADMIN ROUTES
 
-Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(AdminController::class)->group(function() {
             Route::get('/dashboard', 'index')->name('admin');
@@ -51,7 +52,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::put('/carmodels/update/{id}', 'update')->name('update.carmodel');
             Route::delete('/carmodels/delete/{id}', 'delete')->name('delete.carmodel');
         });
-
+       
+        Route::controller(CarController::class)->group(function() {
+            Route::get('/cars/manage', 'index')->name('manage.car');
+            Route::get('/cars/create', 'create')->name('create.car');
+            Route::post('/cars/store', 'store')->name('store.car');
+            Route::get('/cars/edit/{id}', 'edit')->name('edit.car');
+            Route::put('/cars/update/{id}', 'update')->name('update.car');
+            Route::delete('/cars/delete/{id}', 'delete')->name('delete.car');
+        });
     });
 });
 
