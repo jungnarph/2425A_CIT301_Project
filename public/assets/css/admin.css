@@ -14,6 +14,91 @@ body {
   transition: all 0.3s; /* Smooth transition for hover effects */
 }
 
+/* Button styles */
+
+button {
+  background-color: rgb(80, 80, 197);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: 5rem;
+}
+
+.danger {
+  background-color: red;
+}
+
+.success {
+  background-color: green;
+}
+
+button:hover {
+  background-color: rgba(80, 80, 197, 0.795);
+}
+
+.success:hover {
+  background-color: #45a049;
+}
+
+.danger:hover {
+  background-color: #dc3545;
+}
+
+.create-form-buttons .btn{
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.custom-alert-danger {
+  background-color: #d70416;
+  color:white;
+  padding: 0.5rem 1rem;
+}
+
+.custom-alert-success {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.form-group {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.hamburger-button {
+  display: none;
+}
+
+.hamburger-button-sidebar {
+  display: none;
+}
+
+input.form-control, select.form-control {
+    background-color: #851558;
+    color: white; 
+    border-color: #851558;
+}
+
+input.form-control:focus, select.form-control:focus {
+  background-color: #851558; 
+  color: white;
+  border-color: #851558; 
+  outline: none; 
+}
+
+input::placeholder {
+  color: lightgray !important;
+}
+
+input:-webkit-autofill, input:-internal-autofill-selected {
+    background-color: #851558 !important; /* Set the background color for autofilled inputs */
+    color: white !important; /* Set text color for autofilled inputs */
+    box-shadow: 0 0 0px 1000px #cf4397 inset !important; /* Ensure full override */
+}
+
 .logo-container {
   position: relative;
 }
@@ -45,6 +130,11 @@ body {
   list-style: none;
 }
 
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+}
+
 .sidebar {
   height: 100vh;
   background-color: #0d0418;
@@ -67,13 +157,7 @@ body {
 
 /* COMMENTS */
 
-.hamburger-button {
-  display: none;
-}
 
-.hamburger-button-sidebar {
-  display: none;
-}
 
 /* Table styles */
 
@@ -109,36 +193,7 @@ tr td:last-child, tr th:last-child {
   border-bottom-right-radius: 10px;
 }
 
-/* Button styles */
 
-button {
-  background-color: rgb(80, 80, 197);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.danger {
-  background-color: red;
-}
-
-.success {
-  background-color: green;
-}
-
-button:hover {
-  background-color: rgba(80, 80, 197, 0.795);
-}
-
-.success:hover {
-  background-color: #45a049;
-}
-
-.danger:hover {
-  background-color: #dc3545;
-}
 
 /* Media Queries */
 

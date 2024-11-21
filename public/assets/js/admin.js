@@ -6,4 +6,8 @@ $(document).ready(function(){
     $('#closeSidebar').click(function(){
         $('.sidebar').removeClass('active');
     });
+
+    function redirectToManageCarModel() {
+        window.location.href = "{{ route('manage.carmodel') }}";
+    }
 });

@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/secret/website-icon.jpg') }}" type="image/jpg">
 </head>
 <body>
     @auth
@@ -60,8 +61,8 @@
                     <li class="nav-item">
                         <a class="nav-link disabled">Car Model Management</a>
                         <ul class="nav-submenu">
-                            <li><a href="/admin/carmodels/create" class="nav-link">Create</a></li>
-                            <li><a href="/admin/carmodels/manage" class="nav-link {{ request()->routeIs('admin.carmodels.manage')?'active':'' }}">Manage</a></li>
+                            <li><a href="/admin/carmodels/create" class="nav-link {{ request()->routeIs('create.carmodel')?'active':'' }}">Create</a></li>
+                            <li><a href="/admin/carmodels/manage" class="nav-link {{ request()->routeIs('manage.carmodel')?'active':'' }}">Manage</a></li>
                         </ul>
                     </li> 
                     <li class="nav-item">
@@ -93,6 +94,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/js/admin.js') }}"></script>
+    
     @endauth
 </body>
 </html>

@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user(); 
 
         if ($user->usertype == 'admin' || $user->usertype == 'superadmin') {
-            return redirect()->intended(route('admin.dashboard', absolute: false));
+            return redirect()->intended(route('admin', absolute: false));
         }
         else {
             return redirect()->intended(route('landing', absolute: false));
