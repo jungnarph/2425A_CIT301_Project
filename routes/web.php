@@ -11,6 +11,10 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/landing', function () {
+    return view('landing');
+});
+
 // USER ROUTES
 
 Route::get('/about', function () {
@@ -29,13 +33,16 @@ Route::get('/arrangement', function () {
 
 // ADMIN ROUTES
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:admin'])->name('admin.dashboard');
-
-Route::get('/admin/fleets', function () {
-    return view('admin.fleetmanagement');
-})->middleware(['auth', 'verified', 'rolemanager:admin'])->name('admin.fleetmanagement');
+Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+    Route::prefix('admin')->group(function() {
+        Route::controller(AdminController::class)->group(function() {
+            Route::get('/dashboard', 'index')->name('admin');
+            Route::get('/fleets', function () {
+                return view('admin.fleetmanagement');
+            })->name('admin.fleetmanagement');
+        });
+    });
+});
 
 // SUPERADMIN ROUTES
 
