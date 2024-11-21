@@ -26,7 +26,7 @@ Car Model Management
             <tbody>
                 <tr>
                     <td data-cell="Model ID">1</td>
-                    <td data-cell="Model Name">NISSAN GT-R</td>
+                    <td data-cell="Model Name">{{ $car->carModel->model_name ?? 'Model not available' }}</td>
                     <td data-cell="Type">Sports Car</td>
                     <td data-cell="Seating Capacity">4</td>
                     <td data-cell="Transmission Type">Manual</td>
