@@ -11,10 +11,14 @@ class AdminController extends Controller
     }
 
     public function manageCars() {
-        return view ('admin.cars');
+        return view ('admin.cars.manage');
     }
 
     public function manageCarModels() {
-        return view ('admin.carmodels');
+        return view ('admin.carmodels.manage');
+    }
+
+    public function manageUsers() {
+        return view ('admin.users.manage');
     }
 }
