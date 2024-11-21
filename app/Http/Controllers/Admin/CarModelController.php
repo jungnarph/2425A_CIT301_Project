@@ -24,6 +24,7 @@ class CarModelController extends Controller
             'car_type' => 'required',
             'seat_capacity' => 'required',
             'transmission_type' => 'required',
+            'layout_type' => 'required',
         ]);
         CarModel::create($request->all());
         return redirect()->route('manage.carmodel')->with('success', 'Car model created successfully.');
@@ -44,6 +45,7 @@ class CarModelController extends Controller
             'car_type' => 'required',
             'seat_capacity' => 'required',
             'transmission_type' => 'required',
+            'layout_type' => 'required',
         ]);
         $carmodel->update($request->all());
         return redirect()->route('manage.carmodel')->with('success', 'Car model updated successfully.');

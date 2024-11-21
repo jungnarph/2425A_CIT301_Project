@@ -14,6 +14,7 @@ class CarModel extends Model
         'car_type',
         'seat_capacity',
         'transmission_type',
+        'layout_type',
     ];
 
 }

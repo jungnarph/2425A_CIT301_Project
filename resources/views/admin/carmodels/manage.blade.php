@@ -38,6 +38,7 @@ Car Model Management
                         <td data-cell="Type">{{ $carmodel->car_type }}</td>
                         <td data-cell="Seating Capacity">{{ $carmodel->seat_capacity }}</td>
                         <td data-cell="Transmission Type">{{ $carmodel->transmission_type }}</td>
+                        <td data-cell="Transmission Type">{{ $carmodel->layout_type }}</td>
                         <td>
                             <form action="{{ route('edit.carmodel', $carmodel->id) }}" style="display:inline;">
                                 @csrf
