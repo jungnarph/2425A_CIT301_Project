@@ -23,15 +23,19 @@ Route::get('/about', function () {
     return view('about');
 })->middleware('auth', 'verified');
 
-Route::get('/fleet', function () {
-    return view('fleet');
-})->middleware(['auth', 'verified', 'rolemanager:user'])->name('fleet');
-
-Route::get('/fleet/{id}', [FleetController::class, 'show'])->middleware(['auth', 'verified', 'rolemanager:user'])->name('fleet.show');
 
 Route::get('/arrangement', function () {
     return view('arrangement');
 })->middleware(['auth', 'verified', 'rolemanager:user'])->name('arrangement');
+
+Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/fleet', 'fleet')->name('user.fleet');
+    });
+    Route::controller(FleetController::class)->group(function(){
+        Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
+    });
+});
 
 // ADMIN ROUTES
 

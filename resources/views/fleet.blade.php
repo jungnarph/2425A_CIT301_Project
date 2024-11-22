@@ -68,208 +68,29 @@
         </div>
     <div class="row">
             <!-- Card 1 -->
+            @foreach ($cars as $car) 
                 <div class="col-md-4 mb-4">
+                    
                     <div class="choice-card border border-dark" style="border-radius: 20px;">
-                        <img src="{{asset('assets/images/fleet-image/GTR-2017.png') }}" class="img-fluid card-image" alt="GTR 2018 image">
+                        <img src="{{asset('assets/images/fleet-image/'.$car->image_url) }}" class="img-fluid card-image" alt="GTR 2018 image">
                         <div class="card-body text-center">
-                            <h5 class="card-title">NISSAN GT-R</h5>
-                            <p class="card-text">2017 VERSION</p>
+                            <h5 class="card-title">{{ $car->carModel->model_name ?? 'N/A' }}</h5>
+                            <p class="card-text">20xx Version</p>
                             <p>
-                                <i class="bi bi-gear"></i> Dual-Clutch Automatic &nbsp;
-                                <i class="bi bi-people"></i> 4 People &nbsp;
+                                <i class="bi bi-gear"></i>{{ $car->carModel->transmission_type ?? 'N/A' }}&nbsp;
+                                <i class="bi bi-people"></i>{{ $car->carModel->seat_capacity ?? 'N/A' }} people&nbsp;
                                 <i class="fa-regular fa-star"></i> Ratings
                             </p>
                             <!-- Button with dynamic route -->
-                            <a href="{{ route('fleet.show', 1) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
+                            <a href="{{ route('user.fleet.show', 1) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
                         </div>
                     </div>
+                   
                 </div>
-
-
-
-        <!-- Card 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="choice-card border border-dark" style="border-radius: 20px;">
-                <img src="{{asset('assets/images/fleet-image/Toyota-vios.png') }}" class="img-fluid card-image" alt="Toyota-vios image">
-                <div class="card-body text-center">
-                        <h5 class="card-title">Toyota Vios</h5>
-                        <p class="card-text">2018 Version</p>
-                        <p>
-                            <i class="bi bi-gear"></i> CVT &nbsp;
-                            <i class="bi bi-people"></i> 5 People &nbsp;
-                            <i class="fa-regular fa-star"></i> Ratings
-                        </p>
-                        <a href="{{ route('fleet.show', 2) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                        </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="choice-card border border-dark" style="border-radius: 20px;">
-                <img src="{{asset('assets/images/fleet-image/Honda-city.png') }}" class="img-fluid card-image" alt="Honda City image">
-                <div class="card-body text-center">
-                        <h5 class="card-title">Honda City</h5>
-                        <p class="card-text">2020 Version</p>
-                        <p>
-                            <i class="bi bi-gear"></i> CVT &nbsp;
-                            <i class="bi bi-people"></i> 5 People &nbsp;
-                            <i class="fa-regular fa-star"></i> Ratings
-                        </p>
-                        <a href="{{ route('fleet.show', 3) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                        </div>
-                </div>
-            </div>
-            <hr>
-            <!-- Card 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="choice-card border border-dark" style="border-radius: 20px;">
-                    <img src="{{asset('assets/images/fleet-image/Mitsubishi-mirage.png') }}" class="img-fluid card-image" alt="Mitsubishi Mirage image">
-                    <div class="card-body text-center">
-                            <h5 class="card-title">Mitsubishi Mirage</h5>
-                            <p class="card-text">2012 Version</p>
-                            <p>
-                                <i class="bi bi-gear"></i> CVT &nbsp;
-                                <i class="bi bi-people"></i> 5 People &nbsp;
-                                <i class="fa-regular fa-star"></i> Ratings
-                            </p>
-                            <a href="{{ route('fleet.show', 4) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            <!-- Card 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="choice-card border border-dark" style="border-radius: 20px;">
-                    <img src="{{asset('assets/images/fleet-image/Nissan-Almera.png') }}" class="img-fluid card-image" alt="Nissan Almera">
-                    <div class="card-body text-center">
-                            <h5 class="card-title">Nissan Almera</h5>
-                            <p class="card-text">2020 Version</p>
-                            <p>
-                                <i class="bi bi-gear"></i> CVT &nbsp;
-                                <i class="bi bi-people"></i> 5 People &nbsp;
-                                <i class="fa-regular fa-star"></i> Ratings
-                            </p>
-                            <a href="{{ route('fleet.show', 5) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div class="col-md-4 mb-4">
-                    <div class="choice-card border border-dark" style="border-radius: 20px;">
-                    <img src="{{asset('assets/images/fleet-image/Suzuki-swift.png') }}" class="img-fluid card-image" alt="Suzuki Swift image">
-                    <div class="card-body text-center">
-                            <h5 class="card-title">Suzuki Swift</h5>
-                            <p class="card-text">2017 Version</p>
-                            <p>
-                                <i class="bi bi-gear"></i> Automatic &nbsp;
-                                <i class="bi bi-people"></i> 5 People &nbsp;
-                                <i class="fa-regular fa-star"></i> Ratings
-                            </p>
-                            <a href="{{ route('fleet.show', 6) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            <!-- Card 7 -->
-                <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Hyundai-accent.png') }}" class="img-fluid card-image" alt="Hyundai Accent image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Hyundai Accent</h5>
-                    <p class="card-text">2017 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> Automatic &nbsp;
-                        <i class="bi bi-people"></i> 5 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 7) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
+                @endforeach
             </div>
         </div>
-        <!-- Card 8 -->
-        <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Toyota-innova.png') }}" class="img-fluid card-image" alt="Toyota Innova image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Toyota Innova</h5>
-                    <p class="card-text">2021 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> Manual &nbsp;
-                        <i class="bi bi-people"></i> 7 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 8) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
-            </div>
-        </div>
-        <!-- Card 9 -->
-        <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Honda-CRV-2017.png') }}" class="img-fluid card-image" alt="Honda CRV image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Honda CR-V</h5>
-                    <p class="card-text">2017 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> CVT &nbsp;
-                        <i class="bi bi-people"></i> 5 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 9) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
-            </div>
-        </div>
-        <hr>
-        <!-- Card 10 -->
-        <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Ford-ecosport.png') }}" class="img-fluid card-image" alt="Ford Ecosport image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Ford Ecosport</h5>
-                    <p class="card-text">2017 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> Automatic &nbsp;
-                        <i class="bi bi-people"></i> 5 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 10) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
-            </div>
-        </div>
-        <!-- Card 11 -->
-        <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Chevrolet-spark.png') }}" class="img-fluid card-image" alt="Chevrolet Spark image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Chevrolet Spark</h5>
-                    <p class="card-text">2016 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> Automatic &nbsp;
-                        <i class="bi bi-people"></i> 5 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 11) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
-            </div>
-        </div>
-        <!-- Card 12 -->
-        <div class="col-md-4 mb-4">
-            <div class="choice-card border border-dark" style="border-radius: 20px;">
-            <img src="{{asset('assets/images/fleet-image/Kia-picanto.png') }}" class="img-fluid card-image" alt="Kia Picanto image">
-            <div class="card-body text-center">
-                    <h5 class="card-title">Kia Picanto</h5>
-                    <p class="card-text">2017 Version</p>
-                    <p>
-                        <i class="bi bi-gear"></i> Manual &nbsp;
-                        <i class="bi bi-people"></i> 5 People &nbsp;
-                        <i class="fa-regular fa-star"></i> Ratings
-                    </p>
-                    <a href="{{ route('fleet.show', 12) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
-                    </div>
-            </div>
-        </div>
-            </div>
-        </div>
-
+    </div>
     
 
 <!-- Footer -->

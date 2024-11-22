@@ -59,7 +59,7 @@
 
     <div class="row">
         <div class="col-md-4 mt-4">
-            <img src="{{ asset('assets/images/fleet-image/'.$car->image) }}" class="img-fluid" alt="{{ $car->name }} image">
+            <img src="{{ asset('assets/images/fleet-image/'.$car->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image">
         </div>
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="list-unstyled">
-                        <li>{{ $car->price }}</li>
+                        <li>{{ $car->base_price }}</li>
                         <li>{{ $car->engine }}</li>
                         <li>{{ $car->power }}</li>
                         <li>{{ $car->torque }}</li>
@@ -105,10 +105,10 @@
                 </div>
                 <div class="col-md-4">
                     <ul class="list-unstyled">
-                        <li>{{ $car->transmission }}</li>
-                        <li>{{ $car->layout }}</li>
-                        <li>{{ $car->seating }}</li>
-                        <li>{{ $car->rating }}</li>
+                        <li>{{ $car->carModel->transmission_type }}</li>
+                        <li>{{ $car->carModel->layout_type }}</li>
+                        <li>{{ $car->carModel->seat_capacity }}</li>
+                        <li>5/5</li>
                     </ul>
                 </div>
             </div>

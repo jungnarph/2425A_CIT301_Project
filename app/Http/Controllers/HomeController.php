@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Car; 
+use App\Models\CarModel; 
 
 class HomeController extends Controller
 {
@@ -28,7 +30,9 @@ class HomeController extends Controller
     }
     
     public function fleet() {
-        return view('fleet');
+        $cars = Car::with('carModel')->get();
+
+        return view('fleet', compact('cars'));
     }
         
 }
