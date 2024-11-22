@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyCars-Arrangment-Page</title>
+    <!-- Jqery link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -14,6 +16,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXJEWGHWLIAHMrG5u8foaJ3psh05KTCOM&callback=initMap" async defer></script>
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+
     <style>
         /* Make sure the map div has a height */
         #map {
@@ -75,22 +79,20 @@
     </div>
 @endif
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if (session('car'))
+    <div class="alert alert-info">
+        You have reserved: {{ session('car')->carModel->model_name ?? 'Unknown Model' }}
     </div>
 @endif
 
-<form id="reservation-form" action="{{ route('reserve.store') }}" method="POST" style="margin-bottom: 25px">
+
+<form id="reservation-form" action="{{ route('reserve.store') }}" method="POST" style="margin-bottom: 25px" name="reserve.store">
     @csrf
     <div class="container mt-5 p-4 bg-dark text-white rounded">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="text-center mb-4">Easy Cars</h1>
+                <h1>Easy Car</h1>
+                <p>You are renting: {{ $car->carModel->model_name ?? 'Unknown Model' }}</p>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="pickup-date">Pick-up Date</label>
@@ -137,22 +139,8 @@
                         <option>Tagaytay Rotonda, Tagaytay City</option>
                     </select>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="name">Name *</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="email">E-Mail *</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" name="phone">
-                    </div>
-                </div>
                 <div class="d-flex justify-content-center mt-3">
-                    <button type="button" class="btn btn-danger" onclick="showConfirmationModal()">Submit</button>
+                <button type="submit" class="btn btn-danger" onclick="showConfirmationModal()">Submit</button>
                 </div>
             </div>
             <div class="col-md-4">
@@ -181,11 +169,22 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm(event)">Confirm</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome for icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+
 <script>
     function showConfirmationModal() {
         // Get form values
@@ -195,9 +194,10 @@
         const returnDate = document.getElementById('return-date').value;
         const returnTime = document.getElementById('return-time').value;
         const returnLocation = document.getElementById('return-location').value;
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
+        
+
+        // Show the modal
+        $('#confirmationModal').modal('show');
 
         // Populate modal with form values
         const reservationDetails = `
@@ -207,17 +207,45 @@
             <li>Return Date: ${returnDate}</li>
             <li>Return Time: ${returnTime}</li>
             <li>Return Location: ${returnLocation}</li>
-            <li>Name: ${name}</li>
-            <li>Email: ${email}</li>
-            <li>Phone: ${phone}</li>
+
         `;
         document.getElementById('reservation-details').innerHTML = reservationDetails;
-
-        // Show the modal
-        $('#confirmationModal').modal('show');
+        
     }
 
-    function submitForm() {
+    function initMap() {
+            // Initialize the map centered at a default location
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: { lat: 14.5995, lng: 120.9842 } // Center the map on Metro Manila
+            });
+        }
+
+    let map;
+        const locations = {
+            "Makati Central Business District, Makati City": { lat: 14.5547, lng: 121.0244 },
+            "Ninoy Aquino International Airport (NAIA), Manila": { lat: 14.5085, lng: 121.0194 },
+            "SM City Marilao, Bulacan": { lat: 14.6985, lng: 120.9421 },
+            "Trinoma Mall, Quezon City, Metro Manila": { lat: 14.6455, lng: 121.0531 },
+            "Alabang Town Center, Muntinlupa City": { lat: 14.4148, lng: 121.0463 },
+            "Tagaytay Rotonda, Tagaytay City": { lat: 14.0972, lng: 120.9498 }
+        };
+
+        function loadMap(location) {
+            const coords = locations[location];
+            if (coords) {
+                map.setCenter(coords);
+                map.setZoom(14);
+                new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    title: location
+                });
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
         // Submit the form
         document.getElementById('reservation-form').submit();
     }
@@ -264,50 +292,15 @@ function setMinReturnTime() {
         }
     }
 
-    let map;
-        const locations = {
-            "Makati Central Business District, Makati City": { lat: 14.5547, lng: 121.0244 },
-            "Ninoy Aquino International Airport (NAIA), Manila": { lat: 14.5085, lng: 121.0194 },
-            "SM City Marilao, Bulacan": { lat: 14.6985, lng: 120.9421 },
-            "Trinoma Mall, Quezon City, Metro Manila": { lat: 14.6455, lng: 121.0531 },
-            "Alabang Town Center, Muntinlupa City": { lat: 14.4148, lng: 121.0463 },
-            "Tagaytay Rotonda, Tagaytay City": { lat: 14.0972, lng: 120.9498 }
-        };
-
-        function initMap() {
-            // Initialize the map centered at a default location
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: { lat: 14.5995, lng: 120.9842 } // Center the map on Metro Manila
-            });
-        }
-
-        function loadMap(location) {
-            const coords = locations[location];
-            if (coords) {
-                map.setCenter(coords);
-                map.setZoom(14);
-                new google.maps.Marker({
-                    position: coords,
-                    map: map,
-                    title: location
-                });
-            }
-        }
-
+    
         // Call this function when the pickup location is changed
         document.getElementById('pickup-location').addEventListener('change', function() {
             loadMap(this.value);
         });
+
+    $(document).ready(function() {
+    });
 </script>
-
-<!-- jQuery for Bootstrap's JavaScript plugins -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!-- Popper.js for Bootstrap's JavaScript plugins -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!-- Font Awesome for icons -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
 
 </body>
 </html>

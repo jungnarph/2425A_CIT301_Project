@@ -64,54 +64,62 @@
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
             <h2><strong>{{ $car->carModel->model_name ?? 'Model not available' }}</strong></h2>  <!-- Display car model name -->
-            <form action="{{ url('/arrangement') }}" method="GET">
-                <button type="submit" class="btn btn-danger mb-3" style="font-size: 14px; padding: 16px 8px;">Rent Now</button>
-            </form>
+            <div class="mt-2">
+                <h4>Rental Status:</h4>
+                <div>
+                    @if($car->is_rented)
+                        <span class="badge bg-danger" style="font-size: 1.2em;">Rented</span>
+                    @else
+                        <span class="badge bg-success" style="font-size: 1.2em;">Available</span>
+                    @endif
+                </div>
+            </div>
+            
+            <form action="{{ route('arrangement') }}" method="GET">
+            <input type="hidden" name="car_id" value="{{ $car->car_id }}">
+            <button type="submit" class="btn btn-danger mb-3" style="font-size: 14px; padding: 16px 8px;">Rent Now</button>
+        </form>
+
 
 
         </div>
             <p style="text-align:justify;">{{ $car->description }}</p>
 
-            <div class="row">
-                <div class="col-md-2">
-                    <ul class="list-unstyled">
-                        <strong>
-                        <li>Price: </li>    
-                        <li>Engine:</li>
-                        <li>Power:</li>
-                        <li>Torque:</li>
-                        <li>Car Type:</li>
-                        </strong>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-unstyled">
-                        <li>{{ $car->price }}</li>
-                        <li>{{ $car->engine }}</li>
-                        <li>{{ $car->power }}</li>
-                        <li>{{ $car->torque }}</li>
-                        <li>{{ $car->carModel->car_type }}</li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <ul class="list-unstyled">
-                        <strong>
-                        <li>Transmission:</li>
-                        <li>Layout:</li>
-                        <li>Seating:</li>
-                        <li>Rating:</li>
-                        </strong>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-unstyled">
-                        <li>{{ $car->transmission }}</li>
-                        <li>{{ $car->layout }}</li>
-                        <li>{{ $car->seating }}</li>
-                        <li>{{ $car->rating }}</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="container my-4">
+    <table class="table table-bordered table-sm">
+        <tbody>
+            <tr>
+                <td><strong>Price:</strong></td>
+                <td>{{ $car->price }}</td>
+                <td><strong>Transmission:</strong></td>
+                <td>{{ $car->transmission }}</td>
+            </tr>
+            <tr>
+                <td><strong>Engine:</strong></td>
+                <td>{{ $car->engine }}</td>
+                <td><strong>Layout:</strong></td>
+                <td>{{ $car->layout }}</td>
+            </tr>
+            <tr>
+                <td><strong>Power:</strong></td>
+                <td>{{ $car->power }}</td>
+                <td><strong>Seating:</strong></td>
+                <td>{{ $car->seating }}</td>
+            </tr>
+            <tr>
+                <td><strong>Torque:</strong></td>
+                <td>{{ $car->torque }}</td>
+                <td><strong>Rating:</strong></td>
+                <td>{{ $car->rating }}</td>
+            </tr>
+            <tr>
+                <td><strong>Car Type:</strong></td>
+                <td>{{ $car->carModel->car_type }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
         </div>
     </div>
 </div>
