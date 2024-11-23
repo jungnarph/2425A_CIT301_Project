@@ -14,10 +14,6 @@ class Car extends Model
         'plate_number',
         'description',
         'base_price',
-        'engine',
-        'power',
-        'torque',
-        'image_url',
     ];
 
     public function carModel() {

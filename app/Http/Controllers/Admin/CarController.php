@@ -26,24 +26,7 @@ class CarController extends Controller
             'plate_number' => 'unique:cars|required',
             'description' => 'required',
             'base_price' => 'required',
-            'engine' => 'required',
-            'power'=> 'required',
-            'torque'=> 'required',
-            'image_url'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-
-        $destinationPath = 'assets/images/fleet-image'; 
-        $imageName = $request->image_url->getClientOriginalName();
-        $imageExtension = $request->image_url->getClientOriginalExtension();
-        $finalImageName = pathinfo($imageName, PATHINFO_FILENAME) . '.' . $imageExtension; 
-
-        $targetFile = public_path($destinationPath . '/' . $finalImageName);
-        $data['image_url'] = $finalImageName;
-
-        // Check if the file already exists in the target folder
-        if (!file_exists($targetFile)) {
-            $request->image_url->move(public_path($destinationPath), $finalImageName);
-        } 
 
         Car::create($data);
         return redirect()->route('manage.car')->with('success', 'Car created successfully.');
