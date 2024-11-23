@@ -113,6 +113,14 @@ input:-webkit-autofill, input:-internal-autofill-selected {
   max-width: 10rem;
 }
 
+main, .sidebar {
+  overflow-y: auto;
+}
+
+.row {
+  
+}
+
 .main-content {
   padding: 20px;
 }

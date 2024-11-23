@@ -84,7 +84,10 @@
                 </ul>
             </div>
     
-            @yield('main_panel')
+            
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 main-content">
+                @yield('main_panel')
+            </main>
 
         </div>
     </div>

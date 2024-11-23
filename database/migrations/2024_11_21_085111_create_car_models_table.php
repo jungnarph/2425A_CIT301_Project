@@ -18,6 +18,10 @@ return new class extends Migration
             $table->tinyInteger('seat_capacity')->unsigned();
             $table->string('transmission_type');
             $table->string('layout_type');
+            $table->string('engine');
+            $table->string('power');
+            $table->string('torque');
+            $table->string('image_url');
             $table->timestamps();
         });
     }
