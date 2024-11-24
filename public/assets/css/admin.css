@@ -34,6 +34,14 @@ body {
 
 /* Button styles */
 
+.create-btn-1 {
+  display: block;
+}
+
+.create-btn-2 {
+  display: none;
+}
+
 form button {
   background-color: rgb(80, 80, 197);
   color: white;
@@ -41,7 +49,6 @@ form button {
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-  min-width: 5rem;
 }
 
 .danger {
@@ -361,13 +368,30 @@ tr td:last-child, tr th:last-child {
 
   td {
     display:block;
-    padding: 15px 20px !important;
+    padding: 1rem 2rem !important;
   }
 
   td::before {
     content: attr(data-cell) ": ";
-    font-weight:bold;
     text-transform: capitalize;
+  }
+
+  td.users-table::before {
+    content: none;
+  }
+  
+  tr td:first-child::before {
+    content: none;
+  } 
+
+  tr td:first-child {
+    font-weight:bold;
+    padding-left: 1.5rem !important;
+  }
+
+  tr td:last-child {
+    padding-top: 0.5rem !important;
+    padding-left: 1.5rem !important;
   }
 
   tr td:last-child::before {
@@ -376,7 +400,11 @@ tr td:last-child, tr th:last-child {
 
   tr td:last-child button {
     width: fit-content;
-    margin: 0;
+    margin: 1px;
+  }
+  
+  tr td:last-child button span {
+    display:none;
   }
 
   body {
@@ -387,18 +415,26 @@ tr td:last-child, tr th:last-child {
     padding: 7.5em 2em 60px 2em;
   }
 
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 80%;
-  height: 100%;
-  background-color: var(--line-clr);
-  transition: left 0.3s ease-in-out;
-  z-index: 1000;
-}
+  .create-btn-1 {
+    display: none;
+  }
+  
+  .create-btn-2 {
+    display: block;
+  }
 
-#sidebar.active {
-  left: 0;
-}
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background-color: var(--line-clr);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  #sidebar.active {
+    left: 0;
+  }
 }

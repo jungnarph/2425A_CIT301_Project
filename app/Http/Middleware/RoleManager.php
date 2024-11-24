@@ -23,8 +23,13 @@ class RoleManager
         $authUserType = Auth::user()->usertype;
 
         switch($role) {
+            case 'superadmin':
+                if($authUserType == 'superadmin') {
+                    return $next($request);
+                }
+                break;
             case 'admin':
-                if($authUserType == 'admin' || $authUserType =='superadmin') {
+                if($authUserType == 'admin' || $authUserType == 'superadmin') {
                     return $next($request);
                 }
                 break;

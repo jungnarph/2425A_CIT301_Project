@@ -9,6 +9,7 @@ use App\Http\Controllers\FleetController;
 use App\Http\Controllers\UserReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('landing');
@@ -37,15 +38,25 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     });
 });
 
-// ADMIN ROUTES
+// ADMIN AND SUPERADMIN ROUTES
 
-Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(function () {
+    Route::prefix('admin')->group(function() {
+        Route::controller(UserController::class)->group(function() {
+            Route::get('/users/manage', 'index')->name('manage.user');
+            Route::get('/user/create', 'create')->name('create.user');
+            Route::post('/user/store', 'store')->name('store.user');
+            Route::get('/user/edit/{id}', 'edit')->name('edit.user');
+            Route::put('/user/update/{id}', 'update')->name('update.user');
+            Route::delete('/user/delete/{id}', 'delete')->name('delete.user');
+        });
+    });
+});
+
+Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(AdminController::class)->group(function() {
             Route::get('/dashboard', 'index')->name('admin');
-            Route::get('/cars/manage', 'manageCars')->name('admin.cars.manage');
-
-            Route::get('/users/manage', 'manageUsers')->name('admin.users.manage');
         });
 
         Route::controller(CarModelController::class)->group(function() {
@@ -67,6 +78,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(f
         });
     });
 });
+
 
 // SUPERADMIN ROUTES
 
