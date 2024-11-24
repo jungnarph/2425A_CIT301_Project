@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FleetController;
+use App\Http\Controllers\UserReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 
@@ -23,11 +24,6 @@ Route::get('/about', function () {
     return view('about');
 })->middleware('auth', 'verified');
 
-
-Route::get('/arrangement', function () {
-    return view('arrangement');
-})->middleware(['auth', 'verified', 'rolemanager:user'])->name('arrangement');
-
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/fleet', 'fleet')->name('user.fleet');
@@ -39,6 +35,10 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
 
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
+    });
+    Route::controller(UserReservationController::class)->group(function () {
+        Route::get('/transaction/{id}', 'create')->name('reservations.create');
+        Route::post('/transaction', 'store')->name('reservations.store');
     });
 });
 

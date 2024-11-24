@@ -1,237 +1,383 @@
+:root {
+  --base-clr: #150b23;
+  --sidebar-clr: #0d0418;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+}
+
+html {
+  line-height: 1.5rem;
+}
+
 body {
-    font-family: "Inter", sans-serif;
-    background-color: #150b23;
-    color: white;
-    font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+  font-size: 1rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.bar {
+  display: block; /* Make bars block elements */
+  width: 2rem; /* Width of the bars */
+  height: 0.25rem; /* Height of the bars */
+  background-color: white; /* Color of the bars */
+  margin: 0.4rem auto; /* Spacing between bars */
+  transition: all 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Button styles */
+
+form button {
+  background-color: rgb(80, 80, 197);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: 5rem;
+}
+
+.danger {
+  background-color: red;
+}
+
+.success {
+  background-color: green;
+}
+
+button:hover {
+  background-color: rgba(80, 80, 197, 0.795);
+}
+
+.success:hover {
+  background-color: #45a049;
+}
+
+.danger:hover {
+  background-color: #dc3545;
+}
+
+.create-form-buttons .btn{
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.custom-alert-danger {
+  background-color: #d70416;
+  color:white;
+  padding: 0.5rem 1rem;
+}
+
+.custom-alert-success {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.form-group {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.form-group label{
+  margin-bottom: 0.25rem;
+}
+
+.hamburger-button {
+  display: none;
+}
+
+.hamburger-button-sidebar {
+  display: none;
+}
+
+input.form-control, select.form-control, textarea.form-control {
+    background-color: #851558;
+    color: white; 
+    border-color: #851558;
+}
+
+input.form-control:focus, select.form-control:focus, textarea.form-control:focus {
+  background-color: #851558; 
+  color: white;
+  border-color: #851558; 
+  outline: none; 
+}
+
+input::placeholder, textarea::placeholder, select::placeholder{
+  color: lightgray !important;
+}
+
+input:-webkit-autofill, input:-internal-autofill-selected {
+    background-color: #851558 !important; /* Set the background color for autofilled inputs */
+    color: white !important; /* Set text color for autofilled inputs */
+    box-shadow: 0 0 0px 1000px #cf4397 inset !important; /* Ensure full override */
+}
+
+.logo-container {
+  position: relative;
+}
+
+.logo-img {
+  max-width: 10rem;
+}
+
+main, .sidebar {
+  overflow-y: auto;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.mobile-nav {
+  display: none;
+  background-color: #0d0418;
+}
+
+.nav-item {
+  margin: 0.25rem 0;
+}
+
+.nav-link.disabled {
+  color: #adb5bd;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.nav-submenu {
+  list-style: none;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--sidebar-clr);
+
+  position: sticky;
+  top: 0;
+  align-self: start;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
+#sidebar > ul > li:first-child {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+#sidebar ul li.active a {
+  color: var(--accent-clr);
+
+  svg {
+    fill: var(--accent-clr);
   }
-  
-  .bar {
-    display: block; /* Make bars block elements */
-    width: 2rem; /* Width of the bars */
-    height: 0.25rem; /* Height of the bars */
-    background-color: white; /* Color of the bars */
-    margin: 0.4rem auto; /* Spacing between bars */
-    transition: all 0.3s; /* Smooth transition for hover effects */
+}
+
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration:none;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.dropdown-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#sidebar svg {
+  flex-shrink: 0;
+  fill:var(--text-clr);
+}
+
+#sidebar a span, #sidebar .dropdown-btn span {
+  flex-grow: 1;
+}
+
+#sidebar a:hover, #sidebar .dropdown-btn:hover {
+  background-color: var(--hover-clr);
+}
+
+#sidebar .sub-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+
+  > div {
+    overflow: hidden;
   }
+}
+
+#sidebar .sub-menu.show {
+  grid-template-rows: 1fr;
+}
+
+.dropdown-btn svg {
+  transition: 200ms ease;
+}
+
+.rotate svg:last-child {
+  rotate: 180deg;
+}
+
+#sidebar .sub-menu a {
+  padding-left: 2em;
+}
+
+/* Table styles */
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 16px; /* Adds 10px space between rows */
+  width: 100%; /* Optional, for full-width table */
   
-  .logo-container {
-    position: relative;
-  }
-  
+}
+
+th, td {
+  border: none; /* Remove borders */
+  background-color: #851558 !important; /* Row background color */
+  color: white !important;
+}
+
+th {
+  padding: 5px 20px !important;
+}
+
+td {
+  padding: 20px !important;
+  vertical-align: middle;
+}
+
+tr td:first-child, tr th:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+tr td:last-child, tr th:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+
+/* Media Queries */
+
+
+@media (max-width: 1080px) {
   .logo-img {
-    max-width: 10rem;
+    max-width: 8rem;
   }
-  
-  .main-content {
-    padding: 20px;
-  }
-  
-  .mobile-nav {
-    display: none;
-    background-color: #0d0418;
-  }
+}
 
-  .nav-item {
-    margin: 0.25rem 0;
+@media (max-width: 1160px) {
+  tr td:last-child button {
+    width: 100%;
+    margin: 5px 0 5px 0;
   }
-  
-  .nav-link.disabled {
-    color: #adb5bd;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
+}
 
-  .nav-submenu {
-    list-style: none;
-  }
-  
-  .sidebar {
-    height: 100vh;
-    background-color: #0d0418;
-    color: white;
-  }
-  .sidebar a {
-    color: #edeff2;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-  }
-  .sidebar a:hover, .sidebar a.active {
-    color: white;
-    background-color: #495057;
-  }
-  
-  .sidebar-logo {
-    background-color: #0d0418;
-  }
-  
-  /* COMMENTS */
-  
+@media (max-width: 768px) {
   .hamburger-button {
-    display: none;
+    display: block;
+    position: absolute; /* Position the button absolutely */
+    top: 50%; /* Center vertically */
+    left: 1rem; /* Adjust as needed for spacing */
+    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+    background: transparent; /* No background */
+    border: none; /* No border */
+    z-index: 1000; /* Ensure it is above other elements */
   }
-  
+
   .hamburger-button-sidebar {
+    display: block;
+    position: absolute; /* Position the button absolutely */
+    top: 3.5%; /* Center vertically */
+    left: 0.3rem; /* Adjust as needed for spacing */
+    background: transparent; /* No background */
+    border: none; /* No border */
+    z-index: 1000; /* Ensure it is above other elements */
+  }
+
+  .logo-container {
+    display: block;
+  }
+
+  .logo-img {
+    max-width: 8rem;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background-color: #444;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  tr td:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  tr td:last-child {
+    border-radius: 0 0 10px 10px ;
+  }
+
+  th {
     display: none;
   }
-  
-  /* Table styles */
-  
-  table {
-    border-collapse: separate !important;
-    border-spacing: 0 16px; /* Adds 10px space between rows */
-    width: 100%; /* Optional, for full-width table */
-    
-  }
-  
-  th, td {
-    border: none; /* Remove borders */
-    background-color: #851558 !important; /* Row background color */
-    color: white !important;
-  }
-  
-  th {
-    padding: 5px 20px !important;
-  }
-  
+
   td {
-    padding: 20px !important;
-    vertical-align: middle;
+    display:block;
+    padding: 15px 20px !important;
   }
-  
-  tr td:first-child, tr th:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+
+  td::before {
+    content: attr(data-cell) ": ";
+    font-weight:bold;
+    text-transform: capitalize;
   }
-  
-  tr td:last-child, tr th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+  tr td:last-child::before {
+    content: none;
   }
-  
-  /* Button styles */
-  
-  button {
-    background-color: rgb(80, 80, 197);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
+
+  tr td:last-child button {
+    width: fit-content;
+    margin: 0;
   }
-  
-  .danger {
-    background-color: red;
-  }
-  
-  .success {
-    background-color: green;
-  }
-  
-  button:hover {
-    background-color: rgba(80, 80, 197, 0.795);
-  }
-  
-  .success:hover {
-    background-color: #45a049;
-  }
-  
-  .danger:hover {
-    background-color: #dc3545;
-  }
-  
-  /* Media Queries */
-  
-  
-  @media (max-width: 1080px) {
-    .logo-img {
-      max-width: 8rem;
-    }
-  }
-  
-  @media (max-width: 1160px) {
-    tr td:last-child button {
-      width: 100%;
-      margin: 5px 0 5px 0;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .hamburger-button {
-      display: block;
-      position: absolute; /* Position the button absolutely */
-      top: 50%; /* Center vertically */
-      left: 1rem; /* Adjust as needed for spacing */
-      transform: translateY(-50%); /* Adjust for perfect vertical centering */
-      background: transparent; /* No background */
-      border: none; /* No border */
-      z-index: 1000; /* Ensure it is above other elements */
-    }
-  
-    .hamburger-button-sidebar {
-      display: block;
-      position: absolute; /* Position the button absolutely */
-      top: 3.5%; /* Center vertically */
-      left: 0.3rem; /* Adjust as needed for spacing */
-      background: transparent; /* No background */
-      border: none; /* No border */
-      z-index: 1000; /* Ensure it is above other elements */
-    }
-  
-    .logo-container {
-      display: block;
-    }
-  
-    .logo-img {
-      max-width: 8rem;
-    }
-  
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 80%;
-      height: 100%;
-      background-color: #444;
-      transition: left 0.3s ease-in-out;
-      z-index: 1000;
-    }
-  
-    .sidebar.active {
-      left: 0;
-    }
-  
-    tr td:first-child {
-      border-radius: 10px 10px 0 0;
-    }
-    
-    tr td:last-child {
-      border-radius: 0 0 10px 10px ;
-    }
-  
-    th {
-      display: none;
-    }
-  
-    td {
-      display:block;
-      padding: 15px 20px !important;
-    }
-  
-    td::before {
-      content: attr(data-cell) ": ";
-      font-weight:bold;
-      text-transform: capitalize;
-    }
-  
-    tr td:last-child::before {
-      content: none;
-    }
-  
-    tr td:last-child button {
-      width: fit-content;
-      margin: 0;
-    }
-  
-  }
-  
+
+}

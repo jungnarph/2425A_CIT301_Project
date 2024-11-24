@@ -18,13 +18,9 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedMediumInteger('base_price');
             $table->boolean('is_available')->default(true);
-            $table->string('engine');
-            $table->string('power');
-            $table->string('torque');
-            $table->string('image_url');
             $table->timestamps();
 
-            $table->foreign('model_id')->references('id')->on('car_models');
+            $table->foreign('model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
     }
 

@@ -75,7 +75,7 @@
                 <div class="col-md-4 mb-4">
                     
                     <div class="choice-card border border-dark" style="border-radius: 20px;">
-                        <img src="{{asset('assets/images/fleet-image/'.$car->image_url) }}" class="img-fluid card-image" alt="GTR 2018 image">
+                        <img src="{{asset('assets/images/fleet-image/'.$car->carModel->image_url) }}" class="img-fluid card-image" alt="GTR 2018 image">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $car->carModel->model_name ?? 'N/A' }}</h5>
                             <p class="card-text">20xx Version</p>
@@ -85,7 +85,7 @@
                                 <i class="fa-regular fa-star"></i> Ratings
                             </p>
                             <!-- Button with dynamic route -->
-                            <a href="{{ route('user.fleet.show', 1) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
+                            <a href="{{ route('user.fleet.show', $car->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
                         </div>
                     </div>
                    

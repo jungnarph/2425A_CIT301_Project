@@ -19,14 +19,31 @@ class CarModelController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $data = $request->validate([
             'model_name' => 'unique:car_models|required',
             'car_type' => 'required',
             'seat_capacity' => 'required',
             'transmission_type' => 'required',
             'layout_type' => 'required',
+            'engine' => 'required',
+            'power'=> 'required',
+            'torque'=> 'required',
+            'image_url'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        CarModel::create($request->all());
+
+        $destinationPath = 'assets/images/fleet-image'; 
+        $imageName = $request->image_url->getClientOriginalName();
+        $imageExtension = $request->image_url->getClientOriginalExtension();
+        $finalImageName = pathinfo($imageName, PATHINFO_FILENAME) . '.' . $imageExtension; 
+
+        $targetFile = public_path($destinationPath . '/' . $finalImageName);
+        $data['image_url'] = $finalImageName;
+
+        if (!file_exists($targetFile)) {
+            $request->image_url->move(public_path($destinationPath), $finalImageName);
+        } 
+
+        CarModel::create($data);
         return redirect()->route('manage.carmodel')->with('success', 'Car model created successfully.');
     }
 
@@ -37,7 +54,7 @@ class CarModelController extends Controller
 
     public function update(Request $request, $id) {
         $carmodel = CarModel::findOrFail($id);
-        $request->validate([
+        $data = $request->validate([
             'model_name' => [
                 'required',
                 Rule::unique('car_models')->ignore($carmodel->id),
@@ -46,8 +63,25 @@ class CarModelController extends Controller
             'seat_capacity' => 'required',
             'transmission_type' => 'required',
             'layout_type' => 'required',
+            'engine' => 'required',
+            'power'=> 'required',
+            'torque'=> 'required',
+            'image_url'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        $carmodel->update($request->all());
+
+        $destinationPath = 'assets/images/fleet-image'; 
+        $imageName = $request->image_url->getClientOriginalName();
+        $imageExtension = $request->image_url->getClientOriginalExtension();
+        $finalImageName = pathinfo($imageName, PATHINFO_FILENAME) . '.' . $imageExtension; 
+
+        $targetFile = public_path($destinationPath . '/' . $finalImageName);
+        $data['image_url'] = $finalImageName;
+
+        if (!file_exists($targetFile)) {
+            $request->image_url->move(public_path($destinationPath), $finalImageName);
+        } 
+
+        $carmodel->update($data);
         return redirect()->route('manage.carmodel')->with('success', 'Car model updated successfully.');
     }
 

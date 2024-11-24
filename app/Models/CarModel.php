@@ -15,6 +15,10 @@ class CarModel extends Model
         'seat_capacity',
         'transmission_type',
         'layout_type',
+        'engine',
+        'power',
+        'torque',
+        'image_url',
     ];
 
     public function cars() {
