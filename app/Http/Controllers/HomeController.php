@@ -28,6 +28,14 @@ class HomeController extends Controller
     public function arrangement() {
         return view('arrangement');
     }
+
+    public function services() {
+        return view('services');
+    }
+
+    public function about() {
+        return view('about');
+    }
     
     public function fleet() {
         $cars = Car::with('carModel')->get();
