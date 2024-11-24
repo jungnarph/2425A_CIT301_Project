@@ -97,8 +97,8 @@
 
                     <!-- Email Address -->
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus autocomplete="username">
+                        <label for="username" class="form-label">Username</label>
+                        <input id="username" type="text" name="username" class="form-control" required autofocus autocomplete="username">
                         @error('email')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror

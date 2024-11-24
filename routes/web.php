@@ -2,13 +2,17 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FleetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FleetController;
 use App\Http\Controllers\UserReservationController;
+
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
@@ -31,12 +35,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
     });
+    Route::controller(CommentController::class)->group(function(){
+        Route::get('/comment', 'index')->name('user.comment');
+    });
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
     Route::controller(UserReservationController::class)->group(function () {
-        Route::get('/transaction/{id}', 'create')->name('reservations.create');
-        Route::post('/transaction', 'store')->name('reservations.store');
+        Route::get('/reservation/{id}', 'create')->name('reservation.create');
+        Route::post('/reservation/store/{id}', 'store')->name('reservation.store');
     });
 });
 
@@ -77,6 +84,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/cars/edit/{id}', 'edit')->name('edit.car');
             Route::put('/cars/update/{id}', 'update')->name('update.car');
             Route::delete('/cars/delete/{id}', 'delete')->name('delete.car');
+        });
+
+        Route::controller(TransactionController::class)->group(function() {
+            Route::get('/transactions', 'index')->name('manage.transaction');
+            Route::put('/transactions/accept{id}', 'accept')->name('accept.transaction');
+            Route::put('/transactions/reject{id}', 'reject')->name('reject.transaction');
         });
     });
 });

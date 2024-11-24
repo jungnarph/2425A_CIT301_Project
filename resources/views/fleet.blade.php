@@ -64,12 +64,8 @@
     </nav>
     
     <div class="container my-5">
-            <div class="choices-button mb-3" style="display: flex; align-items: center;">
-            <h4 style="margin-right: 10px; margin-top: 7px;">Select Type of Vehicle:</h4>
-            <a href="/fleet" class="btn btn-danger" style="border:1px solid black;">Cars</a>
-            <a href="" class="btn btn-light ml-2" style="border:1px solid black;">Vans</a>
-        </div>
-    <div class="row">
+
+        <div class="row">
             <!-- Card 1 -->
             @foreach ($cars as $car) 
                 <div class="col-md-4 mb-4">

@@ -25,8 +25,6 @@ return new class extends Migration
             $table->string('usertype');
             $table->rememberToken();
             $table->timestamps();
-
-            $table->unique('usertype', 'unique_superadmin')->where('usertype', 'superadmin');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
