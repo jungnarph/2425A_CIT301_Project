@@ -98,10 +98,18 @@ button:hover {
   display: none;
 }
 
+
+/* Form styles */
+
 input.form-control, select.form-control, textarea.form-control {
     background-color: #851558;
     color: white; 
     border-color: #851558;
+}
+
+input.form-control:disabled {
+  background-color: #85155893 !important;
+  color: rgba(255, 255, 255, 0.485);
 }
 
 input.form-control:focus, select.form-control:focus, textarea.form-control:focus {

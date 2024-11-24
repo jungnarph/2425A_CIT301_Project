@@ -33,28 +33,25 @@ Car Management
                     <td data-cell="Plate Number">{{ $car->plate_number }}</td>
                     <td data-cell="Model Name">{{ $car->carModel->model_name ?? 'N/A' }}</td>
                     <td data-cell="Rent Price">Php {{ $car->base_price }}.00</td>
-                    <td data-cell="Status">Active</td>
+                    <td data-cell="Status">{{ $car->isAvailable ? 'On Rent' : 'Available'}}</td>
                     <td>
                         <form style="display:inline;">
                             <!--
                             @csrf
                             @method('GET')
                             -->
-                            <button type="success">View Details</button>
+                            <button type="submit">View Details</button>
                         </form>
 
-                        <form style="display:inline;">
-                            <!--
+                        <form action="{{ route('edit.car', $car->id) }}" style="display:inline;">
                             @csrf
                             @method('GET')
-                            -->
-                            <button class="success" type="submit">Edit</button>
+                            <button type="submit">Edit</button>
                         </form>
 
                         <form action="{{ route('delete.car', $car->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            
                             <button class="danger" type="submit">Delete</button>
                         </form>
                     </td>
