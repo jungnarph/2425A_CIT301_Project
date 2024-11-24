@@ -43,8 +43,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
                     <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     @auth
                     <li class="nav-item">
@@ -136,10 +136,26 @@
             </div>
         </div>
         <div class="team-card">
-            <img src="{{ asset('assets/images/about-images/daniel-about.jpg') }}">
+            <img src="{{ asset('assets/images/about-images/daniel-about-2.jpg') }}">
             <div class ="team-card-content">
                 <h3>Daniel Bucad</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, ipsam.</P>
+                <p> 
+                    Ladies and gentlemen
+                    It was a cold-blooded premeditated murder
+                    Brain pain again, can't remember my name (ah)
+                    This distance is sickness, I'm super nihilistic (ah)
+                    Do we exist inside an acid trip?
+                    Or is this flux born from a fantasist?
+                    My make-believe idiosyncrasy
+                    Help me (ah)
+                    Just wanna party on my deathbed
+                    I'm here to live my life electric
+                    Just wanna party on my deathbed
+                    Yeah, maybe I am just a wreckhead
+                    But I know I don't wanna waste it
+                    Just wanna party on my deathbed
+                    Ah, ah
+                </p>
             </div>
         </div>
         <div class="team-card">
