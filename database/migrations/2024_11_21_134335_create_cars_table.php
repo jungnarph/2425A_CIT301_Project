@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_available')->default(true);
             $table->timestamps();
 
-            $table->foreign('model_id')->references('id')->on('car_models');
+            $table->foreign('model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
     }
 
