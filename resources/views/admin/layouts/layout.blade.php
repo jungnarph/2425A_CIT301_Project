@@ -15,18 +15,7 @@
 </head>
 <body>
 @auth
-    <!--div class="container-fluid">
-        <div class="row mobile-nav logo-container align-items-center position-relative">
-            <div class="col-12 text-center text-md-left py-3">
-                <button class="hamburger-button btn" aria-label="Menu" id="toggleSidebar">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <img src="{{ asset('assets/images/project-logo-white-transparent.png') }}" alt="Logo" class="img-fluid logo-main" style="max-width: 10rem;">
-            </div>
-        </div>
-    </div-->
+    
 
     <nav id="sidebar">
         <ul>
@@ -109,10 +98,27 @@
             </li>
         </ul>
     </nav>
+    
+    <div class="container-fluid mobile-nav">
+        <div class="row logo-container align-items-center position-relative">
+            <div class="col-12 text-center text-md-left py-3">
+                <button class="hamburger-button btn" aria-label="Menu" id="toggleSidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <img src="{{ asset('assets/images/project-logo-white-transparent.png') }}" alt="Logo" class="img-fluid logo-main" style="max-width: 10rem;">
+            </div>
+        </div>
+    </div>
 
     <main class="main-content">
         @yield('main_panel')
     </main>
+
+    
+
+    
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

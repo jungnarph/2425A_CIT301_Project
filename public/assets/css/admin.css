@@ -303,7 +303,7 @@ tr td:last-child, tr th:last-child {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .hamburger-button {
     display: block;
     position: absolute; /* Position the button absolutely */
@@ -331,6 +331,12 @@ tr td:last-child, tr th:last-child {
 
   .logo-img {
     max-width: 8rem;
+  }
+
+  .mobile-nav {
+    display: block;
+    background-color: #0d0418;
+    position: fixed;
   }
 
   tr td:first-child {
@@ -370,7 +376,7 @@ tr td:last-child, tr th:last-child {
   }
 
   main {
-    padding: 2em 1em 60px 1em;
+    padding: 7.5em 2em 60px 2em;
   }
 
   #sidebar {
