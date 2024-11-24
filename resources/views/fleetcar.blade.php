@@ -14,6 +14,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
      <!--Jared CSS -->
      <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+
+     <style>
+        .comment-section {
+            margin-top: 40px;
+        }
+        .comment-box {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .comment-area {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -42,11 +58,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                    @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="/signin">
-                            <i class="bi bi-person" style="margin-right:0.5rem;"></i>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link" style="color: red; text-decoration: none;">Logout</button>
+                        </form>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -56,6 +75,11 @@
 <a href="javascript:history.back()" class="btn btn-danger" style="border:1px solid black;">
     <i class="fas fa-arrow-left"></i> Back
 </a>
+@if(session('success'))
+        <div class="alert custom-alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="row">
         <div class="col-md-4 mt-4">
@@ -64,7 +88,7 @@
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
             <h2><strong>{{ $car->carModel->model_name ?? 'Model not available' }}</strong></h2>  <!-- Display car model name -->
-            <a href="{{ route('reservations.create', $car->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">Rent Now</a>
+            <a href="{{ route('reservation.create', $car->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">Rent Now</a>
         </div>
         <p style="text-align:justify;">{{ $car->description }}</p>
         <div class="row">
@@ -125,6 +149,27 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- Comment Section -->
+<div class="container comment-section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="comment-area">
+                <h5>Comment from the users</h5>
+                <div>
+                    <p><strong>User 1:</strong> I love BBC, big black Co</p>
+                </div>
+                <div>
+                    <p><strong>User 2:</strong> The tree of life sprouts everywhere</p>
+                </div>
+                <div>
+                    <p><strong>User 3:</strong> Cavite no. 1</p>
+                </div>
             </div>
         </div>
     </div>

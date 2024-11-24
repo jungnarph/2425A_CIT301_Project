@@ -48,9 +48,9 @@ User Management
                         @if($user->usertype === 'superadmin')
                             <span style="padding: 5px 10px; border-radius: 5px; background-color: black; color:red;">Superadmin</span>
                         @elseif($user->usertype === 'admin')
-                            <span style="padding: 5px 10px; border-radius: 5px; background-color: black;">Admin</span>
+                            <span style="padding: 5px 10px; border-radius: 5px; background-color: black; color:yellow;">Admin</span>
                         @else
-                            <span style="padding: 5px 10px; border-radius: 5px; background-color: white; color:black;">User</span>
+                            <span style="padding: 5px 10px; border-radius: 5px; background-color: black;">User</span>
                         @endif
                     </td>
                     <td>

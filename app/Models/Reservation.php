@@ -11,6 +11,7 @@ class Reservation extends Model
 
     protected $table = 'reservations';
     protected $primaryKey = 'transaction_id';
+    
     protected $fillable = [
         'user_id',
         'car_id',
