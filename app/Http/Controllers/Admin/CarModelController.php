@@ -90,6 +90,4 @@ class CarModelController extends Controller
         $carmodel->delete();
         return redirect()->route('manage.carmodel')->with('success', 'Car model "'. $carmodel->model_name .'" deleted successfully.');
     }
-
-    
 }

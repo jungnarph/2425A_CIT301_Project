@@ -22,6 +22,7 @@ class User extends Authenticatable
         'First_name',
         'Middle_name',
         'Last_name',
+        'usertype',
         'Contact_number',
         'Driver_license_ID',
         'email',
