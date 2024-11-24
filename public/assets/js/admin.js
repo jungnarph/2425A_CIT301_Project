@@ -1,10 +1,10 @@
 $(document).ready(function(){
     $('#toggleSidebar').click(function(){
-        $('.sidebar').toggleClass('active');
+        $('#sidebar').toggleClass('active');
     });
 
     $('#closeSidebar').click(function(){
-        $('.sidebar').removeClass('active');
+        $('#sidebar').removeClass('active');
     });
 
     function redirectToManageCarModel() {

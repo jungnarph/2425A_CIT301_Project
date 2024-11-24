@@ -20,6 +20,11 @@
     <nav id="sidebar">
         <ul>
             <li>
+                <button class="hamburger-button-sidebar btn" aria-label="Menu" id="closeSidebar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
                 <span>
                     <img src="{{ asset('assets/images/project-logo-white-transparent.png') }}" alt="Logo" class="img-fluid logo-main" style="max-width: 10rem;">
                 </span>
@@ -98,7 +103,7 @@
             </li>
         </ul>
     </nav>
-    
+
     <div class="container-fluid mobile-nav">
         <div class="row logo-container align-items-center position-relative">
             <div class="col-12 text-center text-md-left py-3">
