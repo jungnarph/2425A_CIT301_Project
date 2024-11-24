@@ -39,7 +39,7 @@
                         <a class="nav-link" aria-current="page" href="/fleet">Fleet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="/services">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>

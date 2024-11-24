@@ -32,6 +32,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/fleet', 'fleet')->name('user.fleet');
     });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/services', 'services')->name('user.services');
+    });
+
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
