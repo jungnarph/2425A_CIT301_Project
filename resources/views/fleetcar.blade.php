@@ -59,58 +59,72 @@
 
     <div class="row">
         <div class="col-md-4 mt-4">
-            <img src="{{ asset('assets/images/fleet-image/'.$car->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image">
+            <img src="{{ asset('assets/images/fleet-image/'.$car->carModel->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image">
         </div>
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
             <h2><strong>{{ $car->carModel->model_name ?? 'Model not available' }}</strong></h2>  <!-- Display car model name -->
-            <form action="{{ url('/arrangement') }}" method="GET">
-                <button type="submit" class="btn btn-danger mb-3" style="font-size: 14px; padding: 16px 8px;">Rent Now</button>
-            </form>
-
-
+            <a href="{{ route('reservations.create', $car->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">Rent Now</a>
         </div>
-            <p style="text-align:justify;">{{ $car->description }}</p>
-
-            <div class="row">
-                <div class="col-md-2">
-                    <ul class="list-unstyled">
-                        <strong>
-                        <li>Price: </li>    
-                        <li>Engine:</li>
-                        <li>Power:</li>
-                        <li>Torque:</li>
-                        <li>Car Type:</li>
-                        </strong>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-unstyled">
-                        <li>{{ $car->base_price }}</li>
-                        <li>{{ $car->engine }}</li>
-                        <li>{{ $car->power }}</li>
-                        <li>{{ $car->torque }}</li>
-                        <li>{{ $car->carModel->car_type }}</li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <ul class="list-unstyled">
-                        <strong>
-                        <li>Transmission:</li>
-                        <li>Layout:</li>
-                        <li>Seating:</li>
-                        <li>Rating:</li>
-                        </strong>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-unstyled">
-                        <li>{{ $car->carModel->transmission_type }}</li>
-                        <li>{{ $car->carModel->layout_type }}</li>
-                        <li>{{ $car->carModel->seat_capacity }}</li>
-                        <li>5/5</li>
-                    </ul>
-                </div>
+        <p style="text-align:justify;">{{ $car->description }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><strong>Car Specifications</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td>{{ $car->base_price ?? 'Price not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Engine:</strong></td>
+                            <td>{{ $car->carModel->engine ?? 'Engine not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power:</strong></td>
+                            <td>{{ $car->carModel->power ?? 'Power not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Torque:</strong></td>
+                            <td>{{ $car->carModel->torque ?? 'Torque not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Car Type:</strong></td>
+                            <td>{{ $car->carModel->car_type ?? 'Car type not available' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><strong>Additional Features</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Transmission:</strong></td>
+                            <td>{{ $car->carModel->transmission_type ?? 'Transmission not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Layout:</strong></td>
+                            <td>{{ $car->carModel->layout_type ?? 'Layout not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seating:</strong></td>
+                            <td>{{ $car->carModel->seat_capacity ?? 'Seating not available' }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rating:</strong></td>
+                            <td>5/5</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
