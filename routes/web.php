@@ -9,6 +9,10 @@ use App\Http\Controllers\FleetController;
 use App\Http\Controllers\UserReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\CommentController;
+
+
+Route::get('/comment', [\App\Http\Controllers\CommentController::class, 'index'])->name('comments.index');
 
 Route::get('/', function () {
     return view('landing');
@@ -33,9 +37,10 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     });
     Route::controller(UserReservationController::class)->group(function () {
         Route::get('/transaction/{id}', 'create')->name('reservations.create');
-        Route::post('/transaction', 'store')->name('reservations.store');
+        Route::post('/transaction/{id}', 'store')->name('reservations.store');
     });
 });
+
 
 // ADMIN ROUTES
 
@@ -67,6 +72,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(f
         });
     });
 });
+
+// COMMENT SECTION
 
 // SUPERADMIN ROUTES
 

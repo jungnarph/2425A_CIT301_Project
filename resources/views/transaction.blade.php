@@ -58,9 +58,13 @@
 @if (session('car'))
     <div class="alert alert-info">You have reserved: {{ session('car')->carModel->model_name ?? 'Unknown Model' }}</div>
 @endif
+
 <!-- Reservation Form -->
 <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST" class="container mt-5 p-4 bg-dark text-white rounded">
     @csrf
+    <input type="hidden" name="user_id" value="{{ auth()->user()->id ?? '' }}">
+    <input type="hidden" name="car_id" value="{{ $car->car_id }}">
+    <input type="hidden" name="status" value="Pending">
     <div class="row">
         <div class="col-md-8">
             <h1>Easy Car</h1>
@@ -118,7 +122,7 @@
             </div>
             <!-- Submit Button -->
             <div class="d-flex justify-content-center mt-3">
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
             </div>
         </div>
         <!-- Map Section -->
@@ -127,12 +131,68 @@
             <div id="map" style="width: 100%; height: 400px; background-color: lightgray;"></div>
         </div>
     </div>
+
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirm Your Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Car Model:</strong> {{ $car->carModel->model_name }}</p>
+                <p><strong>Pick-up Date:</strong> <span id="modal-pickup-date"></span></p>
+                <p><strong>Pick-up Time:</strong> <span id="modal-pickup-time"></span></p>
+                <p><strong>Pick-up Location:</strong> <span id="modal-pickup-location"></span></p>
+                <p><strong>Return Date:</strong> <span id="modal-return-date"></span></p>
+                <p><strong>Return Time:</strong> <span id="modal-return-time"></span></p>
+                <p><strong>Return Location:</strong> <span id="modal-return-location"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 </form>
+
+
 <!-- jQuery, Popper.js, and Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+
+    function formatTimeTo12Hour(time) {
+        const [hour, minute] = time.split(':');
+        const period = +hour >= 12 ? 'PM' : 'AM';
+        const formattedHour = +hour % 12 || 12; // Convert to 12-hour format
+        return `${formattedHour}:${minute} ${period}`;
+    }
+
+    // Populate modal with input values
+    $('[data-toggle="modal"]').on('click', function() {
+        const pickupTime = $('#pickup-time').val();
+        const returnTime = $('#return-time').val();
+
+        $('#modal-pickup-date').text($('#pickup-date').val());
+        $('#modal-pickup-time').text(pickupTime ? formatTimeTo12Hour(pickupTime) : '');
+        $('#modal-pickup-location').text($('#pickup-location').val());
+        $('#modal-return-date').text($('#return-date').val());
+        $('#modal-return-time').text(returnTime ? formatTimeTo12Hour(returnTime) : '');
+        $('#modal-return-location').text($('#return-location').val());
+    });
+
+    // Submit form when "Confirm" is clicked
+    $('#confirm-button').on('click', function() {
+        $('#reservation-form').submit();
+    });
+
     let map;
     const locations = {
         "Makati Central Business District, Makati City": { lat: 14.5547, lng: 121.0244 },
@@ -160,12 +220,20 @@
             });
         }
     }
+    //Locking of the location when selected
     function copyPickupToReturn() {
-        const pickupLocation = document.getElementById('pickup-location').value;
-        if (document.getElementById('sameLocationCheckbox').checked) {
-            document.getElementById('return-location').value = pickupLocation;
-        }
+    const pickupLocation = document.getElementById('pickup-location').value;
+    const returnLocationDropdown = document.getElementById('return-location');
+    const checkbox = document.getElementById('sameLocationCheckbox');
+
+    if (checkbox.checked) {
+        returnLocationDropdown.value = pickupLocation;
+        returnLocationDropdown.disabled = true;
+    } else {
+        returnLocationDropdown.disabled = false;
     }
+}
+
     function setMinReturnDate() {
         const pickupDate = document.getElementById('pickup-date').value;
         document.getElementById('return-date').setAttribute('min', pickupDate);
@@ -176,6 +244,8 @@
     }
     // Initialize the map
     window.onload = initMap;
+
+    
 </script>
 </body>
 </html>

@@ -14,6 +14,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
      <!--Jared CSS -->
      <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+
+     <style>
+        .comment-section {
+            margin-top: 40px;
+        }
+        .comment-box {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .comment-area {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,6 +68,7 @@
         </div>
     </nav>
 
+    <hr>
 <div class="container my-5">
 <a href="javascript:history.back()" class="btn btn-danger" style="border:1px solid black;">
     <i class="fas fa-arrow-left"></i> Back
@@ -125,6 +142,27 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- Comment Section -->
+<div class="container comment-section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="comment-area">
+                <h5>Comment from the users</h5>
+                <div>
+                    <p><strong>User 1:</strong> I love BBC, big black Co</p>
+                </div>
+                <div>
+                    <p><strong>User 2:</strong> The tree of life sprouts everywhere</p>
+                </div>
+                <div>
+                    <p><strong>User 3:</strong> Cavite no. 1</p>
+                </div>
             </div>
         </div>
     </div>

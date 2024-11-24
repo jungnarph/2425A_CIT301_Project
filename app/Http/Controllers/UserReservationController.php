@@ -16,11 +16,11 @@ class UserReservationController extends Controller
         return view('transaction', compact('car')); // 'car' is passed to the view
     }
     
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $user = Auth::user();
+
         $request->validate([
-            'user_id' => 'required|integer',
-            'car_id' => 'required|integer',
             'pickup_date' => 'required|date',
             'pickup_time' => 'required',
             'pickup_location' => 'required|string',
@@ -29,10 +29,11 @@ class UserReservationController extends Controller
             'return_location' => 'required|string',
             'status' => 'required|string',
         ]);
+
         // Create the reservation
         $reservation = new Reservation();
-        $reservation->user_id = $request->user_id;
-        $reservation->car_id = $request->car_id;
+        $reservation->user_id = $user->id;
+        $reservation->car_id = $id;
         $reservation->pickup_date = $request->pickup_date;
         $reservation->pickup_time = $request->pickup_time;
         $reservation->pickup_location = $request->pickup_location;
