@@ -22,7 +22,7 @@ Car Model Management
                 <tr>
                     <th>Model Name</th>
                     <th>Type</th>
-                    <th>Seating Capacity</th>
+                    <th>Seat Capacity</th>
                     <th>Transmission</th>
                     <th>Layout</th>
                     <th>Actions</th>
@@ -34,7 +34,7 @@ Car Model Management
                 <tr>
                     <td data-cell="Model Name">{{ $carmodel->model_name }}</td>
                     <td data-cell="Type">{{ $carmodel->car_type }}</td>
-                    <td data-cell="Seating Capacity">{{ $carmodel->seat_capacity }}</td>
+                    <td data-cell="Seat Capacity">{{ $carmodel->seat_capacity }}</td>
                     <td data-cell="Transmission Type">{{ $carmodel->transmission_type }}</td>
                     <td data-cell="Transmission Type">{{ $carmodel->layout_type }}</td>
                     <td>
