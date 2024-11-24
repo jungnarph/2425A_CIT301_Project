@@ -133,7 +133,7 @@ main, .sidebar {
   overflow-y: auto;
 }
 
-.main-content {
+main {
   padding: 20px;
 }
 
@@ -333,21 +333,6 @@ tr td:last-child, tr th:last-child {
     max-width: 8rem;
   }
 
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 80%;
-    height: 100%;
-    background-color: #444;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-  }
-
-  .sidebar.active {
-    left: 0;
-  }
-
   tr td:first-child {
     border-radius: 10px 10px 0 0;
   }
@@ -378,6 +363,77 @@ tr td:last-child, tr th:last-child {
   tr td:last-child button {
     width: fit-content;
     margin: 0;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 2em 1em 60px 1em;
+  }
+
+  #sidebar {
+    height: 60px;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    position: fixed;
+    top: unset;
+    bottom: 0;
+
+    > ul {
+      padding: 0;
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      overflow-x: scroll;
+    }
+
+    ul li {
+      height: 100%;
+    }
+
+    ul a, ul .dropdown-btn {
+      width: 60px;
+      height:  60px;
+      padding: 0;
+      border-radius: 0;
+      justify-content: center;
+    }
+
+    ul li span, ul li:first-child, .dropdown-btn svg:last-child {
+      display: none;
+    }
+
+    ul li .sub-menu.show {
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      box-sizing: border-box;
+      height: 60px;
+      width: 100%;
+      background-color: var(--hover-clr);
+      border-top: 1px solid var(--line-clr);
+      display: flex;
+      justify-content: center;
+
+      > div {
+        overflow-x: auto;
+      }
+
+      li {
+        display: inline-flex;
+      }
+      
+      a {
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+      }
+    }
   }
 
 }
