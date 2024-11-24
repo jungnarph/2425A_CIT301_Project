@@ -42,8 +42,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/fleet">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/About">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     @auth

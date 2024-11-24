@@ -15,7 +15,6 @@
             padding: 30px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             padding: 6%;
-            margin-top: 30px;
         }
 
         .blur-container label,
