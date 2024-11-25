@@ -2,13 +2,18 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FleetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FleetController;
 use App\Http\Controllers\UserReservationController;
+
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('landing');
@@ -27,6 +32,11 @@ Route::get('/about', function () {
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/fleet', 'fleet')->name('user.fleet');
+        Route::get('/services','services')->name('user.services');
+        Route::get('/about','about')->name('user.about');
+    });
+    Route::controller(CommentController::class)->group(function(){
+        Route::get('/comment', 'index')->name('user.comment');
     });
 
     Route::controller(HomeController::class)->group(function(){
@@ -37,20 +47,30 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
     Route::controller(UserReservationController::class)->group(function () {
-        Route::get('/transaction/{id}', 'create')->name('reservations.create');
-        Route::post('/transaction', 'store')->name('reservations.store');
+        Route::get('/reservation/{id}', 'create')->name('reservation.create');
+        Route::post('/reservation/store/{id}', 'store')->name('reservation.store');
     });
 });
 
-// ADMIN ROUTES
+// ADMIN AND SUPERADMIN ROUTES
 
-Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(function () {
+    Route::prefix('admin')->group(function() {
+        Route::controller(UserController::class)->group(function() {
+            Route::get('/users/manage', 'index')->name('manage.user');
+            Route::get('/user/create', 'create')->name('create.user');
+            Route::post('/user/store', 'store')->name('store.user');
+            Route::get('/user/edit/{id}', 'edit')->name('edit.user');
+            Route::put('/user/update/{id}', 'update')->name('update.user');
+            Route::delete('/user/delete/{id}', 'delete')->name('delete.user');
+        });
+    });
+});
+
+Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(AdminController::class)->group(function() {
             Route::get('/dashboard', 'index')->name('admin');
-            Route::get('/cars/manage', 'manageCars')->name('admin.cars.manage');
-
-            Route::get('/users/manage', 'manageUsers')->name('admin.users.manage');
         });
 
         Route::controller(CarModelController::class)->group(function() {
@@ -70,8 +90,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin,superadmin'])->group(f
             Route::put('/cars/update/{id}', 'update')->name('update.car');
             Route::delete('/cars/delete/{id}', 'delete')->name('delete.car');
         });
+
+        Route::controller(TransactionController::class)->group(function() {
+            Route::get('/transactions', 'index')->name('manage.transaction');
+            Route::put('/transactions/accept{id}', 'accept')->name('accept.transaction');
+            Route::put('/transactions/reject{id}', 'reject')->name('reject.transaction');
+        });
     });
 });
+
 
 // SUPERADMIN ROUTES
 

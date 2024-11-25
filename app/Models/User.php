@@ -22,6 +22,7 @@ class User extends Authenticatable
         'First_name',
         'Middle_name',
         'Last_name',
+        'usertype',
         'Contact_number',
         'Driver_license_ID',
         'email',
@@ -49,5 +50,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function transactions() {
+        return $this->hasMany(Reservation::class, 'user_id');
     }
 }

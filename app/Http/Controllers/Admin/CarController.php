@@ -39,6 +39,22 @@ class CarController extends Controller
         return view('admin.cars.edit', compact('car', 'carmodels'));
     }
 
+    public function update(Request $request, $id) {
+        $car = Car::findOrFail($id);
+        $data = $request->validate([
+            'model_id' => 'required',
+            'plate_number' => [
+                'required',
+                Rule::unique('cars')->ignore($carmodel->id),
+            ],
+            'description' => 'required',
+            'base_price' => 'required',
+        ]);
+
+        $car->update($data);
+        return redirect()->route('manage.car')->with('success', 'Car updated successfully.');
+    }
+
     public function delete($id) {
         $car = Car::findOrFail($id);
         $car->delete();

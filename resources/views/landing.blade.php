@@ -47,6 +47,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+<<<<<<< HEAD
+=======
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    @endguest
+>>>>>>> master
                     <!-- Logout Button -->
                     @auth
                     <li class="nav-item">
