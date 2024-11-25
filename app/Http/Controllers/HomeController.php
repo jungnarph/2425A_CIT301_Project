@@ -32,13 +32,11 @@ class HomeController extends Controller
     public function services() {
         return view('services');
     }
-<<<<<<< HEAD
-=======
 
     public function about() {
         return view('about');
     }
->>>>>>> master
+
     
     public function fleet() {
         $cars = Car::with('carModel')->get();
