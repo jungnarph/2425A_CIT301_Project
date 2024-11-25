@@ -41,6 +41,30 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        DB::statement("
+            CREATE TRIGGER superadmin_insert_check
+            BEFORE INSERT ON users
+            FOR EACH ROW
+            BEGIN
+                IF NEW.usertype = 'superadmin' AND 
+                   (SELECT COUNT(*) FROM users WHERE usertype = 'superadmin') > 0 THEN
+                    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Only one superadmin is allowed';
+                END IF;
+            END
+        ");
+
+        DB::statement("
+            CREATE TRIGGER superadmin_update_check
+            BEFORE UPDATE ON users
+            FOR EACH ROW
+            BEGIN
+                IF NEW.usertype = 'superadmin' AND 
+                   (SELECT COUNT(*) FROM users WHERE usertype = 'superadmin') > 0 THEN
+                    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Only one superadmin is allowed';
+                END IF;
+            END
+        ");
     }
 
     /**

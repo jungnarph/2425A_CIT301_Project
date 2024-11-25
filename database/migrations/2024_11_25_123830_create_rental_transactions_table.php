@@ -6,30 +6,36 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->unsignedBigInteger('user_id'); // Foreign key
-            $table->unsignedBigInteger('car_id'); // Foreign key
+        Schema::create('rental_transactions', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('car_id');
             $table->date('pickup_date'); 
             $table->time('pickup_time'); 
             $table->string('pickup_location'); 
             $table->date('return_date'); 
             $table->time('return_time'); 
             $table->string('return_location'); 
-            $table->string('status'); 
-            $table->timestamps(); // created_at and updated_at
+            $table->enum('status',['On Rent', 'Completed', 'Cancelled'])->default('Pending'); 
+            $table->date('actual_return_date')->nullable();
+            $table->time('actual_return_time')->nullable();
+            $table->timestamps();
 
-            // Foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::table('reservations', function (Blueprint $table) {
-        });
+        Schema::dropIfExists('rental_transactions');
     }
 };

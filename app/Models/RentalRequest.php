@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Reservation extends Model
+class RentalRequest extends Model
 {
     use HasFactory;
-
-    protected $table = 'reservations';
-    protected $primaryKey = 'transaction_id';
     
     protected $fillable = [
         'user_id',
