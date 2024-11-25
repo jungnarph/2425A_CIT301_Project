@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
 
     public function transactions() {
-        return $this->hasMany(Reservation::class, 'user_id');
+        return $this->hasMany(RentalRequest::class, 'user_id');
     }
 }

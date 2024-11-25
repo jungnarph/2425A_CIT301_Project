@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
-use App\Models\Reservation;
+use App\Models\RentalRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserReservationController extends Controller
+class ReservationController extends Controller
 {
     public function create($id)
     {
@@ -32,7 +32,7 @@ class UserReservationController extends Controller
             'return_location' => 'required|string',
         ]);
         // Create the reservation
-        $reservation = Reservation::create([
+        $reservation = RentalRequest::create([
             'user_id' => $user->id,
             'car_id' => $car->id,
             'pickup_date' => $request->pickup_date,
