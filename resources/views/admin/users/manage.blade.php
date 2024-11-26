@@ -55,7 +55,7 @@ User Management
                     </td>
                     <td>
                         @if($user->usertype !=='superadmin')
-                        <form action="{{ route('manage.user', $user->id) }}" style="display:inline;">
+                        <form action="{{ route('manage.users', $user->id) }}" style="display:inline;">
                             @csrf
                             @method('GET')
                             <button type="submit">
