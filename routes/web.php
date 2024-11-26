@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
 Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(UserController::class)->group(function() {
-            Route::get('/users', 'index')->name('manage.user');
+            Route::get('/users', 'index')->name('manage.users');
             Route::get('/user/create', 'create')->name('create.user');
             Route::post('/user/store', 'store')->name('store.user');
             Route::get('/user/edit/{id}', 'edit')->name('edit.user');
@@ -71,7 +71,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         });
 
         Route::controller(CarModelController::class)->group(function() {
-            Route::get('/carmodels', 'index')->name('manage.carmodel');
+            Route::get('/carmodels', 'index')->name('manage.carmodels');
             Route::get('/carmodel/create', 'create')->name('create.carmodel');
             Route::post('/carmodel/store', 'store')->name('store.carmodel');
             Route::get('/carmodel/edit/{id}', 'edit')->name('edit.carmodel');
@@ -80,7 +80,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         });
        
         Route::controller(CarController::class)->group(function() {
-            Route::get('/cars', 'index')->name('manage.car');
+            Route::get('/cars', 'index')->name('manage.cars');
             Route::get('/car/create', 'create')->name('create.car');
             Route::post('/car/store', 'store')->name('store.car');
             Route::get('/car/edit/{id}', 'edit')->name('edit.car');
@@ -89,7 +89,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         });
         Route::prefix('rental')->group(function() {
             Route::controller(RentalRequestController::class)->group(function() {
-                Route::get('/requests', 'index')->name('manage.rental.request');
+                Route::get('/requests', 'index')->name('manage.rental.requests');
                 Route::put('/request/accept{id}', 'accept')->name('accept.rental.request');
                 Route::put('/request/reject{id}', 'reject')->name('reject.rental.request');
             });

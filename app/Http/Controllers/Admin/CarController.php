@@ -29,7 +29,7 @@ class CarController extends Controller
         ]);
 
         Car::create($data);
-        return redirect()->route('manage.car')->with('success', 'Car created successfully.');
+        return redirect()->route('manage.cars')->with('success', 'Car created successfully.');
     }
 
     public function edit($id) {
@@ -52,12 +52,12 @@ class CarController extends Controller
         ]);
 
         $car->update($data);
-        return redirect()->route('manage.car')->with('success', 'Car updated successfully.');
+        return redirect()->route('manage.cars')->with('success', 'Car updated successfully.');
     }
 
     public function delete($id) {
         $car = Car::findOrFail($id);
         $car->delete();
-        return redirect()->route('manage.car')->with('success', 'Car "'. $car->plate_number .'" deleted successfully.');
+        return redirect()->route('manage.cars')->with('success', 'Car "'. $car->plate_number .'" deleted successfully.');
     }
 }
