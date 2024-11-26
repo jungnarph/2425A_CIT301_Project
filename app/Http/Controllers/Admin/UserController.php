@@ -47,12 +47,12 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('manage.user')->with('success', 'User created successfully.');
+        return redirect()->route('manage.users')->with('success', 'User created successfully.');
     }
 
     public function delete($id) {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('manage.user')->with('success', 'User "'. $user->username .'" deleted successfully.');
+        return redirect()->route('manage.users')->with('success', 'User "'. $user->username .'" deleted successfully.');
     }
 }

@@ -44,7 +44,7 @@ class CarModelController extends Controller
         } 
 
         CarModel::create($data);
-        return redirect()->route('manage.carmodel')->with('success', 'Car model created successfully.');
+        return redirect()->route('manage.carmodels')->with('success', 'Car model created successfully.');
     }
 
     public function edit($id) {
@@ -82,12 +82,12 @@ class CarModelController extends Controller
         } 
 
         $carmodel->update($data);
-        return redirect()->route('manage.carmodel')->with('success', 'Car model updated successfully.');
+        return redirect()->route('manage.carmodels')->with('success', 'Car model updated successfully.');
     }
 
     public function delete($id) {
         $carmodel = CarModel::findOrFail($id);
         $carmodel->delete();
-        return redirect()->route('manage.carmodel')->with('success', 'Car model "'. $carmodel->model_name .'" deleted successfully.');
+        return redirect()->route('manage.carmodels')->with('success', 'Car model "'. $carmodel->model_name .'" deleted successfully.');
     }
 }

@@ -98,7 +98,7 @@
 
             <div class="form-group row create-form-buttons">
                 <div class="col">
-                    <a href="/admin/carmodels/manage" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('manage.carmodels') }}" class="btn btn-secondary">Cancel</a>
                 </div>
                 <div class="col">
                     <button type="submit" class="btn btn-primary">Update</button>
