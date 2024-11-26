@@ -10,6 +10,8 @@ use App\Http\Controllers\UserReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ReceiptController;
 
 
 Route::get('/comment', [\App\Http\Controllers\CommentController::class, 'index'])->name('comments.index');
@@ -38,6 +40,13 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(UserReservationController::class)->group(function () {
         Route::get('/transaction/{id}', 'create')->name('reservations.create');
         Route::post('/transaction/{id}', 'store')->name('reservations.store');
+    });
+    Route::controller(ImageController::class)->group(function () {
+        Route::get('image-upload', 'index');
+        Route::post('image-upload', 'imageUpload')->name('image.store');
+    });
+    Route::controller(ReceiptController::class)->group(function () {
+        Route::get('/Receipt', 'index');
     });
 });
 

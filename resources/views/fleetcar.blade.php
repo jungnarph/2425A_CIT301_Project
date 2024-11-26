@@ -14,6 +14,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
      <!--Jared CSS -->
      <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+     
+
 
      <style>
         .comment-section {
@@ -29,6 +31,7 @@
             padding: 20px;
             margin-bottom: 10px;
         }
+        
     </style>
 </head>
 <body>
@@ -76,7 +79,42 @@
 
     <div class="row">
         <div class="col-md-4 mt-4">
-            <img src="{{ asset('assets/images/fleet-image/'.$car->carModel->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image">
+            <!-- <img src="{{ asset('assets/images/fleet-image/'.$car->carModel->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image"> -->
+
+            <!-- Static -->
+            <div id="Carousel-Daniel-Slider" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#Carousel-Daniel-Slider" data-slide-to="0" class="active"></li>
+        <li data-target="#Carousel-Daniel-Slider" data-slide-to="1"></li>
+        <li data-target="#Carousel-Daniel-Slider" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Carousel Inner -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ asset('assets/images/slider/Try.jpg') }}" class="d-block w-100 img-fluid" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('assets/images/slider/Try2.jpg') }}" class="d-block w-100 img-fluid" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('assets/images/slider/Try3.jpg') }}" class="d-block w-100 img-fluid" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#Carousel-Daniel-Slider" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#Carousel-Daniel-Slider" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    </div>
+
+
         </div>
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -174,6 +212,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- Font Awesome for icons -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<!--Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
