@@ -60,7 +60,8 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 IF NEW.usertype = 'superadmin' AND 
-                   (SELECT COUNT(*) FROM users WHERE usertype = 'superadmin') > 0 THEN
+                   (SELECT COUNT(*) FROM users WHERE usertype = 'superadmin') > 0 AND
+                   OLD.usertype != 'superadmin' THEN
                     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Only one superadmin is allowed';
                 END IF;
             END

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('return_date'); 
             $table->time('return_time'); 
             $table->string('return_location'); 
-            $table->enum('status',['On Rent', 'Completed', 'Cancelled'])->default('Pending'); 
+            $table->enum('status',['On Rent', 'Completed', 'Cancelled'])->default('On Rent'); 
             $table->date('actual_return_date')->nullable();
             $table->time('actual_return_time')->nullable();
             $table->timestamps();
