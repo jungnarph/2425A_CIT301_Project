@@ -55,51 +55,8 @@
 
     <!--body-->
 
-    <div class="container mt-5">
-        <h2>User Profile</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <img src="{{ asset('assets/images/profile-placeholder.png') }}" alt="Profile Picture" class="card-img-top" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ Auth::user()->username }}</h5>
-                        <p class="card-text">{{ Auth::user()->email }}</p>
-                        <a href="/edit-profile" class="btn btn-primary">Edit Profile</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <h3>About Me</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Vivamus lacinia odio vitae vestibulum. Curabitur ut tincidunt neque.
-                    <br>
-                    <strong>Joined on:</strong> {{ Auth::user()->created_at->format('F j, Y') }}
-                </p>
 
-                <h3>My Services</h3>
-                <ul>
-                    <li>Service 1: Detailed description here.</li>
-                    <li>Service 2: Detailed description here.</li>
-                    <li>Service 3: Detailed description here.</li>
-                    <li>Service 4: Detailed description here.</li>
-                </ul>
-
-                <h3>Contact Information</h3>
-                <ul>
-                    <li><strong>Phone:</strong> <input type="text" placeholder="Enter your phone number"></li>
-                    <li><strong>Address:</strong> <input type="text" placeholder="Enter your address"></li>
-                </ul>
-
-                <h3>Additional Information</h3>
-                <p>
-                    Here you can add any other information relevant to the user profile.
-                    Feel free to customize this section as per your needs.
-                </p>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container3">

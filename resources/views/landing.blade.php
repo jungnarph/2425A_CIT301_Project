@@ -65,7 +65,7 @@
             odit pariatur odio fuga ullam perferendis, eaque sequi ipsa doloribus in deleniti cupiditate. Inventore qui harum consequatur?
         </p>
 
-        <button type="button" style="width: 40%; border-radius: 10px; border: solid white 0.5px; color: white; padding: 10px" class="main-button">Rent cars now</button>
+        <button type="button" style="width: 40%; border-radius: 10px; border: solid white 0.5px; color: white; padding: 10px" class="main-button"><a href="/fleet" style="text-decoration: none; color: white;">Rent cars now</a></button>
     </div>
 
     <!-- Cards -->

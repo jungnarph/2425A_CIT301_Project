@@ -96,7 +96,7 @@
                     Easy cars provides not only just the essence of a linear car renting process, we also provide
                     a wide range of services in the context of rental cars. This includes renting cars with driver services, multi-day
                     rent packages, quick or emergency rentals, and even solely renting the car for personal use, Easy cars
-                    has it all!
+                    has it all! to know more about our services, Click <a href="/services">here</a>
                 </p>
             </div>
         </div>
