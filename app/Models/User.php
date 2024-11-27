@@ -55,4 +55,16 @@ class User extends Authenticatable
     public function transactions() {
         return $this->hasMany(RentalRequest::class, 'user_id');
     }
+
+    public function reservations () {
+        return $this->hasMany('Reservation::class', 'user_id');
+    }
+
+    public function rentals () {
+        return $this->hasMany('Rental::class', 'user_id');
+    }
+
+    public function payments() {
+        return $this->hasMany(Rental::class, 'user_id');
+    }
 }
