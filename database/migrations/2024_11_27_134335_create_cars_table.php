@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('model_id');
             $table->string('plate_number')->unique();
-            $table->text('description');
-            $table->unsignedMediumInteger('base_price');
             $table->boolean('is_available')->default(true);
             $table->timestamps();
 

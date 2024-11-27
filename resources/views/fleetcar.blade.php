@@ -83,14 +83,14 @@
 
     <div class="row">
         <div class="col-md-4 mt-4">
-            <img src="{{ asset('assets/images/fleet-image/'.$car->carModel->image_url) }}" class="img-fluid" alt="{{ $car->model_name }} image">
+            <img src="{{ asset('assets/images/fleet-image/'.$carmodel->image_url) }}" class="img-fluid" alt="{{ $carmodel->model_name }} image">
         </div>
         <div class="col-md-8">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
-            <h2><strong>{{ $car->carModel->model_name ?? 'Model not available' }}</strong></h2>  <!-- Display car model name -->
-            <a href="{{ route('reservation.create', $car->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">Rent Now</a>
+            <h2><strong>{{ $carmodel->model_name ?? 'Model not available' }}</strong></h2>  <!-- Display car model name -->
+            <a href="{{ route('reservation.create', $carmodel->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">Rent Now</a>
         </div>
-        <p style="text-align:justify;">{{ $car->description }}</p>
+        <p style="text-align:justify;">{{ $carmodel->description }}</p>
         <div class="row">
             <div class="col-md-6">
                 <table class="table">
@@ -102,23 +102,23 @@
                     <tbody>
                         <tr>
                             <td><strong>Price:</strong></td>
-                            <td>{{ $car->base_price ?? 'Price not available' }}</td>
+                            <td>{{ $carmodel->base_price ?? 'Price not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Engine:</strong></td>
-                            <td>{{ $car->carModel->engine ?? 'Engine not available' }}</td>
+                            <td>{{ $carmodel->engine ?? 'Engine not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Power:</strong></td>
-                            <td>{{ $car->carModel->power ?? 'Power not available' }}</td>
+                            <td>{{ $carmodel->power ?? 'Power not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Torque:</strong></td>
-                            <td>{{ $car->carModel->torque ?? 'Torque not available' }}</td>
+                            <td>{{ $carmodel->torque ?? 'Torque not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Car Type:</strong></td>
-                            <td>{{ $car->carModel->car_type ?? 'Car type not available' }}</td>
+                            <td>{{ $carmodel->car_type ?? 'Car type not available' }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -133,15 +133,15 @@
                     <tbody>
                         <tr>
                             <td><strong>Transmission:</strong></td>
-                            <td>{{ $car->carModel->transmission_type ?? 'Transmission not available' }}</td>
+                            <td>{{ $carmodel->transmission_type ?? 'Transmission not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Layout:</strong></td>
-                            <td>{{ $car->carModel->layout_type ?? 'Layout not available' }}</td>
+                            <td>{{ $carmodel->layout_type ?? 'Layout not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Seating:</strong></td>
-                            <td>{{ $car->carModel->seat_capacity ?? 'Seating not available' }}</td>
+                            <td>{{ $carmodel->seat_capacity ?? 'Seating not available' }}</td>
                         </tr>
                         <tr>
                             <td><strong>Rating:</strong></td>

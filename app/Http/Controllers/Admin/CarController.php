@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\CarModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CarController extends Controller
 {
@@ -24,8 +25,6 @@ class CarController extends Controller
         $data = $request->validate([
             'model_id' => 'required',
             'plate_number' => 'unique:cars|required',
-            'description' => 'required',
-            'base_price' => 'required',
         ]);
 
         Car::create($data);
@@ -45,10 +44,8 @@ class CarController extends Controller
             'model_id' => 'required',
             'plate_number' => [
                 'required',
-                Rule::unique('cars')->ignore($carmodel->id),
+                Rule::unique('cars')->ignore($car->id),
             ],
-            'description' => 'required',
-            'base_price' => 'required',
         ]);
 
         $car->update($data);

@@ -13,9 +13,9 @@ class FleetController extends Controller
 {
     public function show($id)
     {
-        $car = Car::findOrFail($id);
+        $carmodel = CarModel::findOrFail($id);
 
-        return view('fleetcar', compact('car'));
+        return view('fleetcar', compact('carmodel'));
     }
 }
 

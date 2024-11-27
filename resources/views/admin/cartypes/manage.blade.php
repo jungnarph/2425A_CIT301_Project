@@ -1,17 +1,17 @@
 @extends('admin.layouts.layout')
 @section('admin_title')
-Car Model Management
+Car Type Management
 @endsection
 @section('main_panel')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="btn-toolbar mb-md-0">
-            <h1 class="h2">Car Model Management</h1>
+            <h1 class="h2">Car Type Management</h1>
         </div>
-        <a href="{{ route('create.carmodel') }}" class="btn btn-success create-btn-1">
+        <a href="{{ route('create.cartype') }}" class="btn btn-success create-btn-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
             </svg>
-            <span>Add Car Model</span>
+            <span>Add Car Type</span>
         </a>
     </div>
 
@@ -23,32 +23,26 @@ Car Model Management
 
     <!-- Additional content goes here -->
     <div class="">
-        <a href="{{ route('create.carmodel') }}" class="btn btn-success create-btn-2">
+        <a href="{{ route('create.cartype') }}" class="btn btn-success create-btn-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
             </svg>
-            <span>Add Car Model</span>
+            <span>Add Car Type</span>
         </a>
         <table class="">
             <thead>
                 <tr>
-                    <th>Model Name</th>
-                    <th>Type</th>
-                    <th>Seat Capacity</th>
-                    <th>Transmission</th>
-                    <th>Layout</th>
+                    <th>Car Type</th>
+                    <th>Insurance Fee</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($carmodels as $carmodel)
+                @foreach ($cartypes as $cartype)
                 
                 <tr>
-                    <td data-cell="Model Name">{{ $carmodel->model_name }}</td>
-                    <td data-cell="Type">{{ $carmodel->carType->type_name }}</td>
-                    <td data-cell="Seat Capacity">{{ $carmodel->seat_capacity }}</td>
-                    <td data-cell="Transmission Type">{{ $carmodel->transmission_type }}</td>
-                    <td data-cell="Transmission Type">{{ $carmodel->layout_type }}</td>
+                    <td data-cell="Car Type">{{ $cartype->type_name }}</td>
+                    <td data-cell="Insurance Fee">Php {{ $cartype->insurance_fee }}.00</td>
                     <td>
                         <form style="display:inline;">
                             <!--
@@ -63,7 +57,7 @@ Car Model Management
                                 <span style="display:contents;">View</span>
                             </button>
                         </form>
-                        <form action="{{ route('edit.carmodel', $carmodel->id) }}" style="display:inline;">
+                        <form action="{{ route('edit.cartype', $cartype->id) }}" style="display:inline;">
                             @csrf
                             @method('GET')
                             <button type="submit">
@@ -74,7 +68,7 @@ Car Model Management
                             </button>
                         </form>
 
-                        <form action="{{ route('delete.carmodel', $carmodel->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('delete.cartype', $cartype->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="danger" type="submit">

@@ -11,7 +11,9 @@ class CarModel extends Model
 
     protected $fillable = [
         'model_name',
-        'car_type',
+        'description',
+        'type_id',
+        'base_price',
         'seat_capacity',
         'transmission_type',
         'layout_type',
@@ -20,6 +22,9 @@ class CarModel extends Model
         'torque',
         'image_url',
     ];
+    public function carType() {
+        return $this->belongsTo(CarType::class, 'type_id');
+    }
 
     public function cars() {
         return $this->hasMany(Car::class, 'model_id');

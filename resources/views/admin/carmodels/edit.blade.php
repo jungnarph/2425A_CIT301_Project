@@ -32,15 +32,22 @@
             </div>
             
             <div class="form-group">
+                <label for="carDescription">Description</label>
+                <textarea class="form-control" name="description" placeholder="Enter description" required>{{ $carmodel->description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rentBasePrice">Rent Price</label>
+                <input type="text" class="form-control" name="base_price" placeholder="Enter rent price per day" value="{{ $carmodel->base_price }}"required>
+            </div>
+            
+            <div class="form-group">
                 <label for="carType">Car Type</label>
                 <select class="form-control" id="car_type" name="car_type" required>
                     <option value="" disabled selected>Select car type</option>
-                    <option value="Hatchback" {{ $carmodel->car_type === 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
-                    <option value="MPV" {{ $carmodel->car_type === 'MPV' ? 'selected' : '' }}>Multi-Purpose Vehicle (MPV)</option>
-                    <option value="Sedan" {{ $carmodel->car_type === 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                    <option value="Sports Car" {{ $carmodel->car_type === 'Sports Car' ? 'selected' : '' }}>Sports Car</option>
-                    <option value="SUV" {{ $carmodel->car_type === 'SUV' ? 'selected' : '' }}>Sports Utility Vehicle (SUV)</option>
-                    <option value="Pickup Truck" {{ $carmodel->car_type === 'Pickup Truck' ? 'selected' : '' }}>Pickup Truck</option>
+                    @foreach($cartypes as $cartype)
+                        <option value="{{ $cartype->id }}" {{ $carmodel->carType->id === $cartype->id ? 'selected' : ''}}>{{ $cartype->type_name }}</option>
+                    @endforeach
                 </select>
             </div>
 

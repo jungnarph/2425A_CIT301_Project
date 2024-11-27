@@ -38,9 +38,9 @@ class HomeController extends Controller
     }
     
     public function fleet() {
-        $cars = Car::with('carModel')->get();
+        $carmodels = CarModel::all();
 
-        return view('fleet', compact('cars'));
+        return view('fleet', compact('carmodels'));
     }
         
 }

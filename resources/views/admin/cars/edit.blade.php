@@ -28,6 +28,10 @@
             @method('PUT')
             <div class="form-group">
                 <label for="plateNumber">Plate Number</label>
+                <input type="hidden" class="form-control" id="plate_number" name="plate_number" value="{{ $car->plate_number }}">
+            </div>
+            <div class="form-group">
+                <label for="plateNumber">Plate Number</label>
                 <input type="text" class="form-control" id="plate_number" name="plate_number" value="{{ $car->plate_number }}" disabled>
             </div>
             
@@ -40,18 +44,6 @@
                     @endforeach
                 </select>
             </div>
-
-            <div class="form-group">
-                <label for="carDescription">Description</label>
-                <textarea class="form-control" name="description" placeholder="Enter description" required>{{ $car->description }}</textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="rentBasePrice">Rent Price</label>
-                <input type="text" class="form-control" name="base_price" placeholder="Enter rent price per day" value="{{ $car->base_price }}" required>
-            </div>
-
-            
 
             <div class="form-group row create-form-buttons">
                 <div class="col">
