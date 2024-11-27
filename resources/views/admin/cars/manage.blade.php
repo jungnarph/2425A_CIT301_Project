@@ -44,7 +44,7 @@ Car Management
                 <tr>
                     <td data-cell="Plate Number">{{ $car->plate_number }}</td>
                     <td data-cell="Model Name">{{ $car->carModel->model_name ?? 'N/A' }}</td>
-                    <td data-cell="Rent Price">Php {{ $car->base_price }}.00</td>
+                    <td data-cell="Rent Price">Php {{ $car->carModel->base_price }}.00</td>
                     <td data-cell="Status">
                         {!! $car->isAvailable 
                             ? '<span style="padding: 5px 10px; border-radius: 5px; background-color: black;">On Rent</span>'

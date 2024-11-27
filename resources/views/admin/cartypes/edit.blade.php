@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 @section('admin_title')
-    Create Car
+    Create Car Type
 @endsection
 
 @section('main_panel')
@@ -23,29 +23,25 @@
     @endif
 
     <div class="container-fluid">
-        <form action="{{ route('store.car') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.cartype', $cartype->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="form-group">
-                <label for="plateNumber">Plate Number</label>
-                <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="Enter plate number" required>
+                <label for="type_name">Car Type Name</label>
+                <input type="text" class="form-control" id="type_name" name="type_name" placeholder="Enter car type name" value="{{ $cartype->type_name }}" required>
             </div>
             
             <div class="form-group">
-                <label for="carModel">Car Model</label>
-                <select class="form-control" id="car_model_id" name="model_id" required>
-                    <option value="" disabled selected>Select car model</option>
-                    @foreach($carmodels as $carmodel)
-                        <option value="{{ $carmodel->id }}">{{ $carmodel->model_name }}</option>
-                    @endforeach
-                </select>
+                <label for="insurance_fee">Insurance Fee</label>
+                <input type="text" class="form-control" id="insurance_fee" name="insurance_fee" placeholder="Enter insurance fee" value="{{ $cartype->insurance_fee }}"required>
             </div>
 
             <div class="form-group row create-form-buttons">
                 <div class="col">
-                    <a href="{{ route('manage.cars') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('manage.cartypes') }}" class="btn btn-secondary">Cancel</a>
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </form>

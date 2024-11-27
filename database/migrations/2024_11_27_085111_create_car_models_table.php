@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('car_models', function (Blueprint $table) {
             $table->id();
             $table->string('model_name')->unique();
-            $table->string('car_type');
+            $table->text('description');
+            $table->unsignedBigInteger('type_id');
+            $table->unsignedMediumInteger('base_price');
             $table->tinyInteger('seat_capacity')->unsigned();
             $table->string('transmission_type');
             $table->string('layout_type');
@@ -23,6 +25,8 @@ return new class extends Migration
             $table->string('torque');
             $table->string('image_url');
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('car_types')->onDelete('cascade');
         });
     }
 
