@@ -14,18 +14,16 @@ return new class extends Migration
         Schema::create('rental_requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('car_id');
-            $table->date('pickup_date'); 
-            $table->time('pickup_time'); 
+            $table->unsignedBigInteger('car_model_id');
+            $table->date('pickup_dt'); 
             $table->string('pickup_location'); 
-            $table->date('return_date'); 
-            $table->time('return_time'); 
-            $table->string('return_location'); 
-            $table->enum('status',['Pending', 'Approved', 'Rejected'])->default('Pending'); 
+            $table->datetime('return_dt'); 
+            $table->string('return_location');
+            $table->enum('status',['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
+            $table->foreign('car_model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
 
         DB::statement("

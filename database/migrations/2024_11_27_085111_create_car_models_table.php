@@ -17,9 +17,9 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('type_id');
             $table->unsignedMediumInteger('base_price');
-            $table->tinyInteger('seat_capacity')->unsigned();
-            $table->string('transmission_type');
-            $table->string('layout_type');
+            $table->unsignedTinyInteger('seat_capacity');
+            $table->enum('transmission_type',['Manual', 'Automatic', 'CVT']);
+            $table->enum('layout_type', ['AWD','4WD','FWD','RWD']);
             $table->string('engine');
             $table->string('power');
             $table->string('torque');
