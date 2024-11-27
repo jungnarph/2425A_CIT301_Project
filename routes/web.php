@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/fleet', 'fleet')->name('user.fleet');
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
+        Route::get('/Profile','profile')->name('user.profile');
     });
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'index')->name('user.comment');
