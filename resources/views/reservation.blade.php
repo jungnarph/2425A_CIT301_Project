@@ -60,15 +60,15 @@
 @endif
 <!-- Reservation Form -->
 
-<form id="reservation-form" action="{{ route('reservation.store', $car->id) }}" method="POST" class="container mt-5 p-4 bg-dark text-white rounded">
+<form id="reservation-form" action="{{ route('reservation.store', $carmodel->id) }}" method="POST" class="container mt-5 p-4 bg-dark text-white rounded">
     @csrf
     <!--input type="hidden" name="user_id" value="{{ auth()->user()->id ?? '' }}">
-    <input type="hidden" name="car_id" value="{{ $car->car_id }}">
+    <input type="hidden" name="car_model_id" value="{{ $carmodel->id }}">
     <input type="hidden" name="status" value="Pending"-->
     <div class="row">
         <div class="col-md-8">
             <h1>Easy Car</h1>
-            <p>You are renting: {{ $car->carModel->model_name }}</p>
+            <p>You are renting: {{ $carmodel->model_name }}</p>
             <!-- Pick-up Date and Time -->
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -148,7 +148,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Car Model:</strong> {{ $car->carModel->model_name }}</p>
+                    <p><strong>Car Model:</strong> {{ $carmodel->model_name }}</p>
                     <p><strong>Pick-up Date:</strong> <span id="modal-pickup-date"></span></p>
                     <p><strong>Pick-up Time:</strong> <span id="modal-pickup-time"></span></p>
                     <p><strong>Pick-up Location:</strong> <span id="modal-pickup-location"></span></p>

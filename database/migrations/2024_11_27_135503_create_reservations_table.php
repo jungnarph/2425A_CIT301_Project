@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('car_model_id');
-            $table->date('pickup_dt'); 
+            $table->datetime('pickup_dt'); 
             $table->string('pickup_location'); 
             $table->datetime('return_dt');
             $table->string('return_location');

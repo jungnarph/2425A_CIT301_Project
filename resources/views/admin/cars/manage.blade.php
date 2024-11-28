@@ -46,9 +46,9 @@ Car Management
                     <td data-cell="Model Name">{{ $car->carModel->model_name ?? 'N/A' }}</td>
                     <td data-cell="Rent Price">Php {{ $car->carModel->base_price }}.00</td>
                     <td data-cell="Status">
-                        {!! $car->isAvailable 
-                            ? '<span style="padding: 5px 10px; border-radius: 5px; background-color: black;">On Rent</span>'
-                            : '<span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Available</span>' !!}
+                        {!! $car->is_available 
+                            ? '<span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Available</span>'
+                            : '<span style="padding: 5px 10px; border-radius: 5px; background-color: rgb(80, 80, 197);">On Rent</span>' !!}
                     </td>
                     <td>
                         <div class="button-container">
