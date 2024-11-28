@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Car;
 use App\Models\User;
+use App\Models\Rental;
 use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,12 +17,17 @@ class AdminReservationController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-         return view('admin.reservations.manage', compact('reservations'));
+        return view('admin.reservations.manage', compact('reservations'));
+    }
+
+    public function view($id) {
+        $reservation = Reservation::findOrFail($id);
+        return view('admin.reservations.detail', compact('reservation'));
     }
 
     public function accept($id) {
         $reservation = Reservation::findOrFail($id);
-        $cars = Car::all();
+        $cars = Car::where('is_available', 1)->get();
 
         return view('admin.reservations.accept', compact('reservation', 'cars'));
     }
@@ -29,22 +35,23 @@ class AdminReservationController extends Controller
     public function confirm(Request $request, $id) {
         $reservation = Reservation::findOrFail($id);
 
-        // Ensure the rental request is still pending before accepting
         if ($reservation->status !== 'Pending') {
             return response()->json(['error' => 'This request has already been processed.'], 400);
         }
 
-        // Update the status of the selected rental request to 'Approved'
         $reservation->status = 'Confirmed';
         $reservation->save();
+        
+        // Add to rentals table
 
-        // Reject all other pending requests for the same car model
-        Reservation::where('car_model_id', $reservation->car_model_id)
-            ->where('id', '!=', $reservation->id)
-            ->where('status', 'Pending')
-            ->update(['status' => 'Canceled']);
+        Rental::create([
+            'reservation_id' => $reservation->id,
+            'user_id' => $reservation->user_id,
+            'car_id' => $request->car_id,
+            'has_insurance' => $reservation->has_insurance,
+            'total_amount' => $reservation->total_amount,
+        ]);
 
-        // Update the availability of the car to 'unavailable'
         $car = Car::findOrFail($request->car_id);
         $car->is_available = false;
         $car->save();

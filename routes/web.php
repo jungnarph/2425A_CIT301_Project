@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CarTypeController;
+use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
@@ -98,9 +99,17 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
 
         Route::controller(AdminReservationController::class)->group(function() {
             Route::get('/reservations', 'index')->name('manage.reservations');
+            Route::get('/reservation/{id}', 'view')->name('view.reservation');
             Route::get('/reservation/accept/{id}', 'accept')->name('accept.reservation');
             Route::put('/reservation/confirm/{id}', 'confirm')->name('confirm.reservation');
             Route::put('/reservation/reject/{id}', 'reject')->name('reject.reservation');
+        });
+
+        Route::controller(RentalController::class)->group(function() {
+            Route::get('/rentals', 'index')->name('manage.rentals');
+            Route::get('/rental/{id}', 'view')->name('view.rental');
+            Route::get('/rental/edit/{id}', 'edit')->name('edit.rental');
+            Route::put('/rental/update/{id}', 'update')->name('update.rental');
         });
     });
 });

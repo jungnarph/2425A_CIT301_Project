@@ -12,12 +12,12 @@ class Rental extends Model
         'car_id',
         'pickup_dt',
         'pickup_location',
-        'pickup_odometer',
         'return_dt',
         'return_location',
-        'return_odometer',
+        'has_insurance',
         'total_amount',
         'status',
+        'remarks',
     ];
 
     public function reservation()

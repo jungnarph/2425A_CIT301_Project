@@ -13,6 +13,8 @@ class Reservation extends Model
         'pickup_location',
         'return_dt',
         'return_location',
+        'has_insurance',
+        'total_amount',
         'status',
     ];
 

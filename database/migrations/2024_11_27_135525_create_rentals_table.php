@@ -16,14 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('reservation_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('car_id');
-            $table->date('pickup_dt'); 
-            $table->string('pickup_location');
-            $table->unsignedInteger('pickup_odometer');
-            $table->datetime('return_dt');
-            $table->string('return_location');
-            $table->unsignedInteger('return_odometer'); 
-            $table->unsignedInteger('total_amount');
-            $table->enum('status',['Active', 'Completed', 'Canceled'])->default('Active');
+            $table->datetime('pickup_dt')->nullable(); 
+            $table->string('pickup_location')->nullable();
+            $table->datetime('return_dt')->nullable();
+            $table->string('return_location')->nullable();
+            $table->boolean('has_insurance')->default(false);
+            $table->unsignedInteger('total_amount')->default(10000);
+            $table->enum('status',['Pending', 'Active', 'Completed', 'Missing'])->default('Pending');
+            $table->string('remarks')->nullable();
             $table->timestamps();
 
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');
