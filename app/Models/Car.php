@@ -21,4 +21,8 @@ class Car extends Model
     public function transactions() {
         return $this->hasMany(RentalRequest::class, 'car_id');
     }
+
+    public function rentals() {
+        return $this->hasMany(Rental::class, 'car_id');
+    }
 }

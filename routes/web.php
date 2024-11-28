@@ -10,10 +10,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 
+use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CarTypeController;
-use App\Http\Controllers\Admin\RentalRequestController;
+use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
@@ -95,12 +96,20 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::put('/car/update/{id}', 'update')->name('update.car');
             Route::delete('/car/delete/{id}', 'delete')->name('delete.car');
         });
-        Route::prefix('rental')->group(function() {
-            Route::controller(RentalRequestController::class)->group(function() {
-                Route::get('/requests', 'index')->name('manage.rental.requests');
-                Route::put('/request/accept{id}', 'accept')->name('accept.rental.request');
-                Route::put('/request/reject{id}', 'reject')->name('reject.rental.request');
-            });
+
+        Route::controller(AdminReservationController::class)->group(function() {
+            Route::get('/reservations', 'index')->name('manage.reservations');
+            Route::get('/reservation/{id}', 'view')->name('view.reservation');
+            Route::get('/reservation/accept/{id}', 'accept')->name('accept.reservation');
+            Route::put('/reservation/confirm/{id}', 'confirm')->name('confirm.reservation');
+            Route::put('/reservation/reject/{id}', 'reject')->name('reject.reservation');
+        });
+
+        Route::controller(RentalController::class)->group(function() {
+            Route::get('/rentals', 'index')->name('manage.rentals');
+            Route::get('/rental/{id}', 'view')->name('view.rental');
+            Route::get('/rental/edit/{id}', 'edit')->name('edit.rental');
+            Route::put('/rental/update/{id}', 'update')->name('update.rental');
         });
     });
 });

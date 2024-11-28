@@ -50,7 +50,7 @@
                     <a href="{{ route('manage.cars') }}" class="btn btn-secondary">Cancel</a>
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </form>
