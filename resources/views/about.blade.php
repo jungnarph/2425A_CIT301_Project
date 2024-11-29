@@ -41,11 +41,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/landing">Home</a></l> 
+                    <li class="nav-item"><a class="nav-link" href="/fleet">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Profile">Profile</a></li>
                     @auth
                     <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}" class="d-inline">
@@ -95,7 +96,7 @@
                     Easy cars provides not only just the essence of a linear car renting process, we also provide
                     a wide range of services in the context of rental cars. This includes renting cars with driver services, multi-day
                     rent packages, quick or emergency rentals, and even solely renting the car for personal use, Easy cars
-                    has it all!
+                    has it all! to know more about our services, Click <a href="/services">here</a>
                 </p>
             </div>
         </div>

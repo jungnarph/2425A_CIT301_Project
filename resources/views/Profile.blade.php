@@ -6,10 +6,10 @@
     <title>EasyCars | Home Page</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="Landing.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
@@ -19,6 +19,7 @@
             background: rgb(0, 0, 0);
             background: linear-gradient(90deg, rgba(0, 0, 0, 1) 24%, rgba(212, 212, 212, 1) 100%);
         }
+
     </style>
 </head>
 <body>
@@ -32,12 +33,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/landing">Home</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
                     <li class="nav-item"><a class="nav-link" href="/fleet">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/Profile">Profile</a></li>
                     <!-- Logout Button -->
                     @auth
                     <li class="nav-item">
@@ -52,50 +53,10 @@
         </div>
     </nav>
 
-    <div class="welcome-container">
-        <h3 style="color: white; font-size: 100px;">WELCOME</h3>
+    <!--body-->
 
-        <h2 style="color: white; font-size: 40px;">
-            {{ Auth::user()->username ?? 'Guest' }}
-        </h2>
-        <br>
-        <p style="color: #c7c7c7;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quam quos ex eum culpa voluptatum cupiditate necessitatibus, 
-            corrupti excepturi consequatur? Minima perspiciatis tempora, et autem velit nesciunt nisi est quisquam facilis delectus nobis
-            odit pariatur odio fuga ullam perferendis, eaque sequi ipsa doloribus in deleniti cupiditate. Inventore qui harum consequatur?
-        </p>
 
-        <button type="button" style="width: 40%; border-radius: 10px; border: solid white 0.5px; color: white; padding: 10px" class="main-button"><a href="/fleet" style="text-decoration: none; color: white;">Rent cars now</a></button>
-    </div>
-
-    <!-- Cards -->
-    <div class="card-container">
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/jdm-jdm-cars.gif') }}">
-            <div class="card-content">
-                <h3>Creator</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/NFS Toyota.gif') }}">
-            <div class="card-content">
-                <h3>What is Toyota</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/drive-car.gif') }}">
-            <div class="card-content">
-                <h3>Toyota PH Branch</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container3">

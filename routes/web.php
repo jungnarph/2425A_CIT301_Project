@@ -40,6 +40,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'index')->name('user.comment');
     });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/services', 'services')->name('user.services');
+    });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/Profile', 'Profile')->name('user.services');
+    });
+
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
