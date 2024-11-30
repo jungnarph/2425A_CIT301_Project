@@ -34,8 +34,6 @@
                     <label for="username">User ID / Username / Name</label>
                     <input type="text" class="form-control" id="username" name="username" value="{{ $rental->user_id . ' / ' . $rental->user->username . ' / ' . $rental->user->First_name . ' ' . $rental->user->Last_name }}" disabled>
                 </div>
-
-                
             </div>
 
             <div class="row">                

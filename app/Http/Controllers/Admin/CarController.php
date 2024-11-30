@@ -11,7 +11,9 @@ use Illuminate\Validation\Rule;
 class CarController extends Controller
 {
     public function index() {
-        $cars = Car::with('carModel')->get();
+        $cars = Car::with('carModel')
+            ->orderBy('plate_number', 'asc')
+            ->get();
         return view("admin.cars.manage", compact("cars"));
     }
 

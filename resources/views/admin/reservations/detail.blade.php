@@ -24,20 +24,24 @@
 
     <div class="container-fluid">
         <form>
-            <div class="form-group">
-                <label for="reservation_id">Reservation ID</label>
-                <input type="text" class="form-control" id="reservation_id" name="reservation_id" value="{{ $reservation->id }}" disabled>
+            <div class="row">
+                <div class="col-lg-6 mt-2 mb-2">
+                    <label for="reservation_id">Reservation ID</label>
+                    <input type="text" class="form-control" id="reservation_id" name="reservation_id" value="{{ $reservation->id }}" disabled>
+                </div>
+                <div class="col-lg-6 mt-2 mb-2">
+                <label for="user_id">UserID / Username / Name</label>
+                <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $reservation->user_id . ' / ' . $reservation->user->username . ' / ' . $reservation->user->First_name . ' ' . $reservation->user->Last_name }}" disabled>
             </div>
+            </div>
+            
 
             <div class="form-group">
                 <label for="status">Reservation Status</label>
                 <input type="text" class="form-control" id="reservation_status" name="status" value="{{ $reservation->status }}" disabled>
             </div>
 
-            <div class="form-group">
-                <label for="user_id">UserID / Username / Name</label>
-                <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $reservation->user_id . ' / ' . $reservation->user->username . ' / ' . $reservation->user->First_name . ' ' . $reservation->user->Last_name }}" disabled>
-            </div>
+            
 
             <div class="form-group">
                 <label for="car_model_id">Car Model</label>
