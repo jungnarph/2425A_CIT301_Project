@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Rental;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RentalController extends Controller
 {
@@ -26,7 +27,6 @@ class RentalController extends Controller
 
         return view('admin.rentals.detail', compact('rental', 'users', 'cars'));
     }
-
 
     public function edit(Request $request, $id) {
         $status = $request->query('status', 'null');
@@ -59,12 +59,20 @@ class RentalController extends Controller
                 'remarks' => $request->remarks
             ]);
 
+            // Mark the car as available again
             $car = Car::findOrFail($rental->car_id);
             $car->is_available = true;
             $car->save();
 
+            // Send a completion email to the user
+            Mail::send('emails.rental_completed', ['rental' => $rental], function ($message) use ($rental) {
+                $message->to($rental->user->email)
+                        ->subject('Your Rental is Completed');
+            });
+
             return redirect()->route('manage.rentals')->with('success', 'Rental ID #' . $rental->id . ' set to "Completed".');
         }
+
         return redirect()->route('manage.rentals')->with('error', 'Cannot update the rental details.');
     }
 }
