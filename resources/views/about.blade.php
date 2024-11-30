@@ -34,17 +34,23 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/images/project-logo-rectangle.jfif') }}" alt="Logo" width="auto" height="75">
+                <img src="{{ asset('assets/images/project-logo-rectangle.png') }}" alt="Logo" width="auto" height="75">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
+<<<<<<< Updated upstream
                     <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/About">About</a></li>
+=======
+                    <li class="nav-item"><a class="nav-link" href="/fleet">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
+>>>>>>> Stashed changes
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     @auth
                     <li class="nav-item">

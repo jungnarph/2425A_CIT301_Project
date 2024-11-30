@@ -18,7 +18,14 @@ return new class extends Migration
             $table->date('return_date'); 
             $table->time('return_time'); 
             $table->string('return_location'); 
+<<<<<<< Updated upstream:database/migrations/2024_11_24_063243_create_reservations_table.php
             $table->string('status'); 
+=======
+            $table->enum('status',['On Rent', 'Completed', 'Cancelled']);
+            $table->date('actual_return_date')->nullable();
+            $table->time('actual_return_time')->nullable();
+            $table->timestamps();
+>>>>>>> Stashed changes:database/migrations/2024_11_25_123830_create_rental_transactions_table.php
 
             // Foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

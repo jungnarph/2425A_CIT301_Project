@@ -20,8 +20,18 @@ class Car extends Model
         return $this->belongsTo(CarModel::class, 'model_id');
     }
 
+<<<<<<< Updated upstream
     public function carImages()
 {
     return $this->hasMany(CarImage::class, 'car_id', 'car_id');
+=======
+    public function transactions() {
+        return $this->hasMany(RentalRequest::class, 'car_id');
+    }
+
+    public function comments()
+{
+    return $this->hasMany(Comment::class);
+>>>>>>> Stashed changes
 }
 }

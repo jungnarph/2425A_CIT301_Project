@@ -33,9 +33,20 @@ Route::get('/about', function () {
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/fleet', 'fleet')->name('user.fleet');
+<<<<<<< Updated upstream
+=======
+        Route::get('/services','services')->name('user.services');
+        Route::get('/about','about')->name('user.about');
+    });
+    Route::controller(CommentController::class)->group(function(){
+        Route::get('/comment', 'show')->name('comments.show');
+        Route::get('/car/{id}/comment', 'create')->name('comments.create');
+        Route::post('/car/{id}/comment', 'store')->name('comments.store');
+>>>>>>> Stashed changes
     });
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
+        
     });
     Route::controller(UserReservationController::class)->group(function () {
         Route::get('/transaction/{id}', 'create')->name('reservations.create');

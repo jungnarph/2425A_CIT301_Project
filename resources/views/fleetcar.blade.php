@@ -18,6 +18,7 @@
 
 
      <style>
+<<<<<<< Updated upstream
         .comment-section {
             margin-top: 40px;
         }
@@ -32,6 +33,23 @@
             margin-bottom: 10px;
         }
         
+=======
+    .comment-section {
+    margin-left: 0;
+    margin-right: 0;
+    }
+    .card {
+        margin: 0;
+    }
+    .row {
+        margin-left: 0; 
+        margin-right: 0; 
+    }
+    .col-md-10 {
+        padding-left: 15px; 
+        padding-right: 15px;
+    }
+>>>>>>> Stashed changes
     </style>
 </head>
 <body>
@@ -39,12 +57,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{asset('assets/images/project-logo-rectangle.jfif') }}" alt="Logo" width="auto" height="75">
+                <img src="{{ asset('assets/images/project-logo-rectangle.png') }}" alt="Logo" width="auto" height="75">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+<<<<<<< Updated upstream
                 <ul class="navbar-nav ms-auto"> <!-- All items on the right -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -61,6 +80,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+=======
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
+                    <li class="nav-item"><a class="nav-link active" href="/fleet">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    @auth
+>>>>>>> Stashed changes
                     <li class="nav-item">
                         <a class="nav-link" href="/signin">
                             <i class="bi bi-person" style="margin-right:0.5rem;"></i>
@@ -188,24 +216,36 @@
 
 <!-- Comment Section -->
 <div class="container comment-section">
-    <div class="row">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-12">
-            <div class="comment-area">
-                <h5>Comment from the users</h5>
-                <div>
-                    <p><strong>User 1:</strong> I love BBC, big black Co</p>
+            <h5 class="mb-4 text-center text-danger">What others are saying</h5>
+
+            @foreach ($comments as $comment)
+                <div class="card mb-4 border-danger shadow-sm w-100">  <!-- Added w-100 to stretch the card -->
+                    <div class="card-body">
+                        <!-- User name and rating -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-white mb-0">{{ $comment->user->username }}</h6>
+                            <div class="rating">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <i class="fa fa-star {{ $i <= $comment->rate ? 'text-warning' : 'text-muted' }}"></i>
+                                @endfor
+                            </div>
+                        </div>
+
+                        <!-- Comment content -->
+                        <p class="mt-2 text-white">{{ $comment->content }}</p>
+
+                        <!-- Date and time -->
+                        <p class="text-muted mt-2 mb-0">Posted on: {{ $comment->created_at ? $comment->created_at->format('Y-m-d H:i') : 'Date not available' }}</p>
+                    </div>
                 </div>
-                <div>
-                    <p><strong>User 2:</strong> The tree of life sprouts everywhere</p>
-                </div>
-                <div>
-                    <p><strong>User 3:</strong> Cavite no. 1</p>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        </div>  
     </div>
 </div>
 
+<<<<<<< Updated upstream
 <!-- jQuery for Bootstrap's JavaScript plugins -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <!-- Popper.js for Bootstrap's JavaScript plugins -->
@@ -214,6 +254,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 <!--Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+=======
+
+
+
+<!-- Bootstrap and Font Awesome Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+>>>>>>> Stashed changes
 
 </body>
 </html>

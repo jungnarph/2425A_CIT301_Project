@@ -32,25 +32,33 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{{asset('assets/images/project-logo-rectangle.jfif') }}" alt="Logo" width="auto" height="75">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/fleet">Fleet</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="/signin"><i class="bi bi-person" style="margin-right:0.5rem;"></i></a></li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('assets/images/project-logo-rectangle.png') }}" alt="Logo" width="auto" height="75">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/landing">Home</a></li> 
+                    <li class="nav-item"><a class="nav-link active" href="/fleet">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    @auth
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link" style="color: red; text-decoration: none;">Logout</button>
+                        </form>
+                    </li>
+                    @endauth
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+    
 <!-- Success and Car Information Messages -->
 @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -120,6 +128,15 @@
                     <option>Tagaytay Rotonda, Tagaytay City</option>
                 </select>
             </div>
+
+            <!-- Insurance Option -->
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="insurance-checkbox" name="insurance">
+                <label class="form-check-label" for="insurance-checkbox">I would like to include insurance for an additional fee (php 1000).</label>
+            </div>
+
+            <p>(Note that by submitting this form, any negligence that you commit can cost 500 pesos depending on the penalty.)</p>
+
             <!-- Submit Button -->
             <div class="d-flex justify-content-center mt-3">
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
@@ -132,6 +149,7 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream:resources/views/transaction.blade.php
 
 <!-- Confirmation Modal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
@@ -155,6 +173,30 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
+=======
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Confirm Your Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Car Model:</strong> {{ $car->carModel->model_name }}</p>
+                    <p><strong>Pick-up Date:</strong> <span id="modal-pickup-date"></span></p>
+                    <p><strong>Pick-up Time:</strong> <span id="modal-pickup-time"></span></p>
+                    <p><strong>Pick-up Location:</strong> <span id="modal-pickup-location"></span></p>
+                    <p><strong>Return Date:</strong> <span id="modal-return-date"></span></p>
+                    <p><strong>Return Time:</strong> <span id="modal-return-time"></span></p>
+                    <p><strong>Return Location:</strong> <span id="modal-return-location"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="confirm-button" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
+                </div>
+>>>>>>> Stashed changes:resources/views/reservation.blade.php
             </div>
         </div>
     </div>
