@@ -13,6 +13,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
 
     <style>
         .main-button {

@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="Landing.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
     <style>
         .main-button {
             background: linear-gradient(90deg, rgba(0, 0, 0, 1) 24%, rgba(212, 212, 212, 1) 100%);

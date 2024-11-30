@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
