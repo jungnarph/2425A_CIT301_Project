@@ -1,0 +1,147 @@
+/* General body styles */
+
+/* Welcome container */
+.welcome-container {
+    max-width: 600px;
+    height: 75vh;
+    margin-top: 120px;
+    margin-left: 200px;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+/* Responsive typography */
+.welcome-container h3 {
+    font-size: 100px;
+}
+
+.welcome-container h2 {
+    font-size: 40px;
+}
+
+.welcome-container p {
+    font-size: 16px;
+}
+
+/* register container */
+.register-container {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid white 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.login-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid white 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 10px;
+    padding: 60px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+input::placeholder{
+    color: white !important; /* Ensure the placeholder color is white */
+    opacity: 0.5; /* Adjust the opacity if needed */
+}
+
+.register-btn{
+    width: 100%;
+    background-color: #d4d4d4;
+}
+
+.form-floating .form-label {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-floating .form-control:focus + .form-label {
+    opacity: 1;
+}
+
+/* Button styles */
+
+.register-btn:hover {
+    background-color: none; 
+    color: none;            
+    border: none;               
+    box-shadow: none;           
+    transition: none;          
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    /* Adjusting welcome container for smaller screens */
+    .welcome-container {
+        margin-left: 20px; /* Keep the left alignment, just reduce margin for smaller screens */
+    }
+
+    /* Scaling down text */
+    .welcome-container h3 {
+        font-size: 50px;
+    }
+
+    .welcome-container h2 {
+        font-size: 24px;
+    }
+
+    .welcome-container p {
+        font-size: 14px;
+    }
+
+    /* Adjust button width */
+    button {
+        width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for extra small screens */
+    .welcome-container {
+        margin-left: 10px; /* Keep it aligned left, but with less margin on very small screens */
+    }
+
+    .welcome-container h3 {
+        font-size: 40px;
+    }
+
+    .welcome-container h2 {
+        font-size: 20px;
+    }
+
+    .welcome-container p {
+        font-size: 12px;
+    }
+
+    /* Adjust button width */
+    button {
+        width: 80%;
+    }
+}
+
+.body-container{
+    height: 500px;
+    margin-top: 2rem;
+}
+
+.items{
+
+}
+
+.items li{
+    margin-top: 1.5rem;
+    list-style-type: none;
+}
