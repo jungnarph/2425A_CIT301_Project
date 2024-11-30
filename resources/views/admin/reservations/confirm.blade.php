@@ -56,6 +56,7 @@
                     <a href="{{ route('manage.reservations') }}" class="btn btn-secondary">Cancel</a>
                 </div>
                 <div class="col">
+                    <!--MAILER EVENT-->
                     <button type="submit" class="btn btn-primary">Confirm</button>
                 </div>
             </div>

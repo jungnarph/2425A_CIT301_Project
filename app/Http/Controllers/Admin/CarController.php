@@ -16,7 +16,7 @@ class CarController extends Controller
     }
 
     public function create() {
-        $carmodels = CarModel::all();
+        $carmodels = CarModel::orderBy('model_name', 'asc')->get();
 
         return view('admin.cars.create', compact('carmodels'));
     }
