@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('engine');
             $table->string('power');
             $table->string('torque');
+            $table->unsignedTinyInteger('avg_rating')->nullable();
             $table->string('image_url');
             $table->timestamps();
 

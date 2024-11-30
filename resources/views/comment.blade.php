@@ -54,41 +54,115 @@
             </div>
         </div>
     </nav>
+
+    <div class="container my-3">
+        <div class="row">
+        <h3 class="mt-3 text-center"><strong>What is your experience with the {{ $carmodel->model_name }}?</strong></h3>
+            <div class="col-lg-4">
+                <img src="{{ asset('assets/images/fleet-image/'.$carmodel->image_url) }}" class="img-fluid" alt="{{ $carmodel->model_name }} image">
+            </div>
+            <div class="col-lg-8">
+                <div class="col-lg-12 d-flex justify-content-between align-items-center my-3">
+                    <h2><strong></strong></h2>  <!-- Display car model name -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"><strong>Car Details</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 40%"><strong>Car Type:</strong></td>
+                                    <td style="width: 60%">{{ $carmodel->carType->type_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Transmission:</strong></td>
+                                    <td>{{ $carmodel->transmission_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Layout:</strong></td>
+                                    <td>{{ $carmodel->layout_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Seating:</strong></td>
+                                    <td>{{ $carmodel->seat_capacity }}</td>
+                                </tr>                         
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"><strong>Rental Details</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 40%"><strong>Rental ID:</strong></td>
+                                    <td style="width: 60%">{{ $rental->id }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Plate Number:</strong></td>
+                                    <td>{{ $rental->car->plate_number }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pickup Date:</strong></td>
+                                    <td>{{ \Carbon\Carbon::parse($rental->pickup_dt)->format('F d, Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Return Date:</strong></td>
+                                    <td>{{ \Carbon\Carbon::parse($rental->return_dt)->format('F d, Y') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container comment-section py-4">
         <div class="row justify-content-center">
             <div class="col-md-10"> 
                 <!-- Comment Form -->
-                <h3 class="mb-3 mt-3 text-center"><strong>What is your experience with the Car?</strong></h3>
-                <form action="" method="POST">
+                
+                <form action="{{ route('comment.store', ['rental_id' => $rental->id, 'token' => $rental->token]) }}" method="POST">
                     @csrf
-                    <input type="hidden" name="car_id" value="{{ 1 }}">
-                    <div class="mb-3">
-                        <textarea name="content" class="form-control" rows="4" placeholder="Type your comment here..." required></textarea>
-                    </div>
-                    <div class="mb-3">
-                    <label for="rate" class="form-label">Rate your experience:</label>
-                    <div id="rate" class="stars">
-                        <input type="radio" name="rate" value="1" id="star1" class="rating-star" required>
-                        <label for="star1" class="star-label">&#9733;</label>
-                        <input type="radio" name="rate" value="2" id="star2" class="rating-star" required>
-                        <label for="star2" class="star-label">&#9733;</label>
-                        <input type="radio" name="rate" value="3" id="star3" class="rating-star" required>
-                        <label for="star3" class="star-label">&#9733;</label>
-                        <input type="radio" name="rate" value="4" id="star4" class="rating-star" required>
-                        <label for="star4" class="star-label">&#9733;</label>
-                        <input type="radio" name="rate" value="5" id="star5" class="rating-star" required>
-                        <label for="star5" class="star-label">&#9733;</label>
-                    </div>
-                        <input type="hidden" name="rate" id="rate-input" value="">
+                    <input type="hidden" name="rental_id" value="{{ $rental->id }}">
+                    <div class="row">
+                        <div class="col-lg-3 mb-2 rating-div">
+                            <label for="rate_star" class="form-label"><strong>Rate your experience:</strong></label>
+                            <div id="rate" class="stars">
+                                <input type="radio" name="rate_star" value="1" id="star1" class="rating-star">
+                                <label for="star1" class="star-label">&#9733;</label>
+                                <input type="radio" name="rate_star" value="2" id="star2" class="rating-star">
+                                <label for="star2" class="star-label">&#9733;</label>
+                                <input type="radio" name="rate_star" value="3" id="star3" class="rating-star">
+                                <label for="star3" class="star-label">&#9733;</label>
+                                <input type="radio" name="rate_star" value="4" id="star4" class="rating-star">
+                                <label for="star4" class="star-label">&#9733;</label>
+                                <input type="radio" name="rate_star" value="5" id="star5" class="rating-star">
+                                <label for="star5" class="star-label">&#9733;</label>
+                            </div>
+                            <input type="hidden" name="rate" id="rate-input" value="5">
+                        </div>
+                        <div class="col-lg-9 mb-2">
+                            <textarea name="content" class="form-control" rows="4" placeholder="Type your comment (Commenting as {{ $rental->user->username }}...)" required></textarea>
+                        </div>
                     </div>
                     
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-danger">Post Comment</button>
+                        <button type="submit" class="btn btn-danger" id="post-comment" >Post Comment</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
     <script>
     // Listen for changes on radio buttons
         document.querySelectorAll('.rating-star').forEach(star => {

@@ -6,6 +6,7 @@ class Comment extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'rental_id',
         'user_id',
         'car_model_id',
         'content',

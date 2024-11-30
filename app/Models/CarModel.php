@@ -20,6 +20,7 @@ class CarModel extends Model
         'engine',
         'power',
         'torque',
+        'average_rating',
         'image_url',
     ];
     

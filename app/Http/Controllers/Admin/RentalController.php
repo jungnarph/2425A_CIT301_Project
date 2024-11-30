@@ -8,6 +8,7 @@ use App\Models\Rental;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RentalController extends Controller
 {
@@ -52,11 +53,12 @@ class RentalController extends Controller
         }
 
         else if ($request->status === 'Completed' && $request->return_dt !== null && $request->return_location !== null) {
+            $generatedToken = Str::random(32);
             $rental->update([
                 'return_dt' => $request->return_dt,
                 'return_location' => $request->return_location,
                 'status' => $request->status,
-                'remarks' => $request->remarks
+                'token' => $generatedToken,
             ]);
 
             // Mark the car as available again
@@ -64,8 +66,12 @@ class RentalController extends Controller
             $car->is_available = true;
             $car->save();
 
-            // Send a completion email to the user
-            Mail::send('emails.rental_completed', ['rental' => $rental], function ($message) use ($rental) {
+            $commentLink = route('comment.show', [
+                'rental_id' => $rental->id,
+                'token' => $rental->token,
+            ]);
+
+            Mail::send('emails.rental_completed', ['rental' => $rental, 'commentLink' => $commentLink], function ($message) use ($rental) {
                 $message->to($rental->user->email)
                         ->subject('Your Rental is Completed');
             });

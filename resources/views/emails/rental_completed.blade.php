@@ -70,7 +70,7 @@
         <div class="footer">
             <p>Best regards,</p>
             <p>The Easy Cars Team</p>
-            <a href="{{ route('comments') }}" class="button">JARED DITO YUNG COMMENT MO</a>
+            <a href="{{ $commentLink }}" class="button">Leave a Comment</a>
         </div>
     </div>
 </body>
