@@ -25,11 +25,11 @@ class AdminReservationController extends Controller
         return view('admin.reservations.detail', compact('reservation'));
     }
 
-    public function accept($id) {
+    public function assign($id) {
         $reservation = Reservation::findOrFail($id);
         $cars = Car::where('is_available', 1)->get();
 
-        return view('admin.reservations.accept', compact('reservation', 'cars'));
+        return view('admin.reservations.confirm', compact('reservation', 'cars'));
     }
 
     public function confirm(Request $request, $id) {
@@ -56,8 +56,19 @@ class AdminReservationController extends Controller
         $car->is_available = false;
         $car->save();
 
-        return redirect()
-            ->route('manage.reservations')
-            ->with('success','Selected request accepted. Other similar requests rejected automatically.');
+        return redirect()->route('manage.reservations')->with('success','Selected reservation request confirmed.');
+    }
+
+    public function cancel($id) {
+        $reservation = Reservation::findOrFail($id);
+
+        if ($reservation->status !== 'Pending') {
+            return response()->json(['error' => 'This request has already been processed.'], 400);
+        }
+
+        $reservation->status = 'Canceled';
+        $reservation->save();
+
+        return redirect()->route('manage.reservations')->with('success','Selected reservation request canceled.');
     }
 }

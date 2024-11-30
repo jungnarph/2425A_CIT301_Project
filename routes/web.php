@@ -100,9 +100,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         Route::controller(AdminReservationController::class)->group(function() {
             Route::get('/reservations', 'index')->name('manage.reservations');
             Route::get('/reservation/{id}', 'view')->name('view.reservation');
-            Route::get('/reservation/accept/{id}', 'accept')->name('accept.reservation');
-            Route::put('/reservation/confirm/{id}', 'confirm')->name('confirm.reservation');
-            Route::put('/reservation/reject/{id}', 'reject')->name('reject.reservation');
+            Route::get('/reservation/confirm/{id}', 'assign')->name('assign.reservation');
+            Route::put('/reservation/{id}/confirm', 'confirm')->name('confirm.reservation');
+            Route::put('/reservation/reject/{id}', 'cancel')->name('cancel.reservation');
         });
 
         Route::controller(RentalController::class)->group(function() {

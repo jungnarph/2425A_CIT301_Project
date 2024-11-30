@@ -41,7 +41,7 @@ class RentalController extends Controller
     public function update(Request $request, $id) {
         $rental = Rental::findOrFail($id);
 
-        if ($request->status === 'Active' && $request->pickup_dt !== null && $request->pickup_locatiion !== null) {
+        if ($request->status === 'Active' && $request->pickup_dt !== null && $request->pickup_location !== null) {
             $rental->update([
                 'pickup_dt' => $request->pickup_dt,
                 'pickup_location' => $request->pickup_location,
