@@ -14,6 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
      <!--Jared CSS -->
      <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
 
      <style>
         .comment-section {
@@ -153,27 +154,39 @@
         </div>
     </div>
 </div>
+
 <hr>
 
 <!-- Comment Section -->
 <div class="container comment-section">
     <div class="row">
         <div class="col-md-12">
+            <h4>Comments</h5>
+            @if ($comments->isNotEmpty())
+            @foreach ($comments as $comment)
             <div class="comment-area">
-                <h5>Comment from the users</h5>
                 <div>
-                    <p><strong>User 1:</strong> I love BBC, big black Co</p>
+                    <p><strong>{{ $comment->user->username }} ({{ $comment->user->First_name }} {{ $comment->user->Last_name }})</strong></p>
                 </div>
                 <div>
-                    <p><strong>User 2:</strong> The tree of life sprouts everywhere</p>
+                    <p>Rating: <strong>{{ $comment->rate }} out of 5 stars</strong></p>
                 </div>
                 <div>
-                    <p><strong>User 3:</strong> Cavite no. 1</p>
+                    <p>{{ $comment->content }}</p>
                 </div>
             </div>
+            @endforeach
+            @else
+            <div class="comment-area">
+                <div>
+                    <h5 class="text-center">No comments yet</h4>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>
+
 
 <!-- jQuery for Bootstrap's JavaScript plugins -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

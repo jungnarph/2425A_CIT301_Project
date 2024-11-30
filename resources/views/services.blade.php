@@ -10,6 +10,7 @@
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
     <style>
     </style>
 </head>

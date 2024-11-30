@@ -13,6 +13,7 @@
     <!-- Include Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
     <!-- Include Google Maps API -->
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXJEWGHWLIAHMrG5u8foaJ3psh05KTCOM&callback=initMap" async defer></script>
     
     <style>

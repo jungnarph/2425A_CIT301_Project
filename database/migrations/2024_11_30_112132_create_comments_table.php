@@ -11,14 +11,16 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();  
+            $table->unsignedBigInteger('rental_id');
             $table->unsignedBigInteger('user_id'); 
             $table->unsignedBigInteger('car_model_id');  
             $table->text('content');               
             $table->integer('rate');               
             $table->timestamps();         
 
+            $table->foreign('rental_id')->references('id')->on('rentals')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('car_id')->references('id')->on('carmodels')->onDelete('cascade');
+            $table->foreign('car_model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
     }
     /**

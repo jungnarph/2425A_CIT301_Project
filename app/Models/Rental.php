@@ -17,7 +17,7 @@ class Rental extends Model
         'has_insurance',
         'total_amount',
         'status',
-        'remarks',
+        'token',
     ];
 
     public function reservation()

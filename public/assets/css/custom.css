@@ -357,7 +357,6 @@ footer .container3 .contactus .info li a {
     background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
   }
 
-
 .stars {
     display: flex;
     justify-content: flex-start;
@@ -366,25 +365,23 @@ footer .container3 .contactus .info li a {
 .rating-star {
     display: none; /* Hide the radio buttons */
 }
+
 .star-label {
     font-size: 2rem;
-    color: #d3d3d3; /* Light grey color */
+    color: #ffcc00; /* Light grey color */
     cursor: pointer;
     transition: color 0.3s ease;
 }
-/* Highlight stars on hover from left to right */
-.stars .star-label:hover,
-.stars .star-label:hover ~ .star-label {
-    color: #ffcc00; /* Gold color on hover */
-}
+
 /* Style for selected stars when checked */
-.rating-star:checked + .star-label,
-.rating-star:checked ~ .rating-star:checked + .star-label {
-    color: #ffcc00; /* Gold color when selected */
+.rating-star:checked + .star-label ~ .star-label {
+    color: #d3d3d3;
 }
+
 .stars .star-label {
     margin: 0 5px;
 }
+
 /* Prevent selecting after clicking */
 .rating-star:checked + .star-label {
     pointer-events: none;
@@ -440,6 +437,22 @@ footer .container3 .contactus .info li a {
     .copyrightText {
         padding: 20px 40px 30px;
     }
+
+    .rating-div {
+        text-align: center;
+    }
+    
+    .stars {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #post-comment {
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -449,4 +462,6 @@ footer .container3 .contactus .info li a {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 20px;
     }
+
+    
 }

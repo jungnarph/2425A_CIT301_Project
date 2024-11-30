@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedInteger('total_amount')->default(10000);
             $table->boolean('is_paid')->default(false);
             $table->enum('status',['Pending', 'Active', 'Completed', 'Missing'])->default('Pending');
-            $table->string('remarks')->nullable();
+            $table->string('token', 64)->nullable();
             $table->timestamps();
 
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');
