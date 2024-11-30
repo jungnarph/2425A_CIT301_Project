@@ -27,7 +27,9 @@ class AdminReservationController extends Controller
 
     public function assign($id) {
         $reservation = Reservation::findOrFail($id);
-        $cars = Car::where('is_available', 1)->get();
+        $cars = Car::where('is_available', 1)
+            ->where('model_id', '=', $reservation->car_model_id)
+            ->get();
 
         return view('admin.reservations.confirm', compact('reservation', 'cars'));
     }
