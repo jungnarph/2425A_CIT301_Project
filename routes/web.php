@@ -37,8 +37,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
     });
+    # wait lang di pa ayos to wag galawin to
     Route::controller(CommentController::class)->group(function(){
-        Route::get('/comment', 'index')->name('user.comment');
+        Route::get('/comment', 'index')->name('comments');
     });
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');

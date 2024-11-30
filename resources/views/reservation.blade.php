@@ -43,14 +43,15 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="/fleet">Fleet</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="/signin"><i class="bi bi-person" style="margin-right:0.5rem;"></i></a></li>
             </ul>
         </div>
     </div>
 </nav>
+
 <!-- Success and Car Information Messages -->
 @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -58,13 +59,13 @@
 @if (session('car'))
     <div class="alert alert-info">You have reserved: {{ session('car')->carModel->model_name ?? 'Unknown Model' }}</div>
 @endif
-<!-- Reservation Form -->
 
+<!-- Reservation Form -->
 <form id="reservation-form" action="{{ route('reservation.store', $carmodel->id) }}" method="POST" class="container mt-5 p-4 bg-dark text-white rounded">
     @csrf
-    <!--input type="hidden" name="user_id" value="{{ auth()->user()->id ?? '' }}">
+    <input type="hidden" name="user_id" value="{{ auth()->user()->id ?? '' }}">
     <input type="hidden" name="car_model_id" value="{{ $carmodel->id }}">
-    <input type="hidden" name="status" value="Pending"-->
+    <input type="hidden" name="status" value="Pending">
     <div class="row">
         <div class="col-md-8">
             <h1>Easy Car</h1>
@@ -123,6 +124,14 @@
                     <option value="Tagaytay Rotonda, Tagaytay City" >Tagaytay Rotonda, Tagaytay City</option>
                 </select>
             </div>
+
+            <!-- Insurance Option -->
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="insurance-checkbox" name="insurance">
+                <label class="form-check-label" for="insurance-checkbox">I would like to include insurance for an additional fee (php 1000).</label>
+            </div>
+            <p>(Note that by submitting this form, any negligence that you commit can cost 500 pesos depending on the penalty.)</p>
+            
             <!-- Submit Button -->
             <div class="d-flex justify-content-center mt-3">
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmationModal">Submit</button>
