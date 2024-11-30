@@ -70,7 +70,7 @@
         <div class="footer">
             <p>Best regards,</p>
             <p>The Easy Cars Team</p>
-            <a href="#" class="button">JARED DITO YUNG COMMENT MO</a>
+            <a href="{{ route('comments') }}" class="button">JARED DITO YUNG COMMENT MO</a>
         </div>
     </div>
 </body>
