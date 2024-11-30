@@ -24,47 +24,56 @@
 
     <div class="container-fluid">
         <form>
-            <div class="form-group">
-                <label for="rental_id">Rental ID / Reservation ID</label>
-                <input type="text" class="form-control" id="rental_id" name="rental_id" value="{{ $rental->id . ' / ' . $rental->reservation_id ?? 'No reservation placed' }}" disabled>
-            </div>
+            <div class="row">
+                <div class="col-md-8 mt-2 mb-2">
+                    <label for="rental_id">Rental ID / Reservation ID</label>
+                    <input type="text" class="form-control" id="rental_id" name="rental_id" value="{{ $rental->id . ' / ' . $rental->reservation_id ?? 'No reservation placed' }}" disabled>
+                </div>
 
-            <div class="form-group">
-                <label for="status">Rental Status</label>
-                <input type="text" class="form-control" id="reservation_status" name="status" value="{{ $rental->status }}" disabled>
+                <div class="col-md-4 mt-2">
+                    <label for="status">Rental Status</label>
+                    <input type="text" class="form-control" id="reservation_status" name="status" value="{{ $rental->status }}" disabled>
+                </div>
             </div>
 
             <hr>
 
-            <div class="form-group">
-                <label for="username">User ID / Username / Name</label>
-                <input type="text" class="form-control" id="username" name="username" value="{{ $rental->user_id . ' / ' . $rental->user->username . ' / ' . $rental->user->First_name . ' ' . $rental->user->Last_name }}" disabled>
-            </div>
+            <div class="row">
+                <div class="col-lg-7 mt-2 mb-2">
+                    <label for="username">User ID / Username / Name</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ $rental->user_id . ' / ' . $rental->user->username . ' / ' . $rental->user->First_name . ' ' . $rental->user->Last_name }}" disabled>
+                </div>
 
-            <div class="form-group">
-                <label for="car_model_name_plate_number">Car / Plate Number</label>
-                <input type="text" class="form-control" id="car_model_name_plate_number" name="car_model_name_plate_number" value="{{ $rental->car->carModel->model_name . ' / ' . $rental->car->plate_number }}" disabled>
+                <div class="col-lg-5 mt-2 mb-2">
+                    <label for="car_model_name_plate_number">Car / Plate Number</label>
+                    <input type="text" class="form-control" id="car_model_name_plate_number" name="car_model_name_plate_number" value="{{ $rental->car->carModel->model_name . ' / ' . $rental->car->plate_number }}" disabled>
+                </div>
             </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mt-2 mb-2">
+                    <label for="pickup_dt">Pickup Date and Time</label>
+                    <input type="text" class="form-control" id="pickup_dt" name="pickup_dt" value="{{ $rental->pickup_dt ?? 'Not picked up yet'}}" disabled>
+                </div>
 
-            <div class="form-group">
-                <label for="pickup_dt">Pickup Date and Time</label>
-                <input type="text" class="form-control" id="pickup_dt" name="pickup_dt" value="{{ $rental->pickup_dt ?? 'Not picked up yet'}}" disabled>
+                <div class="col-lg-8 mt-2 mb-2">
+                    <label for="pickup_location">Pickup Location</label>
+                    <input type="text" class="form-control" id="pickup_location" name="pickup_location" value="{{ $rental->pickup_location ?? 'Not picked up yet'}}" disabled>
+                </div>
             </div>
+            
+            <div class="row">
+                <div class="col-lg-4 mt-2 mb-2">
+                    <label for="return_dt">Return Date and Time</label>
+                    <input type="text" class="form-control" id="return_dt" name="return_dt" value="{{ $rental->return_dt ?? 'Not returned yet'}}" disabled>
+                </div>
 
-            <div class="form-group">
-                <label for="pickup_location">Pickup Location</label>
-                <input type="text" class="form-control" id="pickup_location" name="pickup_location" value="{{ $rental->pickup_location ?? 'Not picked up yet'}}" disabled>
+                <div class="col-lg-8 mt-2">
+                    <label for="return_location">Return Location</label>
+                    <input type="text" class="form-control" id="return_location" name="return_location" value="{{ $rental->return_location ?? 'Not returned yet'}}" disabled>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="return_dt">Return Date and Time</label>
-                <input type="text" class="form-control" id="return_dt" name="return_dt" value="{{ $rental->return_dt ?? 'Not returned yet'}}" disabled>
-            </div>
-
-            <div class="form-group">
-                <label for="return_location">Return Location</label>
-                <input type="text" class="form-control" id="return_location" name="return_location" value="{{ $rental->return_location ?? 'Not returned yet'}}" disabled>
-            </div>
+            
 
             <div class="form-group row create-form-buttons">
                 <div class="col">
