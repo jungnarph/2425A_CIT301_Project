@@ -8,6 +8,7 @@ use App\Models\Rental;
 use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminReservationController extends Controller
 {
@@ -39,11 +40,11 @@ class AdminReservationController extends Controller
             return response()->json(['error' => 'This request has already been processed.'], 400);
         }
 
+        // Update the reservation status to 'Confirmed'
         $reservation->status = 'Confirmed';
         $reservation->save();
-        
-        // Add to rentals table
 
+        // Add to rentals table
         Rental::create([
             'reservation_id' => $reservation->id,
             'user_id' => $reservation->user_id,
@@ -52,9 +53,19 @@ class AdminReservationController extends Controller
             'total_amount' => $reservation->total_amount,
         ]);
 
+        // Mark the assigned car as unavailable
         $car = Car::findOrFail($request->car_id);
         $car->is_available = false;
         $car->save();
+
+        // Send confirmation email to the user
+        Mail::send('emails.reservation_confirmed', [
+            'reservation' => $reservation,
+            'car' => $car,  // Pass car details to email template
+        ], function ($message) use ($reservation) {
+            $message->to($reservation->user->email)
+                    ->subject('Reservation Confirmed');
+        });
 
         return redirect()->route('manage.reservations')->with('success','Selected reservation request confirmed.');
     }
@@ -66,8 +77,15 @@ class AdminReservationController extends Controller
             return response()->json(['error' => 'This request has already been processed.'], 400);
         }
 
+        // Update the reservation status to 'Canceled'
         $reservation->status = 'Canceled';
         $reservation->save();
+
+        // Send cancellation email to the user
+        Mail::send('emails.reservation_canceled', ['reservation' => $reservation], function ($message) use ($reservation) {
+            $message->to($reservation->user->email)
+                    ->subject('Reservation Canceled');
+        });
 
         return redirect()->route('manage.reservations')->with('success','Selected reservation request canceled.');
     }
