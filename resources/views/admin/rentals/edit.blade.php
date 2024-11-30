@@ -27,12 +27,22 @@
             @csrf
             @method('PUT')
             <div class="row">
-                <div class="col-md-8 mt-2 mb-2">
+                <div class="col-lg-6 mt-2 mb-2">
                     <label for="reservation_id">Rental ID / Reservation ID</label>
                     <input type="text" class="form-control" id="reservation_id" name="reservation_id" value="{{ $rental->id . ' / ' . $rental->reservation_id ?? 'No reservation placed' }}" disabled>
                 </div>
-                
-                <div class="col-md-4 mt-2">
+                <div class="col-lg-6 mt-2 mb-2">
+                    <label for="username">User ID / Username / Name</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ $rental->user_id . ' / ' . $rental->user->username . ' / ' . $rental->user->First_name . ' ' . $rental->user->Last_name }}" disabled>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5 mt-2 mb-2">
+                    <label for="car_model_name_plate_number">Car / Plate Number</label>
+                    <input type="text" class="form-control" id="car_model_name_plate_number" name="car_model_name_plate_number" value="{{ $rental->car->carModel->model_name . ' / ' . $rental->car->plate_number }}" disabled>
+                </div>
+                <div class="col-lg-4 col-6 mt-2">
                     <label for="status">Rental Status</label>
                     @if ($rental->status === 'Pending' && $status === 'Active')
                     <input type="hidden" class="form-control" id="hidden_status" name="status" value="Active">
@@ -45,21 +55,41 @@
                     <input type="text" class="form-control" id="status" name="status" value="{{ $rental->status }}" disabled>
                     @endif
                 </div>
+                <div class="col-lg-3 col-6 mt-2">
+                    <label for="has_insurance">Has Insurance</label>
+                    <input type="text" class="form-control" id="has_insurance" name="has_insurance" value="{{ $rental->has_insurance === '1' ? 'Yes' : 'No' }}" disabled>
+                </div>
             </div>
 
             <hr>
 
+            @if ($rental->reservation_id !== null)
             <div class="row">
-                <div class="col-lg-7 mt-2 mb-2">
-                    <label for="username">User ID / Username / Name</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{ $rental->user_id . ' / ' . $rental->user->username . ' / ' . $rental->user->First_name . ' ' . $rental->user->Last_name }}" disabled>
+                <div class="col-lg-4 mt-2 mb-2">
+                    <label for="reserved_pickup_dt">Reserved Pickup Date</label>
+                    <input type="text" class="form-control" id="reserved_pickup_dt" name="reserved_pickup_dt" value="{{ $rental->reservation->pickup_dt }}" disabled>
                 </div>
-
-                <div class="col-lg-5 mt-2 mb-2">
-                    <label for="car_model_name_plate_number">Car / Plate Number</label>
-                    <input type="text" class="form-control" id="car_model_name_plate_number" name="car_model_name_plate_number" value="{{ $rental->car->carModel->model_name . ' / ' . $rental->car->plate_number }}" disabled>
+                <div class="col-lg-8 mt-2 mb-2">
+                    <label for="reserved_pickup_location">Reserved Pickup Location</label>
+                    <input type="text" class="form-control" id="reserved_pickup_location" name="reserved_pickup_location" value="{{ $rental->reservation->pickup_location }}" disabled>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-4 mt-2 mb-2">
+                    <label for="reserved_return_dt">Reserved Return Date</label>
+                    <input type="text" class="form-control" id="reserved_return_dt" name="reserved_return_dt" value="{{ $rental->reservation->return_dt }}" disabled>
+                </div>
+                <div class="col-lg-8 mt-2 mb-2">
+                    <label for="reserved_return_dt">Reserved Return Location</label>
+                    <input type="text" class="form-control" id="reserved_return_dt" name="reserved_return_dt" value="{{ $rental->reservation->return_location }}" disabled>
+                </div>
+            </div>
+            @endif
+
+            <hr>
+
+            
 
             <div class="row">
                 <div class="col-lg-4 mt-2 mb-2">
