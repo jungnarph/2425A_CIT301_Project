@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CarTypeController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -37,7 +38,6 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
     });
-    # wait lang di pa ayos to wag galawin to
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'show')->name('comment.show');
         Route::post('/comment', 'store')->name('comment.store');
@@ -112,6 +112,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/rental/{id}', 'view')->name('view.rental');
             Route::get('/rental/edit/{id}', 'edit')->name('edit.rental');
             Route::put('/rental/update/{id}', 'update')->name('update.rental');
+        });
+
+        Route::controller(PaymentController::class)->group(function(){
+            Route::get('/payments', 'index')->name('manage.payments');
+            Route::get('/payment/confirm', 'confirm')->name('confirm.payment');
         });
     });
 });
