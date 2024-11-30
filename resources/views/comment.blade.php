@@ -54,14 +54,12 @@
             </div>
         </div>
     </nav>
-    <h1>{{ $rental->user_id }}</h1>
-    <h1>{{ $rental->car->carModel->model_name }}</h1>
     <div class="container comment-section py-4">
         <div class="row justify-content-center">
             <div class="col-md-10"> 
                 <!-- Comment Form -->
                 <h3 class="mb-3 mt-3 text-center"><strong>What is your experience with the Car?</strong></h3>
-                <form action="{{ route('comments.store', 1) }}" method="POST">
+                <form action="" method="POST">
                     @csrf
                     <input type="hidden" name="car_id" value="{{ 1 }}">
                     <div class="mb-3">

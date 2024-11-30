@@ -39,8 +39,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     });
     # wait lang di pa ayos to wag galawin to
     Route::controller(CommentController::class)->group(function(){
-        Route::get('/comment/{id}', 'create')->name('comments.create');
-        Route::post('/comment/{id}/store', 'store')->name('comments.store');
+        Route::get('/comment', 'index')->name('comments');
     });
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
