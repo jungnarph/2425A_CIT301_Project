@@ -357,6 +357,39 @@ footer .container3 .contactus .info li a {
     background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
   }
 
+
+.stars {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.rating-star {
+    display: none; /* Hide the radio buttons */
+}
+.star-label {
+    font-size: 2rem;
+    color: #d3d3d3; /* Light grey color */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+/* Highlight stars on hover from left to right */
+.stars .star-label:hover,
+.stars .star-label:hover ~ .star-label {
+    color: #ffcc00; /* Gold color on hover */
+}
+/* Style for selected stars when checked */
+.rating-star:checked + .star-label,
+.rating-star:checked ~ .rating-star:checked + .star-label {
+    color: #ffcc00; /* Gold color when selected */
+}
+.stars .star-label {
+    margin: 0 5px;
+}
+/* Prevent selecting after clicking */
+.rating-star:checked + .star-label {
+    pointer-events: none;
+}
+
 /* All Media Queries */
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

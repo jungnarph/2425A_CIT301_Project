@@ -38,7 +38,8 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/about','about')->name('user.about');
     });
     Route::controller(CommentController::class)->group(function(){
-        Route::get('/comment', 'index')->name('user.comment');
+        Route::get('/comment/{id}', 'create')->name('comments.create');
+        Route::post('/comment/{id}/store', 'store')->name('comments.store');
     });
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
