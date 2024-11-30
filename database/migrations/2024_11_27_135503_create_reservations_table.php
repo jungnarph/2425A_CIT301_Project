@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('return_location');
             $table->boolean('has_insurance')->default(false);
             $table->unsignedInteger('total_amount')->default(10000);
+            $table->boolean('is_paid')->default(false);
             $table->enum('status',['Pending', 'Confirmed', 'Canceled'])->default('Pending');
             $table->timestamps();
 

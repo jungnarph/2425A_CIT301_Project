@@ -9,20 +9,16 @@ class Payment extends Model
     protected $fillable = [
         'reservation_id',
         'rental_id',
-        'user_id',
+        'details',
+        'status',
         'amount',
-        'payment_method',
-        'payment_details',
+        'transaction_id',
+        'paid_at',
     ];
 
     public function reservation()
     {
         return $this->belongsTo(Reservation::class, 'reservation_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function rental()
