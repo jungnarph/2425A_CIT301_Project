@@ -28,6 +28,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('car_model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
+
+        DB::statement('ALTER TABLE your_table AUTO_INCREMENT = 100001');
     }
 
     /**
