@@ -19,34 +19,46 @@
         <div class="receipt">
         <header class="receipt__header">
             <p class="receipt__title">
-            Codepen Sweet Shop
+            <img class="receipt__logo" src="{{ asset('assets/images/project-logo-transparent.png') }}" alt="EasyCars Logo" style="max-width: 12rem">
             </p>
-            <p class="receipt__date">13 December 2020</p>
+            <p class="receipt__date">{{ $reservation->created_at->format('Y-m-d H:i') }}</p>
         </header>
         <dl class="receipt__list">
             <div class="receipt__list-row">
-            <dt class="receipt__item">CSS Candies</dt>
-            <dd class="receipt__cost">£9.99</dd>
+            <dt class="receipt__item">Reservation ID</dt>
+            <dd class="receipt__cost">{{ $reservation->id }}</dd>
             </div>
             <div class="receipt__list-row">
-            <dt class="receipt__item">HoTML Chocolate</dt>
-            <dd class="receipt__cost">£4.19</dd>
+            <dt class="receipt__item">Base Rate</dt>
+            <dd class="receipt__cost">₱{{ number_format($reservation->carModel->base_price,2) }}</dd>
+            </div>
+            
+            <div class="receipt__list-row">
+            <dt class="receipt__item">Insurance Fee</dt>
+            @if ($reservation->has_insurance == true)
+            <dd class="receipt__cost">₱{{ number_format(2000,2) }}</dd>
+            @else
+            <dd class="receipt__cost">₱{{ number_format(0,2) }}</dd>
+            @endif
             </div>
             <div class="receipt__list-row">
-            <dt class="receipt__item">Jelly Scripts</dt>
-            <dd class="receipt__cost">£3.99</dd>
+            <dt class="receipt__item">Cleaning Fee</dt>
+            <dd class="receipt__cost">₱{{ number_format(250,2) }}</dd>
             </div>
             <div class="receipt__list-row">
-            <dt class="receipt__item">JamStack Crisps</dt>
-            <dd class="receipt__cost">£5.99</dd>
+            <dt class="receipt__item">Days to be rented</dt>
+            <dd class="receipt__cost">
+            {{
+                \Carbon\Carbon::parse($reservation->pickup_dt)->startOfDay()
+                ->diffInDays(\Carbon\Carbon::parse($reservation->return_dt)->startOfDay()) + 1
+            }}
+            </dd>
             </div>
-            <div class="receipt__list-row">
-            <dt class="receipt__item">Sherbet Nodes</dt>
-            <dd class="receipt__cost">£2.59</dd>
-            </div>
+            
+            
             <div class="receipt__list-row receipt__list-row--total">
             <dt class="receipt__item">Total</dt>
-            <dd class="receipt__cost">£26.75</dd>
+            <dd class="receipt__cost">₱{{ number_format($reservation->total_amount,2) }}</dd>
             </div>
         </dl>
         </div>
