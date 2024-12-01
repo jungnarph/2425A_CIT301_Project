@@ -35,7 +35,7 @@ Car Models | EasyCars Admin
                     <th>Model Name</th>
                     <th>Rent Price</th>
                     <th>Type</th>
-                    <th>Seat Capacity</th>
+                    <th>Seat Cap</th>
                     <th>Transmission</th>
                     <th>Layout</th>
                     <th>Actions</th>
