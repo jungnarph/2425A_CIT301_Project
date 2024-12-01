@@ -14,11 +14,6 @@ class CarModelController extends Controller
         return view('admin.carmodels.manage', compact('carmodels'));
     }
 
-    public function view($id) {
-        $carmodel = CarModel::find($id);
-        return view('admin.carmodels.detail', compact('carmodel'));
-    }
-
     public function create() {
         return view('admin.carmodels.create');
     }
@@ -52,6 +47,11 @@ class CarModelController extends Controller
 
         CarModel::create($data);
         return redirect()->route('manage.carmodels')->with('success', 'Car model created successfully.');
+    }
+
+    public function view($id) {
+        $carmodel = CarModel::find($id);
+        return view('admin.carmodels.detail', compact('carmodel'));
     }
 
     public function edit($id) {

@@ -2,15 +2,7 @@
 @section('admin_title')
 Payment Management | EasyCars Admin
 @endsection
-@section('admin_styles')
-    <style>
-        @media (max-width: 800px) {
-            #payments-view-btn {
-                width: 100%;
-            }    
-        }
-    </style>
-@endsection
+
 @section('main_panel')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="btn-toolbar mb-md-0">

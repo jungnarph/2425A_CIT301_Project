@@ -89,9 +89,15 @@
                     <input type="text" class="form-control" name="power" placeholder="Enter power details" value="{{ $carmodel->power }}" disabled>
                 </div>
 
-                <div class="col-12 mb-3">
+                <div class="col-12">
                     <label for="carTorque">Car Torque</label>
                     <input type="text" class="form-control" name="torque" placeholder="Enter torque details" value="{{ $carmodel->torque }}"  disabled>
+                </div>
+            </div>
+
+            <div class="form-group row create-form-buttons">
+                <div class="col">
+                    <a href="{{ route('manage.carmodels') }}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </form>

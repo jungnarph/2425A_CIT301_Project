@@ -33,6 +33,11 @@ class CarController extends Controller
         return redirect()->route('manage.cars')->with('success', 'Car created successfully.');
     }
 
+    public function view($id) {
+        $car = Car::find($id);
+        return view('admin.cars.detail', compact('car'));
+    }
+
     public function edit($id) {
         $car = Car::findOrFail($id);
         $carmodels = CarModel::all();
