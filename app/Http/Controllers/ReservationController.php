@@ -41,8 +41,15 @@ class ReservationController extends Controller
             'return_location' => $request->return_location,
             'status' => 'pending',
         ]);
-    
-        // Redirect back with a success message
-        return redirect()->route('user.fleet.show', ['id' => $carmodel->id])->with('success', 'Reservation created successfully!');
-    }
+        
+        // Redirect to the receipt page
+        return redirect()->route('reservation.receipt', ['reservationId' => $reservation->id,'carModelId' => $carmodel->id,]);
+        }
+
+        public function receipt($reservationId, $carModelId) {
+            $reservation = Reservation::findOrFail($reservationId);
+            $carModel = CarModel::findOrFail($carModelId);
+
+            return view('receipt', compact('reservation', 'carModel'));
+            }
 }

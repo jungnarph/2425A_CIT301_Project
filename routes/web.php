@@ -47,6 +47,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(ReservationController::class)->group(function () {
         Route::get('/reservation/{id}', 'create')->name('reservation.create');
         Route::post('/reservation/store/{id}', 'store')->name('reservation.store');
+        Route::get('/reservation/receipt/{reservationId}/{carModelId}', 'receipt')->name('reservation.receipt');
     });
 });
 
