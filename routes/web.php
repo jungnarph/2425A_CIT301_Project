@@ -59,8 +59,6 @@ Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(functio
             Route::get('/users', 'index')->name('manage.users');
             Route::get('/user/create', 'create')->name('create.user');
             Route::post('/user/store', 'store')->name('store.user');
-            Route::get('/user/edit/{id}', 'edit')->name('edit.user');
-            Route::put('/user/update/{id}', 'update')->name('update.user');
             Route::delete('/user/delete/{id}', 'delete')->name('delete.user');
         });
     });
@@ -113,11 +111,6 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         });
     });
 });
-
-
-// SUPERADMIN ROUTES
-
-
 
 // OTHER ROUTES
 
