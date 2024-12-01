@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CarModel;
 use App\Models\Reservation;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +23,10 @@ class ReservationController extends Controller
         $user = Auth::user();
         $carmodel = CarModel::findOrFail($id);
 
+        $request->merge([
+            'insurance' => $request->has('insurance'),
+        ]);
+
         $request->validate([
             'pickup_date' => 'required|date',
             'pickup_time' => 'required',
@@ -30,8 +34,19 @@ class ReservationController extends Controller
             'return_date' => 'required|date',
             'return_time' => 'required',
             'return_location' => 'required|string',
+            'insurance' => 'nullable|boolean',
         ]);
-        // Create the reservation
+
+        $pickupDateTime = Carbon::parse($request->pickup_date . ' ' . $request->pickup_time);
+        $returnDateTime = Carbon::parse($request->return_date . ' ' . $request->return_time);
+
+        $numberOfDays = $pickupDateTime->startOfDay()->diffInDays($returnDateTime->startOfDay()) + 1;
+        $baseTotal = $numberOfDays * $carmodel->base_price;
+        $insuranceFee = $request->has('insurance') ? 1000 : 0;
+        $cleaningFee = 250;
+
+        $calculatedTotalAmount = $baseTotal + $insuranceFee + $cleaningFee;
+        
         $reservation = Reservation::create([
             'user_id' => $user->id,
             'car_model_id' => $carmodel->id,
@@ -39,10 +54,18 @@ class ReservationController extends Controller
             'pickup_location' => $request->pickup_location,
             'return_dt' => $request->return_date . " " . $request->return_time,
             'return_location' => $request->return_location,
-            'status' => 'pending',
+            'has_insurance' => $request->has('insurance'),
+            'total_amount' => $calculatedTotalAmount,
         ]);
     
         // Redirect back with a success message
-        return redirect()->route('user.fleet.show', ['id' => $carmodel->id])->with('success', 'Reservation created successfully!');
+        return redirect()->route('reservation.receipt', ['reservation_id' => $reservation->id])->with('success', 'Reservation created successfully!');
+    }
+
+    public function receipt(Request $request) {
+        $reservation_id = $request->query('reservation_id');
+
+        $reservation = Reservation::findOrFail($reservation_id);
+        return view('receipt', compact('reservation'));
     }
 }

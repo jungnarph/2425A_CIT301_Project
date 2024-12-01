@@ -58,10 +58,6 @@ Rental Management | EasyCars Admin
                     <select class="form-control status" name="status" style="background-color: green; display:inline; width: fit-content !important;" required>
                         <option value="" selected>Completed</option>
                     </select>
-                    @elseif ($rental->status === 'Canceled')
-                    <select class="form-control status" name="status" style="background-color: black; display:inline; width: fit-content !important" required>
-                        <option value="" selected>Canceled</option>
-                    </select>
                     @else
                     <select class="form-control status" name="status" style="background-color: red; max-width: 40%;" required>
                         <option value="" selected>Missing</option>

@@ -164,15 +164,21 @@
             <h4>Comments</h5>
             @if ($comments->isNotEmpty())
             @foreach ($comments as $comment)
-            <div class="comment-area">
-                <div>
-                    <p><strong>{{ $comment->user->username }} ({{ $comment->user->First_name }} {{ $comment->user->Last_name }})</strong></p>
-                </div>
-                <div>
-                    <p>Rating: <strong>{{ $comment->rate }} out of 5 stars</strong></p>
-                </div>
-                <div>
-                    <p>{{ $comment->content }}</p>
+            <div class="card card-comment mb-4 border-danger shadow-sm w-100">  <!-- Added w-100 to stretch the card -->
+                <div class="card-body">
+                    <!-- User name and rating -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0"><strong>{{ $comment->user->username }} ({{ $comment->user->First_name }} {{ $comment->user->Last_name }})</strong></h6>
+                        <div class="rating">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <i class="fa fa-star {{ $i <= $comment->rate ? 'text-warning' : 'text-muted' }}"></i>
+                            @endfor
+                        </div>
+                    </div>
+                    <!-- Comment content -->
+                    <p class="mt-2">{{ $comment->content }}</p>
+                    <!-- Date and time -->
+                    <p class="text-muted mt-2 mb-0">Posted on: {{ $comment->created_at ? $comment->created_at->format('Y-m-d H:i') : 'Date not available' }}</p>
                 </div>
             </div>
             @endforeach
