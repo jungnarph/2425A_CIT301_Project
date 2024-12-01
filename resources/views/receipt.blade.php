@@ -36,7 +36,7 @@
             <div class="receipt__list-row">
             <dt class="receipt__item">Insurance Fee</dt>
             @if ($reservation->has_insurance == true)
-            <dd class="receipt__cost">₱{{ number_format(2000,2) }}</dd>
+            <dd class="receipt__cost">₱{{ number_format(1000,2) }}</dd>
             @else
             <dd class="receipt__cost">₱{{ number_format(0,2) }}</dd>
             @endif
