@@ -9,7 +9,6 @@ class Payment extends Model
     protected $fillable = [
         'reservation_id',
         'rental_id',
-        'details',
         'status',
         'amount',
         'transaction_id',

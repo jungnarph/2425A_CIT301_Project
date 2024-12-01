@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
+    @yield('admin_styles')
 </head>
 <body>
 @auth

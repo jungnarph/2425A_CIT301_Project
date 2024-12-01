@@ -34,13 +34,17 @@ Reservation Management
                     <td data-cell="Username">{{ $reservation->user->username }}</td>
                     <td data-cell="Car Model">{{ $reservation->carModel->model_name }}</td>
                     <td data-cell="Status">
-                        @if($reservation->status === 'Pending')
-                            <span style="padding: 5px 10px; border-radius: 5px; background-color: orange;">Pending</span>
-                        @elseif($reservation->status === 'Confirmed')
-                            <span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Confirmed</span>
-                        @else
-                            <span style="padding: 5px 10px; border-radius: 5px; background-color: red;">Canceled</span>
+                        @if($reservation->is_paid)
+                        <span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Paid</span>
                         @endif
+                        @if($reservation->status === 'Pending')
+                        <span style="padding: 5px 10px; border-radius: 5px; background-color: orange;">Pending</span>
+                        @elseif($reservation->status === 'Confirmed')
+                        <span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Confirmed</span>
+                        @else
+                        <span style="padding: 5px 10px; border-radius: 5px; background-color: red;">Canceled</span>
+                        @endif
+                        
                     </td>
                     <td>
                         <div class="button-container">

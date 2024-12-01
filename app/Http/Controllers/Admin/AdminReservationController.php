@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Car;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Rental;
 use App\Models\Reservation;
 use App\Http\Controllers\Controller;
@@ -47,13 +48,25 @@ class AdminReservationController extends Controller
         $reservation->save();
 
         // Add to rentals table
-        Rental::create([
+        $rental = Rental::create([
             'reservation_id' => $reservation->id,
             'user_id' => $reservation->user_id,
             'car_id' => $request->car_id,
             'has_insurance' => $reservation->has_insurance,
             'total_amount' => $reservation->total_amount,
         ]);
+
+        $payment = Payment::where('reservation_id', $reservation->id)->first();
+        if ($payment) {
+            $payment->rental_id = $rental->id;
+            $payment->save();
+        }
+
+        if ($payment->status === 'Completed') {
+            $rental->update([
+                'is_paid' => true,
+            ]);
+        }
 
         // Mark the assigned car as unavailable
         $car = Car::findOrFail($request->car_id);
