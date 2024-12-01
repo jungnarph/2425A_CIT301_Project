@@ -33,6 +33,7 @@ Car Model Management
             <thead>
                 <tr>
                     <th>Model Name</th>
+                    <th>Rent Price</th>
                     <th>Type</th>
                     <th>Seat Capacity</th>
                     <th>Transmission</th>
@@ -45,10 +46,11 @@ Car Model Management
                 
                 <tr>
                     <td data-cell="Model Name">{{ $carmodel->model_name }}</td>
+                    <td data-cell="Rent Price">₱{{ number_format($carmodel->base_price,2) }}</td>
                     <td data-cell="Type">{{ $carmodel->car_type }}</td>
                     <td data-cell="Seat Capacity">{{ $carmodel->seat_capacity }}</td>
-                    <td data-cell="Transmission Type">{{ $carmodel->transmission_type }}</td>
-                    <td data-cell="Transmission Type">{{ $carmodel->layout_type }}</td>
+                    <td data-cell="Transmission">{{ $carmodel->transmission_type }}</td>
+                    <td data-cell="Layout">{{ $carmodel->layout_type }}</td>
                     <td>
                         <form action="{{ route('view.carmodel', $carmodel->id) }}" style="display:inline;">
                             @csrf

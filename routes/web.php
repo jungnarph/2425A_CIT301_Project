@@ -86,6 +86,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/cars', 'index')->name('manage.cars');
             Route::get('/car/create', 'create')->name('create.car');
             Route::post('/car/store', 'store')->name('store.car');
+            Route::get('/car/{id}', 'view')->name('view.car');
             Route::get('/car/edit/{id}', 'edit')->name('edit.car');
             Route::put('/car/update/{id}', 'update')->name('update.car');
             Route::delete('/car/delete/{id}', 'delete')->name('delete.car');

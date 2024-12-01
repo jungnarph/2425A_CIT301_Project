@@ -27,7 +27,6 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="plateNumber">Plate Number</label>
                 <input type="hidden" class="form-control" id="plate_number" name="plate_number" value="{{ $car->plate_number }}">
             </div>
             <div class="form-group">
