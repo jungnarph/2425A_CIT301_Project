@@ -168,7 +168,7 @@
                 <div class="card-body">
                     <!-- User name and rating -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0"><strong>{{ $comment->user->username }} ({{ $comment->user->First_name }} {{ $comment->user->Last_name }})</strong></h6>
+                        <h6 class="mb-0"><strong>{{ $comment->user->username }} ({{ $comment->user->First_name }} {{ strtoupper(substr($comment->user->Last_name, 0, 1)) }}.)</strong></h6>
                         <div class="rating">
                             @for ($i = 1; $i <= 5; $i++)
                                 <i class="fa fa-star {{ $i <= $comment->rate ? 'text-warning' : 'text-muted' }}"></i>
