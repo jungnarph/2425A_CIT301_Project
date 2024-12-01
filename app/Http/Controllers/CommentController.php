@@ -19,7 +19,7 @@ class CommentController extends Controller
             ->where('token', $token)
             ->first();
         
-        if (!$rental || $rental->user_id !== auth()->id() ) {
+        if (!$rental || $rental->user_id != auth()->id() ) {
             abort(403, 'Unauthorized access');
         }
 
@@ -41,7 +41,7 @@ class CommentController extends Controller
             ->where('token', $token)
             ->first();
         
-        if (!$rental || $rental->user_id !== auth()->id() ) {
+        if (!$rental || $rental->user_id != auth()->id() ) {
             abort(403, 'Unauthorized access');
         }
 

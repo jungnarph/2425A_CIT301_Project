@@ -77,7 +77,7 @@
                             <tbody>
                                 <tr>
                                     <td style="width: 40%"><strong>Car Type:</strong></td>
-                                    <td style="width: 60%">{{ $carmodel->carType->type_name }}</td>
+                                    <td style="width: 60%">{{ $carmodel->car_type }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Transmission:</strong></td>
