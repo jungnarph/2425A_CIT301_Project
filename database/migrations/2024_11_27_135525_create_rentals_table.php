@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
         });
 
-        DB::statement('ALTER TABLE your_table AUTO_INCREMENT = 10001');
+        DB::statement('ALTER TABLE rentals AUTO_INCREMENT = 10001');
     }
 
     /**

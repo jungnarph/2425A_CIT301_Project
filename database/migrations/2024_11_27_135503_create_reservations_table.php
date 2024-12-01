@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('car_model_id')->references('id')->on('car_models')->onDelete('cascade');
         });
 
-        DB::statement('ALTER TABLE your_table AUTO_INCREMENT = 100001');
+        DB::statement('ALTER TABLE reservations AUTO_INCREMENT = 100001');
     }
 
     /**
