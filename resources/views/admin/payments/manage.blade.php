@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('admin_title')
-Payment Management | EasyCars Admin
+Payments | EasyCars Admin
 @endsection
 
 @section('main_panel')
@@ -46,7 +46,6 @@ Payment Management | EasyCars Admin
                     <select class="form-control status" name="status" style="background-color: orange; display:inline; width: fit-content !important" required>
                         <option value="" selected>Pending</option>
                         <option value="{{ route('confirm.payment', ['payment_id' => $payment->id]) }} ">Completed</option>
-                        <option value="">Failed</option>
                     </select>
                     @elseif ($payment->status === 'Completed')
                     <select class="form-control status" name="status" style="background-color: green; display:inline; width: fit-content !important;" required>
@@ -54,7 +53,7 @@ Payment Management | EasyCars Admin
                     </select>
                     @else
                     <select class="form-control status" name="status" style="background-color: red; max-width: 40%;" required>
-                        <option value="" selected>Failed</option>
+                        <option value="" selected>Cancelled</option>
                     </select>
                     @endif
                     </td>

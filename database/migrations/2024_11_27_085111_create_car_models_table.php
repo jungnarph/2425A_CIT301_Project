@@ -20,9 +20,9 @@ return new class extends Migration
             $table->unsignedTinyInteger('seat_capacity');
             $table->enum('transmission_type',['Manual', 'Automatic', 'CVT']);
             $table->enum('layout_type', ['AWD','4WD','FWD','RWD']);
-            $table->string('engine');
-            $table->string('power');
-            $table->string('torque');
+            $table->string('engine')->nullable();
+            $table->string('power')->nullable();
+            $table->string('torque')->nullable();
             $table->unsignedTinyInteger('avg_rating')->nullable();
             $table->string('image_url');
             $table->timestamps();

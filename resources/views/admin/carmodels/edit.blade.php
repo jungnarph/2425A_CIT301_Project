@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 @section('admin_title')
-    Edit Car Model
+    Edit Car Model | EasyCars Admin
 @endsection
 
 @section('main_panel')
