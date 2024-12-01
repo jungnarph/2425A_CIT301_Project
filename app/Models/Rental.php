@@ -16,6 +16,7 @@ class Rental extends Model
         'return_location',
         'has_insurance',
         'total_amount',
+        'is_paid',
         'status',
         'token',
     ];

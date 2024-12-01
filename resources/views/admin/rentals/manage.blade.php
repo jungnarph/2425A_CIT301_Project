@@ -42,6 +42,9 @@ Rental Management | EasyCars Admin
                     <td data-cell="Car Model">{{ $rental->car->carModel->model_name }}</td>
                     <td data-cell="Plate Number">{{ $rental->car->plate_number }}</td>
                     <td data-cell="Status">
+                    @if($rental->is_paid === 1)
+                    <span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Paid</span>
+                    @endif
                     @if ($rental->status === 'Pending')
                     <select class="form-control status" name="status" style="background-color: orange; display:inline; width: fit-content !important" required>
                         <option value="" selected>Pending</option>

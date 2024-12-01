@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(FleetController::class)->group(function(){
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
-    Route::controller(ReservationController::class)->group(function () {
+    Route::controller(ReservationController::class)->group(function(){
         Route::get('/reservation/{id}', 'create')->name('reservation.create');
         Route::post('/reservation/store/{id}', 'store')->name('reservation.store');
         Route::get('/receipt', 'receipt')->name('reservation.receipt');

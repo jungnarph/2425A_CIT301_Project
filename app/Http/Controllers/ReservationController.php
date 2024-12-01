@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarModel;
+use App\Models\Payment;
 use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -56,6 +57,11 @@ class ReservationController extends Controller
             'return_location' => $request->return_location,
             'has_insurance' => $request->has('insurance'),
             'total_amount' => $calculatedTotalAmount,
+        ]);
+
+        Payment::create([
+            'reservation_id' => $reservation->id,
+            'amount' => $calculatedTotalAmount,
         ]);
     
         // Redirect back with a success message
