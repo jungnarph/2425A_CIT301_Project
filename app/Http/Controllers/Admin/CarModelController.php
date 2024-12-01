@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\CarModel;
-use App\Models\CarType;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -11,21 +10,24 @@ use Illuminate\Validation\Rule;
 class CarModelController extends Controller
 {
     public function index() {
-        $carmodels = CarModel::with('carType')->get();
+        $carmodels = CarModel::orderBy('model_name', 'asc')->get();
         return view('admin.carmodels.manage', compact('carmodels'));
     }
 
-    public function create() {
-        $cartypes = CarType::all();
+    public function view($id) {
+        $carmodel = CarModel::find($id);
+        return view('admin.carmodels.detail', compact('carmodel'));
+    }
 
-        return view('admin.carmodels.create', compact('cartypes'));
+    public function create() {
+        return view('admin.carmodels.create');
     }
 
     public function store(Request $request) {
         $data = $request->validate([
             'model_name' => 'unique:car_models|required',
             'description' => 'required',
-            'type_id' => 'required',
+            'car_type' => 'required',
             'base_price' => 'required',
             'seat_capacity' => 'required',
             'transmission_type' => 'required',
@@ -54,21 +56,18 @@ class CarModelController extends Controller
 
     public function edit($id) {
         $carmodel = CarModel::findOrFail($id);
-        $cartypes = CarType::all();
 
-        return view('admin.carmodels.edit', compact('carmodel', 'cartypes'));
+        return view('admin.carmodels.edit', compact('carmodel'));
     }
 
     public function update(Request $request, $id) {
-        $carmodel = CarModel::findOrFail($id);
-        
         $data = $request->validate([
             'model_name' => [
                 'required',
                 Rule::unique('car_models')->ignore($carmodel->id),
             ],
             'description', 'required',
-            'type_id' => 'required',
+            'car_type' => 'required',
             'base_price' => 'required',
             'seat_capacity' => 'required',
             'transmission_type' => 'required',

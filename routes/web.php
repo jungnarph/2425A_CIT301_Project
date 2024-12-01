@@ -13,7 +13,6 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
-use App\Http\Controllers\Admin\CarTypeController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
@@ -73,19 +72,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/', 'index')->name('admin');
         });
 
-        Route::controller(CarTypeController::class)->group(function() {
-            Route::get('/cartypes', 'index')->name('manage.cartypes');
-            Route::get('/cartypes/create', 'create')->name('create.cartype');
-            Route::post('/cartypes/store', 'store')->name('store.cartype');
-            Route::get('/cartypes/edit/{id}', 'edit')->name('edit.cartype');
-            Route::put('/cartypes/update/{id}', 'update')->name('update.cartype');
-            Route::delete('/cartypes/delete/{id}', 'delete')->name('delete.cartype');
-        });
-
         Route::controller(CarModelController::class)->group(function() {
             Route::get('/carmodels', 'index')->name('manage.carmodels');
             Route::get('/carmodel/create', 'create')->name('create.carmodel');
             Route::post('/carmodel/store', 'store')->name('store.carmodel');
+            Route::get('/carmodel/{id}', 'view')->name('view.carmodel');
             Route::get('/carmodel/edit/{id}', 'edit')->name('edit.carmodel');
             Route::put('/carmodel/update/{id}', 'update')->name('update.carmodel');
             Route::delete('/carmodel/delete/{id}', 'delete')->name('delete.carmodel');

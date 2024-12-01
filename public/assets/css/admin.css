@@ -114,7 +114,7 @@ input.form-control, select.form-control, textarea.form-control {
     border-color: #851558;
 }
 
-input.form-control:disabled {
+.form-control:disabled {
   background-color: #85155893 !important;
   color: rgba(255, 255, 255, 0.485);
 }
@@ -299,7 +299,6 @@ tr td:last-child, tr th:last-child {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
 
 
 /* Media Queries */
