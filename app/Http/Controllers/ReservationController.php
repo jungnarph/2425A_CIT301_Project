@@ -45,4 +45,8 @@ class ReservationController extends Controller
         // Redirect back with a success message
         return redirect()->route('user.fleet.show', ['id' => $carmodel->id])->with('success', 'Reservation created successfully!');
     }
+
+    public function receipt() {
+        return view('receipt');
+    }
 }

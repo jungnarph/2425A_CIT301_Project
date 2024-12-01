@@ -26,21 +26,21 @@ Payment Management | EasyCars Admin
         <table class="">
             <thead>
                 <tr>
-                    <th>Transaction ID</th>
                     <th>Reservation ID</th>
                     <th>Rental ID</th>
-                    <th>Amount</th>
+                    <th>Total Amount</th>
                     <th>Status</th>
+                    <th>Transaction ID</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($payments as $payment)
                 <tr>
-                    <td data-cell="Transaction ID">{{ $payment->id }}</td>
+                    
                     <td data-cell="Reservation ID">{{ $payment->reservation_id }}</td>
                     <td data-cell="Rental ID">{{ $payment->rental_id ?? 'N/A' }}</td>
-                    <td data-cell="Amount">{{ $payment->amount }}</td>
+                    <td data-cell="Amount">₱{{ number_format($payment->amount,2) }}</td>
                     <td data-cell="Status">
                     @if ($payment->status === 'Pending')
                     <select class="form-control status" name="status" style="background-color: orange; display:inline; width: fit-content !important" required>
@@ -59,6 +59,7 @@ Payment Management | EasyCars Admin
                     @endif
                     
                     </td>
+                    <td data-cell="Transaction ID">{{ $payment->transaction_id ?? 'N/A' }}</td>
                     <td>
                         <div class="button-container">
                             <form action="{{ route('confirm.payment', $payment->id) }}" method="POST" style="display:inline;">
