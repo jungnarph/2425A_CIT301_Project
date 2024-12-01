@@ -60,7 +60,7 @@ Rentals | EasyCars Admin
                     <td data-cell="Car Model">{{ $rental->car->carModel->model_name }}</td>
                     <td data-cell="Plate Number">{{ $rental->car->plate_number }}</td>
                     <td data-cell="Status">
-                    @if($rental->is_paid === 1)
+                    @if($rental->is_paid)
                     <span style="padding: 5px 10px; border-radius: 5px; background-color: green;">Paid</span>
                     @endif
                     @if ($rental->status === 'Pending')
