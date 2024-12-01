@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('admin_title')
-Car Management
+Cars | EasyCars Admin
 @endsection
 @section('main_panel')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

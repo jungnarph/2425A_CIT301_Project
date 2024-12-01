@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 @section('admin_title')
-    Confirm Reservation
+    Confirm Reservation | EasyCars Admin
 @endsection
 
 @section('main_panel')

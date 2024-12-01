@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('reservation_id');
             $table->unsignedBigInteger('rental_id')->nullable();
-            $table->enum('status',['Pending', 'Completed', 'Failed'])->default('Pending');
+            $table->enum('status',['Pending', 'Completed', 'Cancelled'])->default('Pending');
             $table->unsignedInteger('amount');
             $table->string('transaction_id')->nullable()->unique();
             $table->timestamp('paid_at')->nullable();

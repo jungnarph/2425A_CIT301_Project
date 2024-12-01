@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('admin_title')
-Rental Management | EasyCars Admin
+Rentals | EasyCars Admin
 @endsection
 @section('admin_styles')
     <style>

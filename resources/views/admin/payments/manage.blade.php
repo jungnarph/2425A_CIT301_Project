@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('admin_title')
-Payment Management | EasyCars Admin
+Payments | EasyCars Admin
 @endsection
 
 @section('main_panel')
