@@ -1,9 +1,5 @@
 /* ---- landing.css ---- */
 /* General body styles */
-body {
-    background-image: url('image.jpg');
-    background-repeat: no-repeat;
-}
 
 /* Welcome container */
 .welcome-container {
@@ -186,8 +182,8 @@ button {
 }
 
 .service-head {
-    height: 600px;
-    background-image: url('/assets/images/Services-images/Services-bg.jpg');
+    height: 700px;
+    background-image: url('/assets/images/Services-images/image.jpg');
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
