@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('landing');
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/fleet', 'fleet')->name('user.fleet');
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
+        Route::get('/contact', 'contact')->name('user.contact');
     });
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'show')->name('comment.show');

@@ -63,7 +63,7 @@
                 </li>
                 <li><strong>Return Date:</strong> {{ \Carbon\Carbon::parse($rental->return_dt)->format('F d, Y') }}</li>
                 <li><strong>Return Location:</strong> {{ $rental->return_location }}</li>
-            </ul>
+            </ul> 
             <p>If you have any questions or need further assistance, please feel free to reach out.</p>
             <p>Thank you for choosing our service!</p>
         </div>

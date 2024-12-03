@@ -30,6 +30,15 @@
             padding: 20px;
             margin-bottom: 10px;
         }
+        .navbar-toggler {
+            width: 60px; /* Adjust this value to increase or decrease the width */
+            height: 40px; /* Adjust this value to increase or decrease the height */
+            background-size: contain; /* Ensures the icon scales correctly */
+        }
+
+        .navbar-collapse{
+            padding: 10px;
+        }
     </style>
 </head>
 <body>

@@ -1,0 +1,75 @@
+/* General Footer Styles */
+footer {
+    background-color: #4d0000; /* Dark Red */
+    padding: 40px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Modern font */
+    color: #ffffff; /* Default font color */
+}
+
+footer h6 {
+    margin-bottom: 20px;
+    color: #ffffff; /* White headers */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Menu Links */
+footer a {
+    color: #ffffff !important; /* Force white color for links */
+    text-decoration: none; /* Remove underline */
+    margin: 0 15px; /* Spacing between links */
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth hover */
+}
+
+footer a:hover {
+    color: #ffcc00; /* Bright yellow on hover */
+    background-color: rgba(255, 204, 0, 0.2); /* Light hover background */
+    padding: 5px 10px; /* Add padding to create a button effect */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Social Icons as Buttons */
+.social-icons a {
+    display: inline-block;
+    color: #ffffff !important; /* Force white for icons */
+    font-size: 30px; /* Make icons larger */
+    margin: 0 20px; /* Increase spacing between icons */
+    padding: 10px; /* Add padding for better click area */
+}
+
+.social-icons a:hover {
+    color: #4d0000; /* Dark red on hover */
+    background-color: #ffcc00; /* Bright yellow background on hover */
+    border: 2px solid #ffcc00; /* Border matches hover background */
+}
+
+/* Footer Buttons */
+.button {
+    color: #ffffff; /* White text */
+    background-color: transparent; /* Transparent background */
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: none; /* Remove border outline from buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7b0000; /* Bright yellow background on hover */
+    color: #4d0000; /* Dark red text on hover */
+}
+
+/* Footer Text */
+footer p {
+    color: #c7c7c7; /* Light gray for readability */
+    font-size: 14px;
+}
+
+/* Footer Container */
+footer .container {
+    border-top: 1px solid #ffffff33; /* Subtle border */
+}

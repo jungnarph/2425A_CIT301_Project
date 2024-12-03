@@ -1,28 +1,30 @@
-@import url('https://fonts.googleapis.com/css?fammily=Poppings:200,300,400,500,700,800,900&display=swap');
+/* ---- custom.css ---- */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,700,800,900&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Header styles */
 .header {
-    position: relative;             
-    background-size: cover;       
-    background-position: center;   
-    height: 450px;                 
-    width: 100%;                  
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    width: 100%;
 }
 
 .header::before {
-    content: ""; /* Required for pseudo-elements */
-    position: absolute; /* Positioning for the overlay */
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-    z-index: 1; /* Ensure it is above the background */
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
 .header h1 {
@@ -31,18 +33,21 @@ body{
     font-family: "DM Serif Display", serif;
     text-align: center;
     padding-top: 3px;
-    font-size: 25vw; /* Responsive font size */
-    position: relative; /* Positioning to bring text above the overlay */
-    z-index: 2; /* Ensure text is above the overlay */
+    font-size: 25vw;
+    position: relative;
+    z-index: 2;
 }
 
+/* Card container */
 .card-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 100px;
     background-color: #191d26;
 }
+
+/* Additional styles for cards, team cards, content, and footer go here, based on your structure. */
+
 
 .card{
     width: 350px;
