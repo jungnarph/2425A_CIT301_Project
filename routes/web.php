@@ -9,6 +9,7 @@ use App\Http\Controllers\FleetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ContactController; // Add ContactController
 
 use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
 
+// LANDING PAGE ROUTES
 Route::get('/', function () {
     return view('landing');
 })->name('landing');
@@ -36,7 +38,14 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/fleet', 'fleet')->name('user.fleet');
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
+        Route::get('/contact', 'contact')->name('user.contact');
     });
+
+    // Add contact form handling routes
+    Route::controller(ContactController::class)->group(function(){
+        Route::post('/contact/send', 'send')->name('contact.send'); // Route to send the contact form
+    });
+
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'show')->name('comment.show');
         Route::post('/comment', 'store')->name('comment.store');
@@ -121,4 +130,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
