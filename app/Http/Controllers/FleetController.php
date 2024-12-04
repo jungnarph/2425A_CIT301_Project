@@ -15,7 +15,7 @@ class FleetController extends Controller
     public function index(Request $request) {
         // Get search query and sort option from the request
         $search = $request->input('search_data');
-        $sortOption = $request->input('sort-option');
+        $sortOption = $request->input('sort_option');
 
         // Start the query
         $query = CarModel::query();
@@ -34,10 +34,10 @@ class FleetController extends Controller
                 $query->orderBy('model_name', 'desc');
                 break;
             case 'price_asc':
-                $query->orderBy('price', 'asc');
+                $query->orderBy('base_price', 'asc')->orderBy('model_name', 'asc');
                 break;
             case 'price_desc':
-                $query->orderBy('price', 'desc');
+                $query->orderBy('base_price', 'desc')->orderBy('model_name', 'asc');
                 break;
             default:
                 $query->orderBy('model_name', 'asc'); // Default sort
