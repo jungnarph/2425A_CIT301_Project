@@ -1,6 +1,6 @@
-@extends('admin.layouts.layout') <!-- This extends the admin layout file -->
+@extends('admin.layouts.layout')
 
-@section('admin_title', 'Dashboard | EasyCars Admin') <!-- Set the title for the page -->
+@section('admin_title', 'Dashboard | EasyCars Admin')
 
 @section('admin_styles')
     <style>
@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Pending Reservations</h5>
-                        <p class="card-text">{{ $metrics['pending_reservations'] }}</p> <!-- This would be dynamic, e.g., from a database -->
+                        <p class="card-text">{{ $metrics['pending_reservations'] }}</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Active Rentals</h5>
-                        <p class="card-text">{{ $metrics['active_rentals'] }}</p> <!-- This would be dynamic, e.g., from a database -->
+                        <p class="card-text">{{ $metrics['active_rentals'] }}</p>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Daily Revenue</h5>
-                        <p class="card-text">₱{{ number_format($metrics['daily_revenue'], 2) }}</p> <!-- This would be dynamic, e.g., from a database -->
+                        <p class="card-text">₱{{ number_format($metrics['daily_revenue'], 2) }}</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card">
                     <div class="card-body py-4">
                         <h5 class="card-title text-center">Total Rentals</h5>
-                        <h1 class="card-text text-center mt-4">{{ $metrics['total_rentals'] }}</h1> <!-- This would be dynamic, e.g., from a database -->
+                        <h1 class="card-text text-center mt-4">{{ $metrics['total_rentals'] }}</h1>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="card">
                     <div class="card-body py-4">
                         <h5 class="card-title text-center">Total Reservations</h5>
-                        <h1 class="card-text text-center mt-4">{{ $metrics['total_reservations'] }}</h1> <!-- This would be dynamic, e.g., from a database -->
+                        <h1 class="card-text text-center mt-4">{{ $metrics['total_reservations'] }}</h1>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="card">
                     <div class="card-body py-4">
                         <h5 class="card-title text-center">Total Revenue</h5>
-                        <h1 class="card-text text-center mt-4">₱{{ number_format($metrics['total_revenue'], 2) }}</h1> <!-- This would be dynamic, e.g., from a database -->
+                        <h1 class="card-text text-center mt-4">₱{{ number_format($metrics['total_revenue'], 2) }}</h1>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="card">
                     <div class="card-body ">
                         <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <div class="col-md-6 d-flex justify-content-center align-items-center py-4">
                                 <img src="{{ asset('assets/images/fleet-image/'.$metrics['most_rented_car']->image_url) }}" 
                                     class="img-fluid card-image" 
                                     alt="{{ $metrics['most_rented_car']->model_name ?? '' }}" 
