@@ -314,7 +314,7 @@ tr td:last-child, tr th:last-child {
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
   tr td:last-child button {
     width: 100%;
     margin: 5px 0 5px 0;
