@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Daily Revenue</h5>
-                        <p class="card-text">{{ $metrics['daily_revenue'] }}</p> <!-- This would be dynamic, e.g., from a database -->
+                        <p class="card-text">₱{{ number_format($metrics['daily_revenue'], 2) }}</p> <!-- This would be dynamic, e.g., from a database -->
                     </div>
                 </div>
             </div>
@@ -55,14 +55,6 @@
             <div class="col-md-6 mt-3 mb-2">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Total Revenue</h5>
-                        <h1 class="card-text text-center mt-4">{{ $metrics['total_revenue'] }}</h1> <!-- This would be dynamic, e.g., from a database -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-3 mb-2">
-                <div class="card">
-                    <div class="card-body">
                         <h5 class="card-title text-center">Total Reservations</h5>
                         <h1 class="card-text text-center mt-4">{{ $metrics['total_reservations'] }}</h1> <!-- This would be dynamic, e.g., from a database -->
                     </div>
@@ -71,7 +63,15 @@
             <div class="col-md-6 mt-3 mb-2">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Best Car</h5>
+                        <h5 class="card-title text-center">Total Revenue</h5>
+                        <h1 class="card-text text-center mt-4">₱{{ number_format($metrics['total_revenue'], 2) }}</h1> <!-- This would be dynamic, e.g., from a database -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Best Renting Car</h5>
                         <h1 class="card-text text-center mt-4">{{ $metrics['most_rented_car']->model_name ?? 'N/A'}}</h1> <!-- This would be dynamic, e.g., from a database -->
                     </div>
                 </div>
