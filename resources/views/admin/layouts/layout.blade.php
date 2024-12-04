@@ -107,7 +107,7 @@
         </ul>
     </nav>
 
-    <div class="container-fluid mobile-nav">
+    <div class="container-fluid mobile-nav" style="z-index: 999">
         <div class="row logo-container align-items-center position-relative">
             <div class="col-12 text-center text-md-left py-3">
                 <button class="hamburger-button btn" aria-label="Menu" id="toggleSidebar">
