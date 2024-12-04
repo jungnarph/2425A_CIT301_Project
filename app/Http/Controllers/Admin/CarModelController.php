@@ -61,6 +61,7 @@ class CarModelController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $carmodel = CarModel::findOrFail($id);
         $data = $request->validate([
             'model_name' => [
                 'required',

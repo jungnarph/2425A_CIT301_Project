@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AdminController;
+
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\HomeController;
@@ -13,6 +13,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
@@ -68,7 +69,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(functio
 
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function() {
-        Route::controller(AdminController::class)->group(function() {
+        Route::controller(DashboardController::class)->group(function() {
             Route::get('/', 'index')->name('admin');
         });
 

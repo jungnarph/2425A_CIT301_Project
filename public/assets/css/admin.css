@@ -301,6 +301,11 @@ tr td:last-child, tr th:last-child {
 }
 
 
+.card, .list-group a{
+  background-color:#851558;
+  color: var(--text-clr);
+}
+
 /* Media Queries */
 
 
