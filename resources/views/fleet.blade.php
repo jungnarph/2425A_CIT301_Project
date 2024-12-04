@@ -3,56 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleet</title>
-    <!-- Bootstrap -->
+    <title>Fleet | EasyCars</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-    <!-- Include Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-    <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" rel="stylesheet">
-     <!--Jared CSS -->
-     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
-     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
-     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" >
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
+    <link rel="stylesheet" href="footer.css">
 
-     <style>
+    <style>
         .card-image {
-            height: 250px; /* Set a fixed height */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            width: 100%; /* Makes the image responsive */
-            border-radius: 10px; /* Optional: For rounded corners */
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 10px;
         }
         .navbar-toggler {
-            width: 60px; /* Adjust this value to increase or decrease the width */
-            height: 40px; /* Adjust this value to increase or decrease the height */
-            background-size: contain; /* Ensures the icon scales correctly */
+            width: 60px;
+            height: 40px;
+            background-size: contain;
         }
 
         .navbar-collapse{
             padding: 10px;
         }
-        /* Ensure proper alignment of navbar items */
+
         .navbar {
-            padding: 10px 20px; /* Adjust padding to ensure the navbar is properly spaced */
+            padding: 10px 20px;
         }
 
         .navbar-nav {
-            align-items: center; /* Align navbar items vertically */
+            align-items: center;
         }
 
-        /* Logo */
         .navbar-brand img {
-            height: 75px; /* Match logo height */
-            vertical-align: middle; /* Ensure logo is vertically aligned */
+            height: 75px;
+            vertical-align: middle; 
         }
 
-        /* Navbar items */
         .nav-item {
             display: flex;
-            align-items: center; /* Center align items vertically */
-            padding: 0; /* Remove any unnecessary padding */
+            align-items: center; 
+            padding: 0; 
         }
 
         .nav-link {
@@ -60,21 +53,19 @@
             font-size: 16px; 
             font-weight: 500; 
             color: #333;
-            padding: 8px 10px; /* Adjust inner padding */
-            margin: 0 10px; /* Adjust outer margin for spacing */
+            padding: 8px 10px;
+            margin: 0 10px; 
         }
 
-        /* Active Link Styling */
         .nav-link.active {
             font-weight: bold;
-            border-bottom: 2px solid #007bff; /* Active link style */
+            border-bottom: 2px solid #007bff;
         }
 
-        /* Adjust navbar toggler */
         .navbar-toggler {
-            margin-top: 2px; /* Fix slight misalignment of the toggler button */
+            margin-top: 2px;
         }
-        </style>
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FleetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\ContactController; // Add ContactController
 
 use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\CarController;
@@ -36,7 +36,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/contact', 'contact')->name('user.contact');
     });
     Route::controller(ContactController::class)->group(function(){
-        Route::post('/contact/send', 'send')->name('contact.send'); // Route to send the contact form
+        Route::post('/contact/send', 'send')->name('contact.send');
     });
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'show')->name('comment.show');
