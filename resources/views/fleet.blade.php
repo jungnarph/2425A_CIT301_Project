@@ -118,7 +118,7 @@
                 @method('GET')
                 <input type="hidden" name="search_data" value="{{ request('search_data') }}">
                 <div class="col-auto">
-                    <span style="margin-right: 0.5rem;"><i class="bi bi-funnel" style="margin-right: 0.5rem"></i><strong>Sort by:</strong></span>
+                    <span style="margin-right: 0.5rem;"><i class="bi bi-funnel" style="margin-right: 0.5rem"></i><strong>Sort</strong></span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sort_option" id="inlineRadio1" value="name_asc" onchange="this.form.submit()" {{ request('sort_option') === 'name_asc' ? 'checked' : '' }}>
                         <label class="form-check-label" for="inlineRadio1">Name (&#8593;)</label>
