@@ -29,10 +29,6 @@ Route::get('/landing', function () {
 
 // USER ROUTES
 
-Route::get('/about', function () {
-    return view('about');
-})->middleware('auth', 'verified');
-
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/fleet', 'fleet')->name('user.fleet');
@@ -40,12 +36,9 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::get('/about','about')->name('user.about');
         Route::get('/contact', 'contact')->name('user.contact');
     });
-
-    // Add contact form handling routes
     Route::controller(ContactController::class)->group(function(){
         Route::post('/contact/send', 'send')->name('contact.send'); // Route to send the contact form
     });
-
     Route::controller(CommentController::class)->group(function(){
         Route::get('/comment', 'show')->name('comment.show');
         Route::post('/comment', 'store')->name('comment.store');
