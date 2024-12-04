@@ -300,6 +300,10 @@ tr td:last-child, tr th:last-child {
   border-bottom-right-radius: 10px;
 }
 
+.card, .list-group a{
+  background-color:#851558;
+  color: var(--text-clr);
+}
 
 /* Media Queries */
 

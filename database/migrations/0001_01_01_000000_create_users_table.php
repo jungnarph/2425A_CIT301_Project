@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -17,8 +18,8 @@ return new class extends Migration
             $table->string('First_name');
             $table->string('Middle_name')->nullable();
             $table->string('Last_name');
-            $table->string('Contact_number')->nullable();
-            $table->string('Driver_license_ID')->nullable();
+            $table->string('Contact_number')->nullable()->unique();
+            $table->string('Driver_license_ID')->nullable()->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
