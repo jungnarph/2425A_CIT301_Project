@@ -31,7 +31,6 @@ Route::get('/landing', function () {
 
 Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
     Route::controller(HomeController::class)->group(function(){
-        Route::get('/fleet', 'fleet')->name('user.fleet');
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
         Route::get('/contact', 'contact')->name('user.contact');
@@ -44,6 +43,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
         Route::post('/comment', 'store')->name('comment.store');
     });
     Route::controller(FleetController::class)->group(function(){
+        Route::get('/fleet', 'index')->name('user.fleet');
         Route::get('/fleet/{id}', 'show')->name('user.fleet.show');
     });
     Route::controller(ReservationController::class)->group(function(){

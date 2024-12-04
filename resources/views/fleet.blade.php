@@ -104,8 +104,51 @@
             </div>
         </div>
     </nav>
+
+    <div class="container mt-3">
+        <div class="search-bar">
+            <form class="d-flex searchbar ms-auto" action="{{ route('user.fleet') }}" method="POST">
+                @csrf
+                @method('GET')
+                <input class="input-searchbar form-control me-2" name="search_data" type="search" placeholder="Search car model..." aria-label="Search" required>
+                <button class="btn btn-outline-success" id="search-2" name="search_submit" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container filter-sort mt-3">
+        <div class="row">
+            <form id="sort-form" action="{{ route('user.fleet') }}" method="POST">
+                @csrf
+                @method('GET')
+                <div class="col-auto">
+                    <span style="margin-right: 0.5rem;"><i class="bi bi-funnel" style="margin-right: 0.5rem"></i><strong>Sort by:</strong></span>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sort-option" id="inlineRadio1" value="name_asc">
+                        <label class="form-check-label" for="inlineRadio1">Name (&#8593;)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sort-option" id="inlineRadio2" value="name_desc">
+                        <label class="form-check-label" for="inlineRadio2">Name (&#8595;)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sort-option" id="inlineRadio3" value="price_asc">
+                        <label class="form-check-label" for="inlineRadio3">Price (&#8593;)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sort-option" id="inlineRadio4" value="price_desc">
+                        <label class="form-check-label" for="inlineRadio4">Price (&#8595;)</label>
+                    </div>
+                </div>
+            </form>
+        </div>     
+    </div>
     
-    <div class="container my-5">
+    <div class="container mt-2">
 
         <div class="row">
             <!-- Card 1 -->
