@@ -154,7 +154,7 @@
             @foreach ($carmodels as $carmodel) 
                 <div class="col-md-4 mb-4">
                     <div class="choice-card border border-dark" style="border-radius: 20px;">
-                        <img src="{{asset('assets/images/fleet-image/'.$carmodel->image_url) }}" class="img-fluid card-image" alt="GTR 2018 image">
+                        <img src="{{ asset('assets/images/fleet-image/'.$carmodel->image_url) }}" class="img-fluid card-image" alt="{{ $carmodel->model_name ?? '' }}">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $carmodel->model_name ?? 'N/A' }}</h5>
                             <p class="card-text">₱{{ number_format($carmodel->base_price,2) }}/day</p>

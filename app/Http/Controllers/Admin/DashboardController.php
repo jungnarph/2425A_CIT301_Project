@@ -56,12 +56,20 @@ class DashboardController extends Controller
     }
 
     private function mostRentedCar() {
-        return Rental::join('cars', 'rentals.car_id', '=', 'cars.id')
+        $carmodel = Rental::join('cars', 'rentals.car_id', '=', 'cars.id')
             ->join('car_models', 'cars.model_id', '=', 'car_models.id')
             ->select('car_models.model_name', DB::raw('COUNT(rentals.id) as rental_count'))
             ->groupBy('car_models.model_name')
             ->orderByDesc('rental_count')
             ->first();
+
+        if ($carmodel) {
+            return CarModel::where('model_name', $carmodel->model_name)
+                ->select('model_name', 'image_url')
+                ->first();
+        }
+
+        return null;
     }
 
 }
