@@ -7,7 +7,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="login-container p-5 rounded shadow-lg bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300">
+        <div class="login-container p-5 rounded shadow-lg bg-gradient-to-r ">
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
