@@ -38,7 +38,7 @@
                     Reset your password
                 </a>
             </div>
-
+            
             <div class="sm:max-w-md mt-6 mx-5 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg blur-container">
                 {{ $slot }}
             </div>
