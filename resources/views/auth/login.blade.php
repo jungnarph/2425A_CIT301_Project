@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | EasyCars</title>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/jpg">
     <style>
         .blur-container {
             background: rgba(255, 255, 255, 0.1);
