@@ -67,7 +67,7 @@ class CarModelController extends Controller
                 'required',
                 Rule::unique('car_models')->ignore($carmodel->id),
             ],
-            'description', 'required',
+            'description' => 'required',
             'car_type' => 'required',
             'base_price' => 'required',
             'seat_capacity' => 'required',
@@ -76,7 +76,7 @@ class CarModelController extends Controller
             'engine' => 'required',
             'power'=> 'required',
             'torque'=> 'required',
-            'image_url'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_url'=> 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $destinationPath = 'assets/images/fleet-image'; 
