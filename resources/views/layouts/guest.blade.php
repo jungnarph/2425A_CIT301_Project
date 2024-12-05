@@ -21,9 +21,16 @@
                 background-size: cover;
                 background-position: center;
             }
+            .blur-container {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 30px;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            }
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans text-white antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
             <div>
             <img class="receipt__logo" src="{{ asset('assets/images/project-logo-white-transparent.png') }}" alt="EasyCars Logo" style="max-width: 14rem">
@@ -32,7 +39,7 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="sm:max-w-md mt-6 mx-5 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg blur-container">
                 {{ $slot }}
             </div>
         </div>
