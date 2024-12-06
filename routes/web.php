@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(functio
         Route::controller(UserController::class)->group(function() {
             Route::get('/users', 'index')->name('manage.users');
             Route::get('/user/create', 'create')->name('create.user');
+            Route::get('/user/{id}', 'view')->name('view.user');
             Route::post('/user/store', 'store')->name('store.user');
             Route::delete('/user/delete/{id}', 'delete')->name('delete.user');
         });
@@ -110,6 +112,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         Route::controller(PaymentController::class)->group(function(){
             Route::get('/payments', 'index')->name('manage.payments');
             Route::get('/payment/confirm', 'confirm')->name('confirm.payment');
+        });
+
+        Route::controller(ProfileAdminController::class)->group(function(){
+            Route::get('/profile', 'index')->name('admin.profile');
+            Route::put('/profile/update', 'update')->name('admin.profile.update');
         });
     });
 });

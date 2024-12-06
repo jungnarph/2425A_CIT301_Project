@@ -34,8 +34,8 @@ class RegisteredUserController extends Controller
             'First_name' => ['required', 'string', 'max:255'],
             'Middle_name' => ['nullable', 'string', 'max:255'],
             'Last_name' => ['required', 'string', 'max:255'],
-            'Contact_number' => ['nullable', 'string', 'max:15', 'unique:users,Contact_number'],
-            'Driver_license_ID' => ['nullable', 'string', 'max:255', 'unique:users,Driver_license_ID'],
+            'Contact_number' => ['nullable', 'string', 'regex:/^09\d{9}$/', 'unique:users,Contact_number'],
+            'Driver_license_ID' => ['nullable', 'string', 'max:255', 'unique:users,Driver_license_ID', 'regex:/^[A-Z]\d{2}-\d{2}-\d{6}$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
@@ -44,6 +44,8 @@ class RegisteredUserController extends Controller
             'Contact_number.unique' => 'The contact number has already been taken.',
             'Driver_license_ID.unique' => 'The driver license ID has already been taken.',
             'password.confirmed' => 'The password confirmation does not match.',
+            'Driver_license_ID.regex' => 'The driver license ID format is invalid. It should match the format XYY-YY-YYYYYY.',
+            'Contact_number.regex' => 'The contact number must be valid and contain exactly 11 digits.',
         ]);
     
         $user = User::create([
