@@ -161,7 +161,7 @@
                             <p>
                                 <i class="bi bi-gear"></i>{{ $carmodel->transmission_type ?? 'N/A' }}&nbsp;
                                 <i class="bi bi-people"></i>{{ $carmodel->seat_capacity ?? 'N/A' }} people&nbsp;
-                                <i class="fa-regular fa-star"></i> Ratings
+                                <i class="fa-regular fa-star"></i>{{ $carmodel->avg_rating ?? '-' }}/5
                             </p>
                             <!-- Button with dynamic route -->
                             <a href="{{ route('user.fleet.show', $carmodel->id) }}" class="btn btn-danger mb-4 w-50" style="border-radius: 25px; padding: 5px 15px;">View Details</a>
