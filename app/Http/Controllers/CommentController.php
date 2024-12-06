@@ -59,6 +59,10 @@ class CommentController extends Controller
         ]);
 
         $rental->update(['token' => null]);
+
+        $carModel = CarModel::find($rental->car->model_id);
+        $averageRating = Comment::where('car_model_id', $carModel->id)->avg('rate');
+        $carModel->update(['average_rating' => $averageRating]);
         
         return redirect()->route('user.fleet.show', $rental->car->model_id)->with('success','Commented successfully!');
     }
