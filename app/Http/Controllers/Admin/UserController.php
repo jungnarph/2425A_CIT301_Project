@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index() {
-        $users = User::all();
+        $users = User::orderByRaw("FIELD(usertype, 'superadmin', 'admin', 'user')")
+             ->get();
         return view('admin.users.manage', compact('users'));
     }
 
