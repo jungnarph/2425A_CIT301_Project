@@ -128,7 +128,7 @@
                         </tr>
                         <tr>
                             <td><strong>Car Type:</strong></td>
-                            <td>{{ $carmodel->carType->type_name ?? 'Car type not available' }}</td>
+                            <td>{{ $carmodel->car_type ?? 'Car type not available' }}</td>
                         </tr>
                     </tbody>
                 </table>
