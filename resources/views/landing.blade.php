@@ -187,34 +187,6 @@
         </div>
     </div>
 
-    <!-- Cards -->
-    <div class="card-container">
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/jdm-jdm-cars.gif') }}">
-            <div class="card-content">
-                <h3>Creator</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/NFS Toyota.gif') }}">
-            <div class="card-content">
-                <h3>What is Toyota</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('assets/images/home-images/drive-car.gif') }}">
-            <div class="card-content">
-                <h3>Toyota PH Branch</h3>
-                <p>DAWDIWAD</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #4d0000;">
         <!-- Container -->
