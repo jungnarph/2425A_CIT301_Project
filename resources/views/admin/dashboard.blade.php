@@ -70,13 +70,15 @@
             </div>
             <div class="col-12 my-3">
                 <div class="card">
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-center align-items-center py-4">
-                                <img src="{{ asset('assets/images/fleet-image/'.$metrics['most_rented_car']->image_url) }}" 
-                                    class="img-fluid card-image" 
-                                    alt="{{ $metrics['most_rented_car']->model_name ?? '' }}" 
-                                    style="max-height: 20rem;">
+                                @if (!empty($metrics['most_rented_car']) && !empty($metrics['most_rented_car']->image_url))
+                                    <img src="{{ asset('assets/images/fleet-image/'.$metrics['most_rented_car']->image_url) }}" 
+                                        class="img-fluid card-image" 
+                                        alt="{{ $metrics['most_rented_car']->model_name ?? '' }}" 
+                                        style="max-height: 20rem;">
+                                @endif
                             </div>
                             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center py-4">
                                 <h5 class="card-title text-center">Best Renting Car</h5>
