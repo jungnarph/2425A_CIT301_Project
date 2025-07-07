@@ -10,6 +10,8 @@ use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class AdminReservationController extends Controller
 {
@@ -19,11 +21,40 @@ class AdminReservationController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        // Decrypt pickup and return locations safely
+        foreach ($reservations as $reservation) {
+            try {
+                $reservation->pickup_location = Crypt::decryptString($reservation->pickup_location);
+            } catch (DecryptException $e) {
+                // fallback: keep as is if not encrypted
+            }
+
+            try {
+                $reservation->return_location = Crypt::decryptString($reservation->return_location);
+            } catch (DecryptException $e) {
+                // fallback: keep as is if not encrypted
+            }
+        }
+
         return view('admin.reservations.manage', compact('reservations'));
     }
 
     public function view($id) {
         $reservation = Reservation::findOrFail($id);
+
+        // Decrypt pickup and return locations safely
+        try {
+            $reservation->pickup_location = Crypt::decryptString($reservation->pickup_location);
+        } catch (DecryptException $e) {
+            // fallback: keep as is if not encrypted
+        }
+
+        try {
+            $reservation->return_location = Crypt::decryptString($reservation->return_location);
+        } catch (DecryptException $e) {
+            // fallback: keep as is if not encrypted
+        }
+
         return view('admin.reservations.detail', compact('reservation'));
     }
 
