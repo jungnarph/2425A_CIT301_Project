@@ -8,6 +8,8 @@ use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+
 
 class ReservationController extends Controller
 {
@@ -47,17 +49,18 @@ class ReservationController extends Controller
         $cleaningFee = 250;
 
         $calculatedTotalAmount = $baseTotal + $insuranceFee + $cleaningFee;
-        
+
         $reservation = Reservation::create([
             'user_id' => $user->id,
             'car_model_id' => $carmodel->id,
             'pickup_dt' => $request->pickup_date . " " . $request->pickup_time,
-            'pickup_location' => $request->pickup_location,
+            'pickup_location' => Crypt::encryptString($request->pickup_location),
             'return_dt' => $request->return_date . " " . $request->return_time,
-            'return_location' => $request->return_location,
+            'return_location' => Crypt::encryptString($request->return_location),
             'has_insurance' => $request->has('insurance'),
             'total_amount' => $calculatedTotalAmount,
         ]);
+
 
         Payment::create([
             'reservation_id' => $reservation->id,
@@ -72,6 +75,9 @@ class ReservationController extends Controller
         $reservation_id = $request->query('reservation_id');
 
         $reservation = Reservation::findOrFail($reservation_id);
+
+        $reservation->pickup_location = Crypt::decryptString($reservation->pickup_location);  
+         $reservation->return_location = Crypt::decryptString($reservation->return_location);  
         return view('receipt', compact('reservation'));
     }
 }
