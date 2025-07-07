@@ -18,19 +18,27 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\UserController;
+use Illuminate\Http\Request;
 
-// LANDING PAGE ROUTES
-Route::get('/', function () {
-    return view('landing');
-})->name('landing');
+use App\Http\Middleware\InspectRequest;
 
-Route::get('/landing', function () {
-    return view('landing');
-})->name('landing');
+Route::get('/test-idps', function (Request $request) {
+    return 'Request passed the IDPS.';
+})->middleware([InspectRequest::class]);
+
+// LANDING PAGE ROUTES (public, IDPS-protected)
+Route::middleware([InspectRequest::class])->group(function () {
+    Route::get('/', function () {
+        return view('landing');
+    })->name('landing');
+
+    Route::get('/landing', function () {
+        return view('landing');
+    })->name('landing');
+});
 
 // USER ROUTES
-
-Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:user', InspectRequest::class])->group(function () {
     Route::controller(HomeController::class)->group(function(){
         Route::get('/services','services')->name('user.services');
         Route::get('/about','about')->name('user.about');
@@ -56,7 +64,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
 
 // ADMIN AND SUPERADMIN ROUTES
 
-Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:superadmin', InspectRequest::class])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(UserController::class)->group(function() {
             Route::get('/users', 'index')->name('manage.users');
@@ -68,7 +76,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:superadmin'])->group(functio
     });
 });
 
-Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'rolemanager:admin', InspectRequest::class])->group(function () {
     Route::prefix('admin')->group(function() {
         Route::controller(DashboardController::class)->group(function() {
             Route::get('/', 'index')->name('admin');
@@ -83,7 +91,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::put('/carmodel/update/{id}', 'update')->name('update.carmodel');
             Route::delete('/carmodel/delete/{id}', 'delete')->name('delete.carmodel');
         });
-       
+
         Route::controller(CarController::class)->group(function() {
             Route::get('/cars', 'index')->name('manage.cars');
             Route::get('/car/create', 'create')->name('create.car');
@@ -121,12 +129,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
     });
 });
 
-// OTHER ROUTES
-
-Route::middleware('auth')->group(function () {
+// PROFILE ROUTES (also protected)
+Route::middleware(['auth', InspectRequest::class])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Auth scaffolding routes
 require __DIR__ . '/auth.php';
